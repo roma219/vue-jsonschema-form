@@ -1,4 +1,5 @@
 # vue-jsonschema-form
+JSON Schema based form generator built with Vue.js
 
 ## Project setup
 ```
@@ -32,3 +33,4 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
