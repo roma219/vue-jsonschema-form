@@ -17,6 +17,3 @@ export default class TextInput extends Vue {
   }
 }
 </script>
-
-<style>
-</style>
