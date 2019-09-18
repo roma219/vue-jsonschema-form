@@ -1,5 +1,5 @@
 <template>
-  <input type="text" @input="$emit('input')" :value="value">
+  <input type="text" @input="handleInput" :value="value">
 </template>
 
 <script lang="ts">
@@ -10,6 +10,11 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 })
 export default class TextInput extends Vue {
   @Prop({ default: '' }) protected value!: string
+
+  handleInput (evt) {
+    const { value } = evt.target
+    this.$emit('input', value)
+  }
 }
 </script>
 
