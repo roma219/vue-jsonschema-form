@@ -21,7 +21,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
-  name: 'JsonSchema',
+  name: 'JsonSchemaForm',
   components: {
     // default components
     TextInput: () => import('@/components/TextInput.vue'),
@@ -29,7 +29,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
     Select: () => import('@/components/Select.vue')
   }
 })
-export default class JsonSchema extends Vue {
+export default class JsonSchemaForm extends Vue {
   @Prop({ required: true }) protected schema!: any
   @Prop({ default: () => ({}) }) protected value!: any
 
@@ -38,8 +38,9 @@ export default class JsonSchema extends Vue {
   }
 
   handleChange (propName: string, newValue: any) {
-    this.$set(this.value, propName, newValue)
-    console.log(propName, newValue)
+    const path = this.schema.properties[propName].type === 'object' ? [propName, ...newValue.path] : [propName]
+    const value = this.schema.properties[propName].type === 'object' ? newValue.value : newValue
+    this.$emit('input', { path, value })
   }
 }
 </script>

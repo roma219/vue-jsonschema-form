@@ -6,9 +6,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import JsonSchema from './components/JsonSchema.vue'
+import JsonSchema from './components/JsonSchema/index.vue'
 
 @Component({
+  name: 'App',
   components: {
     JsonSchema
   }
@@ -22,11 +23,11 @@ export default class App extends Vue {
       ccc: { type: 'enum', __component__: 'Select', __eventName__: 'input', enum: [1, 2, 3] },
       ddd: {
         type: 'object',
-        __component__: 'JsonSchema',
+        __component__: 'JsonSchemaForm',
         __eventName__: 'input',
         properties: {
           a1: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
-          b2: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' },
+          b2: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' }
         }
       }
     }
