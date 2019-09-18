@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <JsonSchema/>
+    <JsonSchema :schema="testSchema" :value="testValue"/>
   </div>
 </template>
 
@@ -13,7 +13,31 @@ import JsonSchema from './components/JsonSchema.vue'
     JsonSchema
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  testSchema = {
+    type: 'object',
+    properties: {
+      aaa: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
+      bbb: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' },
+      ccc: { type: 'enum', __component__: 'Select', __eventName__: 'input', enum: [1, 2, 3] },
+      ddd: {
+        type: 'object',
+        __component__: 'JsonSchema',
+        __eventName__: 'input',
+        properties: {
+          a1: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
+          b2: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' },
+        }
+      }
+    }
+  }
+
+  testValue = {
+    aaa: '123asd',
+    bbb: true,
+    value: 3
+  }
+}
 </script>
 
 <style>

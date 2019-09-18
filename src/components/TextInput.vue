@@ -11,8 +11,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class TextInput extends Vue {
   @Prop({ default: '' }) protected value!: string
 
-  handleInput (evt) {
-    const { value } = evt.target
+  handleInput ({ target }: { target: HTMLInputElement }) {
+    const { value } = target
     this.$emit('input', value)
   }
 }

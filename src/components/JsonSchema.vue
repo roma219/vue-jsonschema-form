@@ -1,15 +1,16 @@
 <template>
   <div class="json-schema-wrapper">
-    json schema components
     <div
-      v-for="[propName, propValue] in Object.entries(testSchema.properties)"
+      v-for="[propName, propValue] in Object.entries(schema.properties)"
       class="form-group"
       :key="propName"
     >
       <div>{{ propName }}</div>
       <component
         :is="propValue.__component__"
-        :value="testValue[propName]"
+        :value="value[propName]"
+        :options="propValue.enum"
+        :schema="schema && schema.properties && schema.properties[propName]"
         @[getEventName(propValue)]="handleChange(propName, $event)"
       />
     </div>
@@ -24,37 +25,30 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: {
     // default components
     TextInput: () => import('@/components/TextInput.vue'),
-    Checkbox: () => import('@/components/Checkbox.vue')
+    Checkbox: () => import('@/components/Checkbox.vue'),
+    Select: () => import('@/components/Select.vue')
   }
 })
 export default class JsonSchema extends Vue {
-  testSchema = {
-    type: 'object',
-    properties: {
-      aaa: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
-      bbb: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' }
-    }
-  }
-
-  testValue = {
-    aaa: '123asd',
-    bbb: true
-  }
+  @Prop({ required: true }) protected schema!: any
+  @Prop({ default: () => ({}) }) protected value!: any
 
   getEventName (propValue : any) {
     return propValue.__eventName__
   }
 
   handleChange (propName: string, newValue: any) {
-    this.$set(this.testValue, propName, newValue)
+    this.$set(this.value, propName, newValue)
     console.log(propName, newValue)
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 .json-schema-wrapper .form-group {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  align-items: flex-start
 }
 </style>
