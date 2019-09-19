@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <JsonSchema :schema="testSchema" :value="testValue"/>
+    <JsonSchema :schema="testSchema" v-model="testValue"/>
   </div>
 </template>
 

@@ -9,6 +9,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import JsonSchemaForm from './JsonSchemaForm.vue'
+import cloneDeep from 'lodash/cloneDeep'
 
 @Component({
   name: 'JsonSchema',
@@ -21,8 +22,19 @@ export default class JsonSchema extends Vue {
   @Prop({ default: () => ({}) }) protected value!: any
 
   handleChange ({ path, value } : { path: Array<string>, value: any }) {
-    // deep clone everything & emit changed version
-    console.log(path, value)
+    const newValue = cloneDeep(this.value)
+    const paramName = path.pop() || ''
+
+    let target = newValue
+    path.forEach(paramName => {
+      if (!target[paramName]) target[paramName] = {}
+
+      target = target[paramName]
+    })
+
+    target[paramName] = value
+
+    this.$emit('input', newValue)
   }
 }
 </script>

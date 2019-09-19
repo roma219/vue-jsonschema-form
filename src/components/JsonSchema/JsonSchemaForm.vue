@@ -26,12 +26,17 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
     // default components
     TextInput: () => import('@/components/TextInput.vue'),
     Checkbox: () => import('@/components/Checkbox.vue'),
-    Select: () => import('@/components/Select.vue')
+    Select: () => import('@/components/Select.vue'),
+    InputWrapper: () => import('@/components/InputWrapper.vue')
   }
 })
 export default class JsonSchemaForm extends Vue {
   @Prop({ required: true }) protected schema!: any
   @Prop({ default: () => ({}) }) protected value!: any
+
+  get wrapperComponentName () {
+    return 'InputWrapper'
+  }
 
   getEventName (propValue : any) {
     return propValue.__eventName__
