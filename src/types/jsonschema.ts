@@ -21,31 +21,17 @@ export interface IJsonSchema extends JSONSchema7 {
 export interface IAnyObject {
   [key:string] : any
 }
-
-export interface IPropsObjectJsonSchemaForm {
-  type: string
-  error?: string
-  value: string|number|object
-  text?: string
-  title?: string
-  tooltip?: string
-  schema?: object
-  uiSchema?: object
-  validations?: object
-  itemsSchema?: object
-  emitOnCreate?: boolean
-  allowEmpty?: boolean
-  openDirection?: string
-  options?: Array<any>
-  itemsMinCount?: number
-  itemsMaxCount?: number
-  format?: string
-  errors?: object,
-  dictionaryUrl?: string
-}
-
 export interface IComponent {
   name: string
   eventName: string
-  props: any | undefined
+  props?: IAnyObject
+}
+
+
+export interface IInnerSchema {
+  type: JSONSchema7TypeName
+  properties?: {
+    [key: string]: IInnerSchema
+  }
+  enum?: Array<any>
 }

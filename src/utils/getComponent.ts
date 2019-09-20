@@ -27,7 +27,7 @@ const defaultConfig = [{
   eventName: 'input'
 }]
 
-export const getComponent = (schema: JSONSchema7, uiSchema = {}, config = {}) : IComponent | null => {
+export const getComponent = (schema: JSONSchema7, uiSchema = {}, config = {}) : IComponent | undefined => {
   const result = defaultConfig.find(configItem => {
     if (configItem.matcher) return isMatch(schema, configItem.matcher)
     if (configItem.contains) return schema.hasOwnProperty(configItem.contains)
@@ -35,11 +35,7 @@ export const getComponent = (schema: JSONSchema7, uiSchema = {}, config = {}) : 
     return false
   })
 
-  if (!result) {
-    console.warn('[vue-jsonschema-form] couldnt detect component name for schema: ', schema)
-    return null
-  } else {
-    const { name, eventName, props } = result
-    return { name, eventName, props }
-  }
+  if (!result) console.warn(`[vue-jsonschema-form] couldnt detect component for schema: ${schema}`)
+
+  return result
 }
