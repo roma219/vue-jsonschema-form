@@ -34,4 +34,7 @@ export interface IInnerSchema {
     [key: string]: IInnerSchema
   }
   enum?: Array<any>
+  __component__: string
+  __eventName__: string
+  __props__?: any
 }

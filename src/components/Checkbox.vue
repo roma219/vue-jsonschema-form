@@ -17,6 +17,3 @@ export default class Checkbox extends Vue {
   }
 }
 </script>
-
-<style>
-</style>

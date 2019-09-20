@@ -41,12 +41,6 @@ export default class JsonSchemaForm extends Vue {
     return propValue.__eventName__
   }
 
-  handleChange (propName: string, newValue: any) {
-    const path = this.schema.properties[propName].type === 'object' ? [propName, ...newValue.path] : [propName]
-    const value = this.schema.properties[propName].type === 'object' ? newValue.value : newValue
-    this.$emit('input', { path, value })
-  }
-
   getProps (propName: string, propValue: any) {
     const customProps = propValue.__props__ ? propValue.__props__(propValue) : {}
 
@@ -59,6 +53,12 @@ export default class JsonSchemaForm extends Vue {
 
   getWrapperProps (propName: string, propValue: any) {
     return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue) : {}
+  }
+
+  handleChange (propName: string, newValue: any) {
+    const path = this.schema.properties[propName].type === 'object' ? [propName, ...newValue.path] : [propName]
+    const value = this.schema.properties[propName].type === 'object' ? newValue.value : newValue
+    this.$emit('input', { path, value })
   }
 }
 </script>
