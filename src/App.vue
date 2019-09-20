@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <JsonSchema :schema="testSchema" v-model="testValue"/>
+    <JsonSchema
+      :schema="schema"
+      :ui-schema="uiSchema"
+      v-model="value"
+    />
     <pre>{{ formattedValue }}</pre>
   </div>
 </template>
@@ -16,7 +20,7 @@ import JsonSchema from './components/JsonSchema/index.vue'
   }
 })
 export default class App extends Vue {
-  testSchema = {
+  schema = {
     type: 'object',
     properties: {
       aaa: { type: 'string' },
@@ -39,14 +43,18 @@ export default class App extends Vue {
     }
   }
 
-  testValue = {
+  uiSchema = {
+
+  }
+
+  value = {
     aaa: '123asd',
     bbb: true,
     ccc: 3
   }
 
   get formattedValue () : string {
-    return JSON.stringify(this.testValue, null, 2)
+    return JSON.stringify(this.value, null, 2)
   }
 }
 </script>
