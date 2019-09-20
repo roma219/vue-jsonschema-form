@@ -12,7 +12,6 @@ export default class Checkbox extends Vue {
   @Prop({ default: '' }) protected value!: string
 
   handleInput ({ target }: { target: HTMLInputElement }) {
-    console.log(target)
     const { checked } = target
     this.$emit('input', checked)
   }

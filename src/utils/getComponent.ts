@@ -9,6 +9,11 @@ const defaultConfig = [{
   name: 'JsonSchemaForm',
   eventName: 'input'
 }, {
+  contains: 'enum',
+  name: 'Select',
+  eventName: 'input',
+  props: (schema: any, uiSchema: {}) => ({ options: schema.enum })
+}, {
   matcher: {
     type: 'string'
   },
@@ -19,10 +24,6 @@ const defaultConfig = [{
     type: 'boolean'
   },
   name: 'Checkbox',
-  eventName: 'input'
-}, {
-  contains: 'enum',
-  name: 'Select',
   eventName: 'input'
 }]
 
@@ -38,6 +39,7 @@ export const getComponent = (schema: JSONSchema7, uiSchema = {}, config = {}) : 
     console.warn('[vue-jsonschema-form] couldnt detect component name for schema: ', schema)
     return null
   } else {
-    return result
+    const { name, eventName, props } = result
+    return { name, eventName, props }
   }
 }

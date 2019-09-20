@@ -8,9 +8,7 @@
       <div>{{ propName }}</div>
       <component
         :is="propValue.__component__"
-        :value="value[propName]"
-        :options="propValue.enum"
-        :schema="schema && schema.properties && schema.properties[propName]"
+        v-bind="getProps(propName, propValue)"
         @[getEventName(propValue)]="handleChange(propName, $event)"
       />
     </div>
@@ -46,6 +44,16 @@ export default class JsonSchemaForm extends Vue {
     const path = this.schema.properties[propName].type === 'object' ? [propName, ...newValue.path] : [propName]
     const value = this.schema.properties[propName].type === 'object' ? newValue.value : newValue
     this.$emit('input', { path, value })
+  }
+
+  getProps (propName: string, propValue: any) {
+    const customProps = propValue.__props__ ? propValue.__props__(propValue) : {}
+
+    return {
+      value: this.value[propName],
+      schema: this.schema.properties[propName],
+      ...customProps
+    }
   }
 }
 </script>

@@ -47,4 +47,5 @@ export interface IPropsObjectJsonSchemaForm {
 export interface IComponent {
   name: string
   eventName: string
+  props: any | undefined
 }
