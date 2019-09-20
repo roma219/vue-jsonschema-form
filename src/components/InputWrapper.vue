@@ -15,3 +15,14 @@ export default class InputWrapper extends Vue {
   @Prop({ default: '' }) protected title!: string
 }
 </script>
+
+<style>
+.input-wrapper {
+  margin-bottom: 15px;
+}
+
+.input-wrapper-title {
+  font-size: 12px;
+  font-weight: bold;
+}
+</style>

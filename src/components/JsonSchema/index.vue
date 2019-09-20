@@ -43,12 +43,3 @@ export default class JsonSchema extends Vue {
   }
 }
 </script>
-
-<style>
-.json-schema-wrapper .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  align-items: flex-start
-}
-</style>

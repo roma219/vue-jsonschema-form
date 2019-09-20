@@ -10,6 +10,7 @@ export const processSchema = (schema: any) : any => {
     processedSchema.__eventName__ = component.eventName
     processedSchema.__props__ = component.props
   }
+
   Object.entries(processedSchema.properties || {}).forEach(([propName, propSchema]) => {
     if (!processedSchema.properties || !processedSchema.properties[propName]) return
 

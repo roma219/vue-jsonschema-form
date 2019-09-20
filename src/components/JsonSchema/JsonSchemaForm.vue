@@ -1,22 +1,23 @@
 <template>
   <div class="json-schema-wrapper">
-    <div
+    <component
+      :is="wrapperComponent.name"
       v-for="[propName, propValue] in Object.entries(schema.properties)"
-      class="form-group"
       :key="propName"
+      v-bind="getWrapperProps(propName, propValue)"
     >
-      <div>{{ propName }}</div>
       <component
         :is="propValue.__component__"
         v-bind="getProps(propName, propValue)"
         @[getEventName(propValue)]="handleChange(propName, $event)"
       />
-    </div>
-  </div>
+  </component>
+</div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import config from '@/utils/config'
 
 @Component({
   name: 'JsonSchemaForm',
@@ -32,8 +33,8 @@ export default class JsonSchemaForm extends Vue {
   @Prop({ required: true }) protected schema!: any
   @Prop({ default: () => ({}) }) protected value!: any
 
-  get wrapperComponentName () {
-    return 'InputWrapper'
+  get wrapperComponent () {
+    return config.inputWrapper
   }
 
   getEventName (propValue : any) {
@@ -55,14 +56,9 @@ export default class JsonSchemaForm extends Vue {
       ...customProps
     }
   }
+
+  getWrapperProps (propName: string, propValue: any) {
+    return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue) : {}
+  }
 }
 </script>
-
-<style>
-.json-schema-wrapper .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  align-items: flex-start
-}
-</style>
