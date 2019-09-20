@@ -14,9 +14,7 @@ import { processSchema } from '@/utils/processSchema'
 
 @Component({
   name: 'JsonSchema',
-  components: {
-    JsonSchemaForm
-  }
+  components: { JsonSchemaForm }
 })
 export default class JsonSchema extends Vue {
   @Prop({ required: true }) protected schema!: any
