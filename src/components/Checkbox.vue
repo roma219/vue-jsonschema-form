@@ -1,5 +1,5 @@
 <template>
-  <input type="checkbox" @input="handleInput" :value="value">
+  <input type="checkbox" @input="handleInput" :checked="value">
 </template>
 
 <script lang="ts">
@@ -12,8 +12,9 @@ export default class Checkbox extends Vue {
   @Prop({ default: '' }) protected value!: string
 
   handleInput ({ target }: { target: HTMLInputElement }) {
-    const { value } = target
-    this.$emit('input', value)
+    console.log(target)
+    const { checked } = target
+    this.$emit('input', checked)
   }
 }
 </script>

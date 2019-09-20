@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <JsonSchema :schema="testSchema" v-model="testValue"/>
+    <pre>{{ formattedValue }}</pre>
   </div>
 </template>
 
@@ -27,7 +28,16 @@ export default class App extends Vue {
         __eventName__: 'input',
         properties: {
           a1: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
-          b2: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' }
+          b2: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' },
+          ddd: {
+            type: 'object',
+            __component__: 'JsonSchemaForm',
+            __eventName__: 'input',
+            properties: {
+              a1: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
+              b2: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' }
+            }
+          }
         }
       }
     }
@@ -36,7 +46,11 @@ export default class App extends Vue {
   testValue = {
     aaa: '123asd',
     bbb: true,
-    value: 3
+    ccc: 3
+  }
+
+  get formattedValue () : string {
+    return JSON.stringify(this.testValue, null, 2)
   }
 }
 </script>
@@ -46,7 +60,7 @@ export default class App extends Vue {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
