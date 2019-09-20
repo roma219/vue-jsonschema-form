@@ -1,6 +1,6 @@
 <template>
   <JsonSchemaForm
-    :schema="schema"
+    :schema="processedSchema"
     :value="value"
     @input="handleChange"
   />
@@ -10,6 +10,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import cloneDeep from 'lodash/cloneDeep'
+import { processSchema } from '@/utils/processSchema'
 
 @Component({
   name: 'JsonSchema',
@@ -35,6 +36,10 @@ export default class JsonSchema extends Vue {
     target[paramName] = value
 
     this.$emit('input', newValue)
+  }
+
+  get processedSchema () {
+    return processSchema(this.schema)
   }
 }
 </script>

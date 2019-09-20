@@ -43,3 +43,8 @@ export interface IPropsObjectJsonSchemaForm {
   errors?: object,
   dictionaryUrl?: string
 }
+
+export interface IComponent {
+  name: string
+  eventName: string
+}

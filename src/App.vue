@@ -19,23 +19,19 @@ export default class App extends Vue {
   testSchema = {
     type: 'object',
     properties: {
-      aaa: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
-      bbb: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' },
-      ccc: { type: 'enum', __component__: 'Select', __eventName__: 'input', enum: [1, 2, 3] },
+      aaa: { type: 'string' },
+      bbb: { type: 'boolean' },
+      ccc: { type: 'string', enum: ['1', '2', '3'] },
       ddd: {
         type: 'object',
-        __component__: 'JsonSchemaForm',
-        __eventName__: 'input',
         properties: {
-          a1: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
-          b2: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' },
+          a1: { type: 'string' },
+          b2: { type: 'boolean' },
           ddd: {
             type: 'object',
-            __component__: 'JsonSchemaForm',
-            __eventName__: 'input',
             properties: {
-              a1: { type: 'string', __component__: 'TextInput', __eventName__: 'input' },
-              b2: { type: 'boolean', __component__: 'Checkbox', __eventName__: 'input' }
+              a1: { type: 'string' },
+              b2: { type: 'boolean' }
             }
           }
         }
