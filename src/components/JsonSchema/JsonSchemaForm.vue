@@ -2,14 +2,14 @@
   <div class="json-schema-wrapper">
     <component
       :is="wrapperComponent.name"
-      v-for="[propName, propValue] in Object.entries(schema.properties)"
+      v-for="[propName, propSchema] in Object.entries(schema.properties)"
       :key="propName"
-      v-bind="getWrapperProps(propName, propValue)"
+      v-bind="getWrapperProps(propName, propSchema)"
     >
       <component
-        :is="propValue.__component__"
-        v-bind="getProps(propName, propValue)"
-        @[getEventName(propValue)]="handleChange(propName, $event)"
+        :is="propSchema.__component__"
+        v-bind="getProps(propName, propSchema)"
+        @[getEventName(propSchema)]="handleInput(propName, $event)"
       />
   </component>
 </div>
@@ -37,12 +37,12 @@ export default class JsonSchemaForm extends Vue {
     return config.inputWrapper
   }
 
-  getEventName (propValue : any) {
-    return propValue.__eventName__
+  getEventName (propSchema : any) {
+    return propSchema.__eventName__
   }
 
-  getProps (propName: string, propValue: any) {
-    const customProps = propValue.__props__ ? propValue.__props__(propValue) : {}
+  getProps (propName: string, propSchema: any) {
+    const customProps = propSchema.__props__ ? propSchema.__props__(propSchema) : {}
 
     return {
       value: this.value[propName],
@@ -51,11 +51,11 @@ export default class JsonSchemaForm extends Vue {
     }
   }
 
-  getWrapperProps (propName: string, propValue: any) {
-    return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue) : {}
+  getWrapperProps (propName: string, propSchema: any) {
+    return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propSchema) : {}
   }
 
-  handleChange (propName: string, newValue: any) {
+  handleInput (propName: string, newValue: any) {
     const path = this.schema.properties[propName].type === 'object' ? [propName, ...newValue.path] : [propName]
     const value = this.schema.properties[propName].type === 'object' ? newValue.value : newValue
     this.$emit('input', { path, value })

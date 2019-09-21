@@ -30,6 +30,7 @@ export interface IComponent {
 
 export interface IInnerSchema {
   type: JSONSchema7TypeName
+  title?: string
   properties?: {
     [key: string]: IInnerSchema
   }
@@ -37,4 +38,5 @@ export interface IInnerSchema {
   __component__: string
   __eventName__: string
   __props__?: any
+  default?: any
 }
