@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { ISchema, IAnyObject } from '@/types'
+import { ISchema, IUiSchema, IAnyObject } from '@/types'
 import config from '@/utils/config'
 
 @Component({
@@ -32,6 +32,7 @@ import config from '@/utils/config'
 })
 export default class JsonSchemaForm extends Vue {
   @Prop({ required: true }) protected schema!: ISchema
+  @Prop() protected uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) protected value!: IAnyObject
 
   get wrapperComponent () {
@@ -53,7 +54,8 @@ export default class JsonSchemaForm extends Vue {
   }
 
   getWrapperProps (propName: string, propValue: ISchema) {
-    return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue) : {}
+    const propUiSchma = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
+    return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue, propUiSchma) : {}
   }
 
   handleInput (propName: string, newValue: any) {

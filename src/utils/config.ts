@@ -1,7 +1,9 @@
-export default {
+import { IConfig } from '@/types'
+
+const config : IConfig = {
   inputWrapper: {
     name: 'InputWrapper',
-    props: (propName: string, schema: any, uiSchema = {}) => ({
+    props: (propName, schema, uiSchema) => ({
       title: schema.title || propName
     })
   },
@@ -15,7 +17,7 @@ export default {
     contains: 'enum',
     name: 'Select',
     eventName: 'input',
-    props: (schema: any, uiSchema: {}) => ({ options: schema.enum })
+    props: (schema, uiSchema) => ({ options: schema.enum })
   }, {
     matcher: {
       type: 'string'
@@ -30,3 +32,5 @@ export default {
     eventName: 'input'
   }]
 }
+
+export default config

@@ -1,6 +1,7 @@
 <template>
   <JsonSchemaForm
     :schema="processedSchema"
+    :ui-schema="uiSchema"
     :value="value"
     @input="handleChange"
   />
@@ -10,7 +11,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { processSchema } from '@/utils/processSchema'
 import { JSONSchema7 } from 'json-schema'
-import { ISchema, IAnyObject } from '@/types'
+import { ISchema, IUiSchema, IAnyObject } from '@/types'
 import cloneDeep from 'lodash/cloneDeep'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 
@@ -20,6 +21,7 @@ import JsonSchemaForm from './JsonSchemaForm.vue'
 })
 export default class JsonSchema extends Vue {
   @Prop({ required: true }) protected schema!: JSONSchema7
+  @Prop() protected uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) protected value!: IAnyObject
 
   handleChange ({ path, value } : { path: Array<string>, value: any }) {
@@ -39,7 +41,7 @@ export default class JsonSchema extends Vue {
   }
 
   get processedSchema () : ISchema {
-    return processSchema(this.schema)
+    return processSchema(this.schema, this.uiSchema)
   }
 }
 </script>

@@ -13,21 +13,31 @@ export interface ISchema {
   __props__?: any
 }
 
-export interface IComponent {
-  name: string
-  eventName: string
-  props?: (schema: any, uiSchema: any) => IAnyObject,
+export interface IUiSchema {
+  titles?: Array<string>
+  order?: number
+  properties?: { [key: string]: IUiSchema }
 }
-
 
 // config types
 export interface IConfig {
+  inputWrapper: IWrapperComponent
   components: Array<IConfigComponent>
+}
+export interface IComponent {
+  name: string
+  eventName: string
+  props?: (schema: any, uiSchema: IUiSchema) => IAnyObject,
+}
+
+export interface IWrapperComponent {
+  name: string,
+  props?: (propName: string, schema: any, uiSchema: IUiSchema | undefined) => IAnyObject
 }
 
 interface IConfigComponent {
-  matcher: IAnyObject,
-  props: (schema: any, uiSchema: any) => IAnyObject,
+  matcher?: IAnyObject,
+  props?: (schema: any, uiSchema: IUiSchema | undefined) => IAnyObject,
   contains?: string,
   name: string,
   eventName: string

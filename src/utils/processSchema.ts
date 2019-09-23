@@ -1,5 +1,5 @@
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
-import { ISchema } from '@/types'
+import { ISchema, IUiSchema } from '@/types'
 import { getComponent } from './getComponent'
 
 const getType = (schema: any) => {
@@ -7,7 +7,7 @@ const getType = (schema: any) => {
   return type
 }
 
-export const processSchema = (schema: JSONSchema7) : ISchema => {
+export const processSchema = (schema: JSONSchema7, uiSchema : IUiSchema | undefined) : ISchema => {
   const { type, title, description } = schema
   const innerSchemaType = (type && type !== 'null' && ((typeof type) !== 'object')) ? type : 'string'
 
@@ -27,11 +27,13 @@ export const processSchema = (schema: JSONSchema7) : ISchema => {
     Object.entries(schema.properties || {}).forEach(([propName, propSchema]) => {
       if (!processedSchema.properties) return
 
-      processedSchema.properties[propName] = processSchema(propSchema as JSONSchema7)
+      const propUiSchema = (uiSchema && uiSchema.properties && uiSchema.properties[propName]) || undefined
+
+      processedSchema.properties[propName] = processSchema(propSchema as JSONSchema7, propUiSchema)
     })
   }
 
-  const component = getComponent(processedSchema)
+  const component = getComponent(processedSchema, uiSchema)
 
   if (component) {
     processedSchema.__component__ = component.name
