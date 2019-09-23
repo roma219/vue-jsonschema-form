@@ -8,7 +8,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
+import { mixins } from 'vue-class-component'
 import { processSchema } from '@/utils/processSchema'
 import { setValidators } from '@/utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
@@ -20,12 +21,9 @@ import { validationMixin } from 'vuelidate'
 @Component({
   name: 'JsonSchema',
   mixins: [validationMixin],
-  components: { JsonSchemaForm },
-  validations () {
-    return setValidators((this as any).processedSchema)
-  }
+  components: { JsonSchemaForm }
 })
-export default class JsonSchema extends Vue {
+export default class JsonSchema extends Mixins(validationMixin) {
   @Prop({ required: true }) protected schema!: JSONSchema7
   @Prop() protected uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) protected value!: IAnyObject
