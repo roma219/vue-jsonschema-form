@@ -1,12 +1,12 @@
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
 import { isMatch } from 'underscore'
-import { IComponent } from '@/types/jsonschema'
+import { IComponent, ISchema } from '@/types'
 import config from './config'
 
-export const getComponent = (schema: JSONSchema7, uiSchema = {}) : IComponent | undefined => {
+export const getComponent = (schema: ISchema, uiSchema = {}) : IComponent | undefined => {
   const component = config.components.find(configItem => {
     if (configItem.matcher) return isMatch(schema, configItem.matcher)
-    if (configItem.contains) return schema.hasOwnProperty(configItem.contains)
+    if (configItem.contains) return schema.hasOwnProperty(configItem.contains) && !!(schema as any)[configItem.contains]
 
     return false
   })

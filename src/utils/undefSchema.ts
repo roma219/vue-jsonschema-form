@@ -1,6 +1,6 @@
-import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
+import { ISchema } from '@/types'
 
 // convert schema with refs into unreffed schema
-export const unrefSchema = (schema: JSONSchema7) : any => {
+export const unrefSchema = (schema: ISchema) : any => {
   return schema
 }

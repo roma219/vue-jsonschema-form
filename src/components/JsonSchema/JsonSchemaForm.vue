@@ -18,6 +18,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import config from '@/utils/config'
+import { ISchema, IAnyObject } from '@/types'
 
 @Component({
   name: 'JsonSchemaForm',
@@ -30,32 +31,33 @@ import config from '@/utils/config'
   }
 })
 export default class JsonSchemaForm extends Vue {
-  @Prop({ required: true }) protected schema!: any
-  @Prop({ default: () => ({}) }) protected value!: any
+  @Prop({ required: true }) protected schema!: ISchema
+  @Prop({ default: () => ({}) }) protected value!: IAnyObject
 
   get wrapperComponent () {
     return config.inputWrapper
   }
 
-  getEventName (propValue : any) {
+  getEventName (propValue : ISchema) {
     return propValue.__eventName__
   }
 
-  getProps (propName: string, propValue: any) {
-    const customProps = propValue.__props__ ? propValue.__props__(propValue) : {}
+  getProps (propName: string, propValue: ISchema) {
+    const customProps = propValue.__props__ ? propValue.__props__(propValue, {}) : {}
 
     return {
       value: this.value[propName],
-      schema: this.schema.properties[propName],
+      schema: this.schema.properties && this.schema.properties[propName],
       ...customProps
     }
   }
 
-  getWrapperProps (propName: string, propValue: any) {
+  getWrapperProps (propName: string, propValue: ISchema) {
     return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue) : {}
   }
 
   handleChange (propName: string, newValue: any) {
+    if (!this.schema.properties) return
     const path = this.schema.properties[propName].type === 'object' ? [propName, ...newValue.path] : [propName]
     const value = this.schema.properties[propName].type === 'object' ? newValue.value : newValue
     this.$emit('input', { path, value })

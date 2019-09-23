@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <JsonSchema
+      :config="config"
       :schema="schema"
       :ui-schema="uiSchema"
       v-model="value"
@@ -44,6 +45,10 @@ export default class App extends Vue {
   }
 
   uiSchema = {
+
+  }
+
+  config = {
 
   }
 
