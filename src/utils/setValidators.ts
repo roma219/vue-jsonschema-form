@@ -12,13 +12,13 @@ const correctPhone = (valueToCompare: any) => {
 export const setValidators = (schema: ISchema) : any => {
   const validations : any = {}
 
-  console.log('kek')
-
   if (schema.properties) {
     Object.keys(schema.properties).forEach((property) => {
       const propertyObject : any = schema.properties ? schema.properties[property] : {}
 
       validations[property] = {}
+
+      console.log(propertyObject)
 
       // requireds
       if ((propertyObject.type === 'string' && propertyObject.minLength) ||

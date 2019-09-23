@@ -3,13 +3,13 @@
     :schema="processedSchema"
     :ui-schema="uiSchema"
     :value="value"
+    :validations="validationErrors"
     @input="handleChange"
   />
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
-import { mixins } from 'vue-class-component'
 import { processSchema } from '@/utils/processSchema'
 import { setValidators } from '@/utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
@@ -19,11 +19,14 @@ import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
 
 @Component({
-  name: 'JsonSchema',
   mixins: [validationMixin],
-  components: { JsonSchemaForm }
+  name: 'JsonSchema',
+  components: { JsonSchemaForm },
+  validations() {
+    return { value: setValidators(this.processedSchema) }
+  }
 })
-export default class JsonSchema extends Mixins(validationMixin) {
+export default class JsonSchema extends Vue {
   @Prop({ required: true }) protected schema!: JSONSchema7
   @Prop() protected uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) protected value!: IAnyObject
