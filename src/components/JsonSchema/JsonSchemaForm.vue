@@ -2,14 +2,14 @@
   <div class="json-schema-wrapper">
     <component
       :is="wrapperComponent.name"
-      v-for="[propName, propValue] in Object.entries(schema.properties)"
+      v-for="[propName, propSchema] in Object.entries(schema.properties)"
       :key="propName"
-      v-bind="getWrapperProps(propName, propValue)"
+      v-bind="getWrapperProps(propName, propSchema)"
     >
       <component
-        :is="propValue.__component__"
-        v-bind="getProps(propName, propValue)"
-        @[getEventName(propValue)]="handleChange(propName, $event)"
+        :is="propSchema.__component__"
+        v-bind="getProps(propName, propSchema)"
+        @[getEventName(propSchema)]="handleInput(propName, $event)"
       />
   </component>
 </div>
