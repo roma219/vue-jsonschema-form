@@ -2,7 +2,7 @@
   <div class="json-schema-wrapper">
     <component
       :is="wrapperComponent.name"
-      v-for="[propName, propSchema] in Object.entries(schema.properties)"
+      v-for="[propName, propSchema] in sortedSchemaProperties"
       :key="propName"
       v-bind="getWrapperProps(propName, propSchema)"
     >
@@ -39,16 +39,35 @@ export default class JsonSchemaForm extends Vue {
     return config.inputWrapper
   }
 
+  get sortedSchemaProperties () {
+    if (!this.schema.properties) return
+
+    const uiSchema = (this.uiSchema && this.uiSchema.properties) || {}
+
+    return Object.entries(this.schema.properties).sort((a, b) => {
+      const aPosition = (uiSchema[a[0]] && uiSchema[a[0]].order) || 999
+      const bPosition = (uiSchema[b[0]] && uiSchema[b[0]].order) || 999
+
+      if (aPosition < bPosition) return -1
+
+      if (aPosition > bPosition) return 1
+
+      return 0
+    })
+  }
+
   getEventName (propValue : ISchema) {
     return propValue.__eventName__
   }
 
   getProps (propName: string, propValue: ISchema) {
     const customProps = propValue.__props__ ? propValue.__props__(propValue, {}) : {}
+    const uiSchema = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
 
     return {
       value: this.value[propName],
       schema: this.schema.properties && this.schema.properties[propName],
+      uiSchema,
       ...customProps
     }
   }

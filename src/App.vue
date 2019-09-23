@@ -45,7 +45,15 @@ export default class App extends Vue {
   }
 
   uiSchema = {
-
+    properties: {
+      ccc: { order: 1 },
+      ddd: {
+        properties: {
+          b2: { order: 2 },
+          ddd: { order: 1 }
+        }
+      }
+    }
   }
 
   config = {
