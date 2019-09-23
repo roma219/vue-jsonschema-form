@@ -8,11 +8,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import JsonSchemaForm from './JsonSchemaForm.vue'
-import cloneDeep from 'lodash/cloneDeep'
 import { processSchema } from '@/utils/processSchema'
-import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { ISchema, IAnyObject } from '@/types'
+import cloneDeep from 'lodash/cloneDeep'
+import JsonSchemaForm from './JsonSchemaForm.vue'
 
 @Component({
   name: 'JsonSchema',

@@ -17,8 +17,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import config from '@/utils/config'
 import { ISchema, IAnyObject } from '@/types'
+import config from '@/utils/config'
 
 @Component({
   name: 'JsonSchemaForm',
@@ -56,7 +56,7 @@ export default class JsonSchemaForm extends Vue {
     return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue) : {}
   }
 
-  handleChange (propName: string, newValue: any) {
+  handleInput (propName: string, newValue: any) {
     if (!this.schema.properties) return
     const path = this.schema.properties[propName].type === 'object' ? [propName, ...newValue.path] : [propName]
     const value = this.schema.properties[propName].type === 'object' ? newValue.value : newValue
