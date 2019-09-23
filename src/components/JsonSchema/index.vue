@@ -10,19 +10,29 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { processSchema } from '@/utils/processSchema'
+import { setValidators } from '@/utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
 import { ISchema, IUiSchema, IAnyObject } from '@/types'
 import cloneDeep from 'lodash/cloneDeep'
 import JsonSchemaForm from './JsonSchemaForm.vue'
+import { validationMixin } from 'vuelidate'
 
 @Component({
   name: 'JsonSchema',
-  components: { JsonSchemaForm }
+  mixins: [validationMixin],
+  components: { JsonSchemaForm },
+  validations () {
+    return setValidators((this as any).processedSchema)
+  }
 })
 export default class JsonSchema extends Vue {
   @Prop({ required: true }) protected schema!: JSONSchema7
   @Prop() protected uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) protected value!: IAnyObject
+
+  get validationErrors () {
+    return (this as any).$v.value
+  }
 
   handleChange ({ path, value } : { path: Array<string>, value: any }) {
     const newValue = cloneDeep(this.value)

@@ -12,7 +12,8 @@
     "core-js": "^2.6.5",
     "lodash": "^4.17.15",
     "underscore": "^1.9.1",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",

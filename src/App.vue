@@ -24,13 +24,13 @@ export default class App extends Vue {
   schema = {
     type: 'object',
     properties: {
-      aaa: { type: 'string' },
+      aaa: { type: 'string', minLength: 1 },
       bbb: { type: 'boolean' },
       ccc: { type: 'string', enum: ['1', '2', '3'] },
       ddd: {
         type: 'object',
         properties: {
-          a1: { type: 'string' },
+          a1: { type: 'string', minLength: 1, maxLength: 5 },
           b2: { type: 'boolean' },
           ddd: {
             type: 'object',

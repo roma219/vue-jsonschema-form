@@ -48,3 +48,10 @@ interface IConfigComponent {
 export interface IAnyObject {
   [key:string] : any
 }
+
+// validations
+// export interface IValidations {
+//   [key: 'required' | 'minLength' | 'maxLength' | 'minimum' | 'maximum' | 'phone'] ?: any
+//   $each?: IValidations
+
+// }
