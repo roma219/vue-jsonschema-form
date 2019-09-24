@@ -1,4 +1,6 @@
 module.exports = {
+  title: 'Hello VuePress',
+  description: 'Just playing around',
   base: '/vue-jsonschema-form/',
   themeConfig: {
     repo: 'roma219/vue-jsonschema-form',
