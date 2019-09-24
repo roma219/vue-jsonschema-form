@@ -4,6 +4,7 @@ module.exports = {
   base: '/vue-jsonschema-form/',
   themeConfig: {
     repo: 'roma219/vue-jsonschema-form',
+    docsDir: 'docs',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
