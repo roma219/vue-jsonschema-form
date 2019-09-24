@@ -29,13 +29,14 @@ export default class App extends Vue {
       ccc: { type: 'string', enum: ['1', '2', '3'] },
       ddd: {
         type: 'object',
+        title: '',
         properties: {
           a1: { type: 'string', minLength: 1, maxLength: 5 },
           b2: { type: 'boolean' },
           ddd: {
             type: 'object',
             properties: {
-              a1: { type: 'string' },
+              a1: { type: 'string', minLength: 3 },
               b2: { type: 'boolean' }
             }
           }

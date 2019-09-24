@@ -7,11 +7,11 @@ export const getErrorText = (error: any) : string => {
 
   if (error.minLength === false) return config.errorMessages.minLength(error.$params.minLength.min)
 
-  if (error.maxLength === false) return config.errorMessages.minLength(error.$params.maxLength.max)
+  if (error.maxLength === false) return config.errorMessages.maxLength(error.$params.maxLength.max)
 
-  if (error.minValue === false) return config.errorMessages.minLength(error.$params.minValue.min)
+  if (error.minValue === false) return config.errorMessages.minValue(error.$params.minValue.min)
 
-  if (error.maxValue === false) return config.errorMessages.minLength(error.$params.maxValue.max)
+  if (error.maxValue === false) return config.errorMessages.maxValue(error.$params.maxValue.max)
 
   if (error.url === false) return config.errorMessages.url
 
