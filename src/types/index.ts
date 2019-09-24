@@ -27,6 +27,7 @@ export interface IUiSchema {
 export interface IConfig {
   inputWrapper: IWrapperComponent
   components: Array<IConfigComponent>
+  errorMessages: any
 }
 export interface IComponent {
   name: string

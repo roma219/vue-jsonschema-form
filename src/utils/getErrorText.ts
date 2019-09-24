@@ -1,15 +1,19 @@
+import config from './config'
+
+const errorTypes = ['required', 'minLength', 'maxLength', 'minValue', 'maxValue', 'url']
+
 export const getErrorText = (error: any) : string => {
-  if (error.required === false) return 'Field is required'
+  if (error.required === false) return config.errorMessages.required
 
-  if (error.minLength === false) return `Minimal length: ${error.$params.minLength.min}`
+  if (error.minLength === false) return config.errorMessages.minLength(error.$params.minLength.min)
 
-  if (error.maxLength === false) return `Maximum length: ${error.$params.maxLength.max}`
+  if (error.maxLength === false) return config.errorMessages.minLength(error.$params.maxLength.max)
 
-  if (error.minValue === false) return `Minimal value: ${error.$params.minValue.min}`
+  if (error.minValue === false) return config.errorMessages.minLength(error.$params.minValue.min)
 
-  if (error.maxValue === false) return `Maximum value: ${error.$params.maxValue.max}`
+  if (error.maxValue === false) return config.errorMessages.minLength(error.$params.maxValue.max)
 
-  if (error.url === false) return 'Invalid URL'
+  if (error.url === false) return config.errorMessages.url
 
-  return 'Invalid value'
+  return config.errorMessages.default
 }
