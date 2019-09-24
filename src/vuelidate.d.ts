@@ -151,7 +151,7 @@ declare module "vuelidate" {
     /**
      * Represents Vuelidate mixin data extending a Vue component instance. Have your Vue component options implement this
      * @param {Type} T - The interface or type being used to store model data requiring validation
-     * 
+     *
      * @example
      * export class Foo implements IVuelidate<IBar> {
      *  data() {
@@ -184,6 +184,8 @@ declare module "vuelidate" {
     export const validateModel: {
         <T>(model: T, validations: ValidationRuleset<T>): IVuelidate<T>;
     }
+
+    export const withParams: (params: any, callback: any) => boolean
 
     /**
      * Vue plugin object
@@ -222,6 +224,14 @@ declare module "vuelidate/lib/validators" {
      * Requires the input to have a minimum specified length, inclusive. Works with arrays.
      */
     function minLength(min: number): (value: any) => boolean;
+    /**
+    * Requires the input to have a maximum specified length, inclusive. Works with arrays.
+    */
+    function maxValue(max: number): (value: any) => boolean;
+    /**
+     * Requires the input to have a minimum specified length, inclusive. Works with arrays.
+     */
+    function minValue(min: number): (value: any) => boolean;
     /**
      * Requires non-empty data. Checks for empty arrays and strings containing only whitespaces.
     */

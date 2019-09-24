@@ -18,8 +18,6 @@ export const setValidators = (schema: ISchema) : any => {
 
       validations[property] = {}
 
-      console.log(propertyObject)
-
       // requireds
       if ((propertyObject.type === 'string' && propertyObject.minLength) ||
           (propertyObject.type === 'number' && propertyObject.minimum) ||
@@ -52,8 +50,6 @@ export const setValidators = (schema: ISchema) : any => {
       }
     })
   }
-
-  console.log(validations)
 
   return validations
 }

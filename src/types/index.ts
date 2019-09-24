@@ -11,6 +11,10 @@ export interface ISchema {
   __component__: string
   __eventName__: string
   __props__?: any
+  minLength?: number
+  maxLength?: number
+  minimum?: number
+  maximum?: number
 }
 
 export interface IUiSchema {

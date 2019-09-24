@@ -18,6 +18,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { ISchema, IUiSchema, IAnyObject } from '@/types'
+import { getErrorText } from '@/utils/getErrorText'
 import config from '@/utils/config'
 
 @Component({
@@ -34,6 +35,7 @@ export default class JsonSchemaForm extends Vue {
   @Prop({ required: true }) protected schema!: ISchema
   @Prop() protected uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) protected value!: IAnyObject
+  @Prop() protected validations!: any
 
   get wrapperComponent () {
     return config.inputWrapper
@@ -56,6 +58,20 @@ export default class JsonSchemaForm extends Vue {
     })
   }
 
+  get validationErrors () : { [key: string]: string } {
+    const errors : { [key: string]: string } = {}
+
+    if (!this.validations) return errors
+
+    Object.keys(this.schema.properties || {}).forEach(paramName => {
+      const validation = this.validations[paramName]
+
+      if (validation && validation.$invalid) errors[paramName] = getErrorText(validation)
+    })
+
+    return errors
+  }
+
   getEventName (propValue : ISchema) {
     return propValue.__eventName__
   }
@@ -67,14 +83,21 @@ export default class JsonSchemaForm extends Vue {
     return {
       value: this.value[propName],
       schema: this.schema.properties && this.schema.properties[propName],
+      validations: (this.validations && this.validations[propName]) || {},
       uiSchema,
       ...customProps
     }
   }
 
   getWrapperProps (propName: string, propValue: ISchema) {
-    const propUiSchma = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
-    return this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue, propUiSchma) : {}
+    const propUiScehma = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
+
+    const customProps = this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue, propUiScehma) : {}
+
+    return {
+      error: propValue.type !== 'object' ? this.validationErrors[propName] : '',
+      ...customProps
+    }
   }
 
   handleInput (propName: string, newValue: any) {

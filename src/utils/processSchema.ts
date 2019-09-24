@@ -8,7 +8,7 @@ const getType = (schema: any) => {
 }
 
 export const processSchema = (schema: JSONSchema7, uiSchema : IUiSchema | undefined) : ISchema => {
-  const { type, title, description } = schema
+  const { type, title, description, minLength, maxLength, minimum, maximum } = schema
   const innerSchemaType = (type && type !== 'null' && ((typeof type) !== 'object')) ? type : 'string'
 
   const processedSchema = {
@@ -18,7 +18,8 @@ export const processSchema = (schema: JSONSchema7, uiSchema : IUiSchema | undefi
     enum: schema.enum,
     __component__: '',
     __eventName__: '',
-    __props__: undefined
+    __props__: undefined,
+    minLength, maxLength, minimum, maximum
   } as ISchema
 
   if (schema.properties) {

@@ -22,8 +22,8 @@ import { validationMixin } from 'vuelidate'
   mixins: [validationMixin],
   name: 'JsonSchema',
   components: { JsonSchemaForm },
-  validations() {
-    return { value: setValidators(this.processedSchema) }
+  validations () {
+    return { value: setValidators((this as any).processedSchema) }
   }
 })
 export default class JsonSchema extends Vue {
