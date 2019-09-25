@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/roma219/vue-jsonschema-form.svg?branch=master)](https://travis-ci.com/roma219/vue-jsonschema-form)
+
 # vue-jsonschema-form
 JSON Schema based form generator built with Vue.js
 
