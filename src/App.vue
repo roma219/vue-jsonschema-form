@@ -2,7 +2,7 @@
   <div id="app">
     <JsonSchema
       class="schema"
-      :config="config"
+      :config="elementsUiConfig"
       :schema="schema"
       :ui-schema="uiSchema"
       v-model="value"
@@ -14,6 +14,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import JsonSchema from './components/JsonSchema/index.vue'
+import { IConfig } from '@/types'
 
 @Component({
   name: 'App',
@@ -58,8 +59,28 @@ export default class App extends Vue {
     }
   }
 
-  config = {
-
+  elementsUiConfig : IConfig = {
+    components: [{
+      matcher: {
+        type: 'number'
+      },
+      name: 'ElInputNumber',
+      eventName: 'input',
+      props: (schema, uiSchema) => ({ min: schema.minimum, max: schema.maximum })
+    },
+    {
+      matcher: {
+        type: 'string'
+      },
+      name: 'ElInput',
+      eventName: 'input'
+    }, {
+      matcher: {
+        type: 'boolean'
+      },
+      name: 'ElCheckbox',
+      eventName: 'input'
+    }]
   }
 
   value = {

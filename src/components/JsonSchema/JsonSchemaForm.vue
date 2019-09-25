@@ -25,7 +25,7 @@ import config from '@/utils/config'
   name: 'JsonSchemaForm',
   components: {
     // default components
-    // TextInput: () => import('@/components/TextInput.vue'),
+    TextInput: () => import('@/components/TextInput.vue'),
     Checkbox: () => import('@/components/Checkbox.vue'),
     Select: () => import('@/components/Select.vue'),
     InputWrapper: () => import('@/components/InputWrapper.vue')

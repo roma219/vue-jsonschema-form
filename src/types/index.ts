@@ -25,9 +25,9 @@ export interface IUiSchema {
 
 // config types
 export interface IConfig {
-  inputWrapper: IWrapperComponent
-  components: Array<IConfigComponent>
-  errorMessages: any
+  inputWrapper?: IWrapperComponent
+  components?: Array<IConfigComponent>
+  errorMessages?: any
 }
 export interface IComponent {
   name: string

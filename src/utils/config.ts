@@ -20,25 +20,15 @@ const config : IConfig = {
     props: (schema, uiSchema) => ({ options: schema.enum })
   }, {
     matcher: {
-      type: 'number'
-    },
-    name: 'ElInputNumber',
-    eventName: 'input',
-    props: (schema, uiSchema) => ({ min: schema.minimum, max: schema.maximum })
-  },
-  {
-    matcher: {
       type: 'string'
     },
-    // name: 'TextInput',
-    name: 'ElInput',
+    name: 'TextInput',
     eventName: 'input'
   }, {
     matcher: {
       type: 'boolean'
     },
-    // name: 'Checkbox',
-    name: 'ElCheckbox',
+    name: 'Checkbox',
     eventName: 'input'
   }],
   errorMessages: {
