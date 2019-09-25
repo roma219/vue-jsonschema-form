@@ -1,17 +1,17 @@
-declare module "vuelidate" {
+declare module 'vuelidate' {
 
-    import { default as _Vue}  from 'vue';
+    import { default as _Vue } from 'vue'
 
     /**
      * @module augmentation to ComponentOptions defined by Vue.js
     */
-    module "vue/types/options" {
+    module 'vue/types/options' {
         interface ComponentOptions<V extends _Vue> {
           validations?: ValidationRuleset<{}>;
         }
       }
 
-    module "vue/types/vue" {
+    module 'vue/types/vue' {
         interface Vue {
             $v: Vuelidate<any>;
         }
@@ -176,7 +176,7 @@ declare module "vuelidate" {
     */
     export const validationMixin: {
         beforeCreate(): void;
-    };
+    }
 
     /**
      * Vuelidate function that creates a validator directly, given a model, and a set of rules
@@ -192,13 +192,12 @@ declare module "vuelidate" {
     */
     export function Validation(Vue: typeof _Vue): void;
 
-    export default Validation;
+    export default Validation
 }
 
+declare module 'vuelidate/lib/validators' {
 
-declare module "vuelidate/lib/validators" {
-
-    import { ValidationPredicate } from "vuelidate";
+    import { ValidationPredicate } from 'vuelidate'
 
     /**
      * Accepts only alphabet characters.

@@ -48,7 +48,6 @@ interface IConfigComponent {
   eventName: string
 }
 
-
 // common types
 export interface IAnyObject {
   [key:string] : any
