@@ -20,7 +20,7 @@ export default class InputWrapper extends Vue {
 
 <style>
 .input-wrapper {
-  margin-bottom: 15px;
+  margin-bottom: 17px;
   position: relative;
 }
 
@@ -31,7 +31,7 @@ export default class InputWrapper extends Vue {
 
 .input-wrapper-error {
   position: absolute;
-  bottom: -15px;
+  bottom: -17px;
   font-size: 12px;
   color: red;
   line-height: 15px;

@@ -7,9 +7,7 @@
       :ui-schema="uiSchema"
       v-model="value"
     />
-    <pre>
-      {{ formattedValue }}
-    </pre>
+    <pre>{{ formattedValue }}</pre>
   </div>
 </template>
 
@@ -39,7 +37,7 @@ export default class App extends Vue {
           ddd: {
             type: 'object',
             properties: {
-              a1: { type: 'string', minLength: 3 },
+              a1: { type: 'number', minimum: 3, maximum: 10 },
               b2: { type: 'boolean' }
             }
           }
