@@ -1,3 +1,4 @@
+/* eslint-disable */
 declare module 'vuelidate' {
 
     import { default as _Vue } from 'vue'
