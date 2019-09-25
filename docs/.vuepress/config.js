@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Hello VuePress',
-  description: 'Just playing around',
+  title: 'Vue JSON Schema',
+  description: 'JSON Schema-based form generator - simple and customizable',
   base: '/vue-jsonschema-form/',
   themeConfig: {
     repo: 'roma219/vue-jsonschema-form',
@@ -8,12 +8,20 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'hmhm', link: 'https://google.com' }
     ],
     sidebar: [
       {
-        title: 'Group 1',   // required
+        title: 'Usage',   // required
         path: '/foo/',      // optional, which should be a absolute path.
+        collapsable: false, // optional, defaults to true
+        sidebarDepth: 1,    // optional, defaults to 1
+        children: [
+          '/'
+        ]
+      },
+      {
+        title: 'Customization',   // required
+        path: '/bar/',      // optional, which should be a absolute path.
         collapsable: false, // optional, defaults to true
         sidebarDepth: 1,    // optional, defaults to 1
         children: [

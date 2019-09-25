@@ -1,12 +1,15 @@
 <template>
   <div id="app">
     <JsonSchema
+      class="schema"
       :config="config"
       :schema="schema"
       :ui-schema="uiSchema"
       v-model="value"
     />
-    <pre>{{ formattedValue }}</pre>
+    <pre>
+      {{ formattedValue }}
+    </pre>
   </div>
 </template>
 
@@ -78,8 +81,12 @@ export default class App extends Vue {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  padding: 20px;
+}
+
+.schema {
+  margin-right: 100px;
 }
 </style>
