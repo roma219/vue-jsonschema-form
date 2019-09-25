@@ -4,7 +4,9 @@ node_js:
 
 cache: npm
 
-script: npm run lint
+script:
+  - npm run lint
+  - npm run build
 
 deploy:
 provider: pages
