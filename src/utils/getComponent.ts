@@ -4,7 +4,7 @@ import { IComponent, ISchema, IUiSchema, IConfig } from '@/types'
 import config from './config'
 
 export const getComponent = (schema: ISchema, uiSchema?: IUiSchema, customConfig?: IConfig) : IComponent | undefined => {
-  const components = [...customConfig && customConfig.components || [], ...config.components || [] ]
+  const components = [ ...(customConfig && customConfig.components) || [], ...config.components || [] ]
 
   if (!components) return
 

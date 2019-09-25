@@ -92,7 +92,7 @@ export default class JsonSchemaForm extends Vue {
   getWrapperProps (propName: string, propValue: ISchema) {
     const propUiScehma = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
 
-    const customProps = this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue, propUiScehma) : {}
+    const customProps = this.wrapperComponent && this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue, propUiScehma) : {}
 
     return {
       error: propValue.type !== 'object' ? this.validationErrors[propName] : '',

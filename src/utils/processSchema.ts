@@ -19,7 +19,10 @@ export const processSchema = (schema: JSONSchema7, uiSchema ?: IUiSchema, config
     __component__: '',
     __eventName__: '',
     __props__: undefined,
-    minLength, maxLength, minimum, maximum
+    minLength,
+    maxLength,
+    minimum,
+    maximum
   } as ISchema
 
   if (schema.properties) {
