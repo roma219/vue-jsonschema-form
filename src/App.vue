@@ -38,7 +38,7 @@ export default class App extends Vue {
           ddd: {
             type: 'object',
             properties: {
-              a1: { type: 'number', minimum: 3, maximum: 10 },
+              a1: { type: 'number', minimum: 1, maximum: 10 },
               b2: { type: 'boolean' }
             }
           }
