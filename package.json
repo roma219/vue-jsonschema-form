@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
+    "coveralls": "npm run test:unit && cat ./coverage/lcov.info | coveralls",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
