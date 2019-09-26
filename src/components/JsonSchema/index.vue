@@ -4,6 +4,7 @@
     :ui-schema="uiSchema"
     :value="value"
     :validations="validationErrors"
+    :config="config"
     @input="handleChange"
   />
 </template>
@@ -30,7 +31,7 @@ export default class JsonSchema extends Vue {
   @Prop({ required: true }) protected schema!: JSONSchema7
   @Prop() protected uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) protected value!: IAnyObject
-  @Prop({ default: () => ({}) }) protected config!: IConfig
+  @Prop() protected config!: IConfig
 
   get validationErrors () {
     return (this as any).$v.value

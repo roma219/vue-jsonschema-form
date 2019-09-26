@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { ISchema, IUiSchema, IAnyObject } from '@/types'
+import { ISchema, IUiSchema, IAnyObject, IConfig } from '@/types'
 import { getErrorText } from '@/utils/getErrorText'
 import config from '@/utils/config'
 
@@ -36,9 +36,10 @@ export default class JsonSchemaForm extends Vue {
   @Prop() protected uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) protected value!: IAnyObject
   @Prop() protected validations!: any
+  @Prop() protected config!: IConfig
 
   get wrapperComponent () {
-    return config.inputWrapper
+    return (this.config && this.config.inputWrapper) || config.inputWrapper
   }
 
   get sortedSchemaProperties () {
@@ -83,6 +84,7 @@ export default class JsonSchemaForm extends Vue {
     return {
       value: this.value[propName],
       schema: this.schema.properties && this.schema.properties[propName],
+      config: this.config,
       validations: (this.validations && this.validations[propName]) || {},
       uiSchema,
       ...customProps

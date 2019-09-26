@@ -7,6 +7,7 @@ cache: npm
 script:
   - npm run lint
   - npm run test:unit
+  - npm run coveralls
   - npm run build
   - npm run docs:build
 
