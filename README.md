@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.com/roma219/vue-jsonschema-form.svg?branch=master)](https://travis-ci.com/roma219/vue-jsonschema-form)
-
-[![Coverage Status](https://coveralls.io/repos/github/roma219/vue-jsonschema-form/badge.svg?branch=master)](https://coveralls.io/github/roma219/vue-jsonschema-form?branch=master)
+[![Build Status](https://travis-ci.com/roma219/vue-jsonschema-form.svg?branch=master)](https://travis-ci.com/roma219/vue-jsonschema-form) [![Coverage Status](https://coveralls.io/repos/github/roma219/vue-jsonschema-form/badge.svg?branch=master)](https://coveralls.io/github/roma219/vue-jsonschema-form?branch=master)
 
 # vue-jsonschema-form
 JSON Schema based form generator built with Vue.js
