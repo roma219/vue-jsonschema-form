@@ -38,7 +38,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "ts-jest": "^23.0.0",
-    "typescript": "^3.4.3",
+    "typescript": "^3.6.3",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.2.2",
     "vue-template-compiler": "^2.6.10",
