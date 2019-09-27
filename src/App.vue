@@ -63,7 +63,7 @@ export default class App extends Vue {
       matcher: {
         type: 'number'
       },
-      name: 'ElInputNumber',
+      componentName: 'ElInputNumber',
       eventName: 'input',
       props: (schema, uiSchema) => ({ min: schema.minimum, max: schema.maximum })
     },
@@ -71,13 +71,13 @@ export default class App extends Vue {
       matcher: {
         type: 'string'
       },
-      name: 'ElInput',
+      componentName: 'ElInput',
       eventName: 'input'
     }, {
       matcher: {
         type: 'boolean'
       },
-      name: 'ElCheckbox',
+      componentName: 'ElCheckbox',
       eventName: 'input'
     }]
   }

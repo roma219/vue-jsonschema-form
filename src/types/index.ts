@@ -8,9 +8,9 @@ export interface ISchema {
   format?: string
   properties?: { [key: string]: ISchema }
   enum?: Array<any>
-  __component__: string
-  __eventName__: string
-  __props__?: any
+  componentName: string
+  eventName: string
+  props?: any
   minLength?: number
   maxLength?: number
   minimum?: number
@@ -30,22 +30,22 @@ export interface IConfig {
   errorMessages?: any
 }
 export interface IComponent {
-  name: string
+  componentName: string
   eventName: string
   props?: (schema: any, uiSchema: IUiSchema) => IAnyObject,
 }
 
 export interface IWrapperComponent {
-  name: string,
+  componentName: string,
   props?: (propName: string, schema: any, uiSchema: IUiSchema | undefined) => IAnyObject
 }
 
 interface IConfigComponent {
   matcher?: IAnyObject,
-  props?: (schema: any, uiSchema: IUiSchema | undefined) => IAnyObject,
   contains?: string,
-  name: string,
-  eventName: string
+  componentName: string,
+  eventName: string,
+  props?: (schema: any, uiSchema: IUiSchema | undefined) => IAnyObject
 }
 
 // common types

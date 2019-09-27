@@ -1,13 +1,13 @@
 <template>
   <div class="json-schema-wrapper">
     <component
-      :is="wrapperComponent.name"
+      :is="wrapperComponent.componentName"
       v-for="[propName, propSchema] in sortedSchemaProperties"
       :key="propName"
       v-bind="getWrapperProps(propName, propSchema)"
     >
       <component
-        :is="propSchema.__component__"
+        :is="propSchema.componentName"
         v-bind="getProps(propName, propSchema)"
         @[getEventName(propSchema)]="handleInput(propName, $event)"
       />
@@ -74,11 +74,11 @@ export default class JsonSchemaForm extends Vue {
   }
 
   getEventName (propValue : ISchema) {
-    return propValue.__eventName__
+    return propValue.eventName
   }
 
   getProps (propName: string, propValue: ISchema) {
-    const customProps = propValue.__props__ ? propValue.__props__(propValue, {}) : {}
+    const customProps = propValue.props ? propValue.props(propValue, {}) : {}
     const uiSchema = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
 
     return {

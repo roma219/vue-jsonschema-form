@@ -3,10 +3,8 @@ import { isMatch } from 'underscore'
 import { IComponent, ISchema, IUiSchema, IConfig } from '@/types'
 import config from './config'
 
-export const getComponent = (schema: ISchema, uiSchema?: IUiSchema, customConfig?: IConfig) : IComponent | undefined => {
+export const getComponent = (schema: ISchema, uiSchema?: IUiSchema, customConfig?: IConfig) : IComponent => {
   const components = [ ...(customConfig && customConfig.components) || [], ...config.components || [] ]
-
-  if (!components) return
 
   const component = components.find(configItem => {
     if (configItem.matcher) return isMatch(schema, configItem.matcher)
@@ -15,7 +13,7 @@ export const getComponent = (schema: ISchema, uiSchema?: IUiSchema, customConfig
     return false
   })
 
-  if (!component) console.warn('[vue-jsonschema-form] couldnt detect component for schema: ', schema)
+  const { componentName = 'TextInput', eventName = 'input', props = undefined } = (component || {})
 
-  return component
+  return { componentName, eventName, props }
 }

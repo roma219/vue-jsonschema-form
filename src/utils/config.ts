@@ -2,7 +2,7 @@ import { IConfig } from '@/types'
 
 const config : IConfig = {
   inputWrapper: {
-    name: 'InputWrapper',
+    componentName: 'InputWrapper',
     props: (propName, schema, uiSchema) => ({
       title: schema.title || schema.title === '' ? schema.title : propName,
       vertical: schema.type === 'object'
@@ -12,24 +12,24 @@ const config : IConfig = {
     matcher: {
       type: 'object'
     },
-    name: 'JsonSchemaForm',
+    componentName: 'JsonSchemaForm',
     eventName: 'input'
   }, {
     contains: 'enum',
-    name: 'Select',
+    componentName: 'Select',
     eventName: 'input',
     props: (schema, uiSchema) => ({ options: schema.enum })
   }, {
     matcher: {
       type: 'string'
     },
-    name: 'TextInput',
+    componentName: 'TextInput',
     eventName: 'input'
   }, {
     matcher: {
       type: 'boolean'
     },
-    name: 'Checkbox',
+    componentName: 'Checkbox',
     eventName: 'input'
   }],
   errorMessages: {
