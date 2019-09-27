@@ -8,7 +8,7 @@ export const getComponent = (schema: ISchema, uiSchema?: IUiSchema, customConfig
 
   const component = components.find(configItem => {
     if (configItem.matcher) return isMatch(schema, configItem.matcher)
-    if (configItem.contains) return schema.hasOwnProperty(configItem.contains) && !!(schema as any)[configItem.contains]
+    if (configItem.contains) return schema.hasOwnProperty(configItem.contains)
 
     return false
   })

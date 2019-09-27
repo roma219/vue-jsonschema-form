@@ -5,11 +5,9 @@ describe('getComponent utility function', () => {
     const component = getComponent({ type: 'string', componentName: '', eventName: '' })
 
     expect(component).toEqual({
+      componentName: 'TextInput',
       eventName: 'input',
-      matcher: {
-        type: 'string'
-      },
-      name: 'TextInput'
+      props: undefined
     })
   })
 })

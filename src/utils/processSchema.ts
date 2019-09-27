@@ -5,7 +5,7 @@ import pick from 'lodash/pick'
 
 export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?: IConfig) : ISchema => {
   const strippedSchema : any = {
-    ...pick(schema, ['title', 'description', 'minLength', 'maxLength', 'minimum', 'maximum']),
+    ...pick(schema, ['title', 'description', 'minLength', 'maxLength', 'minimum', 'maximum', 'enum']),
     type: (schema.type && schema.type !== 'null' && ((typeof schema.type) !== 'object')) ? schema.type : 'string'
   }
 
