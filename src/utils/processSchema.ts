@@ -3,7 +3,7 @@ import { ISchema, IUiSchema, IConfig } from '@/types'
 import { getComponent } from './getComponent'
 import pick from 'lodash/pick'
 
-export const processSchema = (schema: JSONSchema7, uiSchema ?: IUiSchema, config ?: IConfig) : ISchema => {
+export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?: IConfig) : ISchema => {
   const strippedSchema : any = {
     ...pick(schema, ['title', 'description', 'minLength', 'maxLength', 'minimum', 'maximum']),
     type: (schema.type && schema.type !== 'null' && ((typeof schema.type) !== 'object')) ? schema.type : 'string'
