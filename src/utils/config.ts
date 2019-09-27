@@ -4,7 +4,8 @@ const config : IConfig = {
   inputWrapper: {
     name: 'InputWrapper',
     props: (propName, schema, uiSchema) => ({
-      title: schema.title || schema.title === '' ? schema.title : propName
+      title: schema.title || schema.title === '' ? schema.title : propName,
+      vertical: schema.type === 'object'
     })
   },
   components: [{

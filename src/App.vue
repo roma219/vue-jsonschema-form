@@ -2,7 +2,6 @@
   <div id="app">
     <JsonSchema
       class="schema"
-      :config="elementsUiConfig"
       :schema="schema"
       :ui-schema="uiSchema"
       v-model="value"
@@ -38,7 +37,7 @@ export default class App extends Vue {
           ddd: {
             type: 'object',
             properties: {
-              a1: { type: 'number', minimum: 1, maximum: 10 },
+              a1: { type: 'string' },
               b2: { type: 'boolean' }
             }
           }

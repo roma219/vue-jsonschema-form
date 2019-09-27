@@ -11,6 +11,5 @@ describe('getComponent utility function', () => {
       },
       name: 'TextInput'
     })
-
   })
 })
