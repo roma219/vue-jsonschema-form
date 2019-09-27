@@ -48,7 +48,7 @@ export default class App extends Vue {
 
   uiSchema = {
     properties: {
-      ccc: { order: 1 },
+      ccc: { order: 1, uiType: 'radio' },
       ddd: {
         properties: {
           b2: { order: 2 },
