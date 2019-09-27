@@ -24,7 +24,6 @@ import config from '@/utils/config'
 @Component({
   name: 'JsonSchemaForm',
   components: {
-    // default components
     TextInput: () => import('@/components/TextInput.vue'),
     Checkbox: () => import('@/components/Checkbox.vue'),
     Select: () => import('@/components/Select.vue'),
@@ -73,12 +72,12 @@ export default class JsonSchemaForm extends Vue {
     return errors
   }
 
-  getEventName (propValue : ISchema) {
-    return propValue.eventName
+  getEventName (propSchema : ISchema) {
+    return propSchema.eventName
   }
 
-  getProps (propName: string, propValue: ISchema) {
-    const customProps = propValue.props ? propValue.props(propValue, {}) : {}
+  getProps (propName: string, propSchema: ISchema) {
+    const customProps = propSchema.props ? propSchema.props(propSchema, {}) : {}
     const uiSchema = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
 
     return {
@@ -91,13 +90,13 @@ export default class JsonSchemaForm extends Vue {
     }
   }
 
-  getWrapperProps (propName: string, propValue: ISchema) {
+  getWrapperProps (propName: string, propSchema: ISchema) {
     const propUiScehma = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
 
-    const customProps = this.wrapperComponent && this.wrapperComponent.props ? this.wrapperComponent.props(propName, propValue, propUiScehma) : {}
+    const customProps = this.wrapperComponent && this.wrapperComponent.props ? this.wrapperComponent.props(propName, propSchema, propUiScehma) : {}
 
     return {
-      error: propValue.type !== 'object' ? this.validationErrors[propName] : '',
+      error: propSchema.type !== 'object' ? this.validationErrors[propName] : '',
       ...customProps
     }
   }
