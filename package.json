@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "@types/json-schema": "^7.0.3",
-    "@types/lodash": "^4.14.139",
+    "@types/lodash": "^4.14.140",
     "@types/underscore": "^1.9.3",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
