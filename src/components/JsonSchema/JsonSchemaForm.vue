@@ -20,14 +20,15 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import { ISchema, IUiSchema, IAnyObject, IConfig } from '@/types'
 import { getErrorText } from '@/utils/getErrorText'
 import config from '@/utils/config'
+import TextInput from '@/components/TextInput.vue'
+import Checkbox from '@/components/Checkbox.vue'
+import Select from '@/components/Select.vue'
+import InputWrapper from '@/components/InputWrapper.vue'
 
 @Component({
   name: 'JsonSchemaForm',
   components: {
-    TextInput: () => import('@/components/TextInput.vue'),
-    Checkbox: () => import('@/components/Checkbox.vue'),
-    Select: () => import('@/components/Select.vue'),
-    InputWrapper: () => import('@/components/InputWrapper.vue')
+    TextInput, Checkbox, Select, InputWrapper
   }
 })
 export default class JsonSchemaForm extends Vue {

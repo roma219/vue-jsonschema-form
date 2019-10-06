@@ -1,17 +1,28 @@
 {
-  "name": "vue-jsonschema-form",
-  "version": "0.1.0",
+  "name": "@roma219/vue-jsonschema-form",
+  "description": "Input Form generator based on JSON Schema",
+  "version": "0.0.7",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roma219/vue-jsonschema-form.git"
+  },
+  "author": "Roman Sabirov roma219@yandex.ru",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:lib": "vue-cli-service build --target lib",
+    "build:lib": "vue-cli-service build --target lib --name index ./src/entry.ts",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "coveralls": "npm run test:unit && cat ./coverage/lcov.info | coveralls",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
+  "main": "./dist/index.umd.js",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "dependencies": {
     "@bundle-analyzer/webpack-plugin": "^0.4.0",
     "core-js": "^2.6.9",
