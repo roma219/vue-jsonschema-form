@@ -24,7 +24,7 @@
     "src/*"
   ],
   "dependencies": {
-    "@bundle-analyzer/webpack-plugin": "^0.4.0",
+    "@bundle-analyzer/webpack-plugin": "^0.5.0",
     "core-js": "^2.6.9",
     "lodash": "^4.17.15",
     "underscore": "^1.9.1",
