@@ -3,7 +3,6 @@ import { ISchema, IUiSchema, IConfig } from '@/types'
 import { getComponent } from './getComponent'
 
 export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?: IConfig) : ISchema => {
-
   const { title, description, minLength, maxLength, minimum, maximum } = schema
 
   const strippedSchema : any = {
