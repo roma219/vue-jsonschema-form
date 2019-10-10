@@ -10,6 +10,8 @@ npm install @roma219/vue-jsonschema-form
 
 ### Usage
 ```
+<JsonSchema :schema="schema" v-model="value"/>
+
 schema = {
     type: 'object',
     properties: {
@@ -32,8 +34,5 @@ schema = {
         }
       }
     }
-  }
-
-
-<JsonSchema :schema="schema" v-model="value"/>
+}
 ```
