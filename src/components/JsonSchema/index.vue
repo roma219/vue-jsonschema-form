@@ -15,10 +15,10 @@ import { processSchema } from '@/utils/processSchema'
 import { setValidators } from '@/utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
 import { ISchema, IUiSchema, IAnyObject, IConfig } from '@/types'
-import cloneDeep from 'lodash/cloneDeep'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
 import { generateDefaultValue } from '@/utils/generateDefaultValue'
+const cloneDeep = require('clone-deep')
 
 @Component({
   mixins: [validationMixin],
