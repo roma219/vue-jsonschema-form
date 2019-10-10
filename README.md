@@ -3,36 +3,37 @@
 # vue-jsonschema-form
 JSON Schema based form generator built with Vue.js. Currently Work in Progress.
 
-## Project setup
+### Installation
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm install @roma219/vue-jsonschema-form
 ```
 
-### Compiles and minifies for production
+### Usage
 ```
-npm run build
-```
+schema = {
+    type: 'object',
+    properties: {
+      aaa: { type: 'string', minLength: 1 },
+      bbb: { type: 'boolean' },
+      ccc: { type: 'string', enum: ['1', '2', '3'] },
+      ddd: {
+        type: 'object',
+        title: '',
+        properties: {
+          a1: { type: 'string', minLength: 1, maxLength: 5 },
+          b2: { type: 'boolean', default: true },
+          ddd: {
+            type: 'object',
+            properties: {
+              a1: { type: 'string', default: 'aaa' },
+              b2: { type: 'boolean' }
+            }
+          }
+        }
+      }
+    }
+  }
 
-### Run your tests
-```
-npm run test
-```
 
-### Lints and fixes files
+<JsonSchema :schema="schema" v-model="value"/>
 ```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
