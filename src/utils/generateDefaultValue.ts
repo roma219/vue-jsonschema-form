@@ -1,4 +1,5 @@
 import { ISchema } from '@/types'
+import { JSONSchema7 } from 'json-schema'
 
 export const generateDefaultValue = (schema: ISchema) : { [key: string]: any } => {
   let defaultValue = schema.default
