@@ -48,8 +48,8 @@ export default class JsonSchemaForm extends Vue {
     const uiSchema = (this.uiSchema && this.uiSchema.properties) || {}
 
     return Object.entries(this.schema.properties).sort((a, b) => {
-      const aPosition = (uiSchema[a[0]] && uiSchema[a[0]].order) || 999
-      const bPosition = (uiSchema[b[0]] && uiSchema[b[0]].order) || 999
+      const aPosition = uiSchema[a[0]]?.order || 999
+      const bPosition = uiSchema[b[0]]?.order || 999
 
       if (aPosition < bPosition) return -1
 
@@ -67,7 +67,7 @@ export default class JsonSchemaForm extends Vue {
     Object.keys(this.schema.properties || {}).forEach(paramName => {
       const validation = this.validations[paramName]
 
-      if (validation && validation.$invalid) errors[paramName] = getErrorText(validation)
+      if (validation?.$invalid) errors[paramName] = getErrorText(validation)
     })
 
     return errors
@@ -79,22 +79,22 @@ export default class JsonSchemaForm extends Vue {
 
   getProps (propName: string, propSchema: ISchema) {
     const customProps = propSchema.props ? propSchema.props(propSchema, {}) : {}
-    const uiSchema = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
+    const uiSchema = this.uiSchema?.properties?.[propName] || undefined
 
     return {
       value: this.value[propName],
-      schema: this.schema.properties && this.schema.properties[propName],
+      schema: this.schema.properties?.[propName],
       config: this.config,
-      validations: (this.validations && this.validations[propName]) || {},
+      validations: this.validations?.[propName] || {},
       uiSchema,
       ...customProps
     }
   }
 
   getWrapperProps (propName: string, propSchema: ISchema) {
-    const propUiScehma = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
+    const propUiScehma = this.uiSchema?.properties?.[propName] || undefined
 
-    const customProps = this.wrapperComponent && this.wrapperComponent.props ? this.wrapperComponent.props(propName, propSchema, propUiScehma) : {}
+    const customProps = this.wrapperComponent?.props?.(propName, propSchema, propUiScehma) || {}
 
     return {
       error: propSchema.type !== 'object' ? this.validationErrors[propName] : '',

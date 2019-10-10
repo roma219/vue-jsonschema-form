@@ -5,15 +5,15 @@ import pick from 'lodash/pick'
 
 export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?: IConfig) : ISchema => {
   const strippedSchema : any = {
-    ...pick(schema, ['title', 'description', 'minLength', 'maxLength', 'minimum', 'maximum', 'enum']),
-    type: (schema.type && schema.type !== 'null' && ((typeof schema.type) !== 'object')) ? schema.type : 'string'
+    ...pick(schema, ['title', 'description', 'minLength', 'maxLength', 'minimum', 'maximum', 'enum', 'default']),
+    type: (schema.type !== 'null' && ((typeof schema.type) !== 'object')) ? schema.type : 'string'
   }
 
   if (schema.properties) {
     strippedSchema.properties = {}
 
     Object.entries(schema.properties).forEach(([propName, propSchema]) => {
-      const propUiSchema = (uiSchema && uiSchema.properties && uiSchema.properties[propName]) || undefined
+      const propUiSchema = uiSchema?.properties?.[propName] || undefined
 
       strippedSchema.properties[propName] = processSchema(propSchema as JSONSchema7, propUiSchema, config)
     })

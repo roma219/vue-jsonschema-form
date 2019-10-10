@@ -15,6 +15,7 @@ export interface ISchema {
   maxLength?: number
   minimum?: number
   maximum?: number
+  default?: any
 }
 
 export interface IUiSchema {

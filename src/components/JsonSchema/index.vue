@@ -18,6 +18,7 @@ import { ISchema, IUiSchema, IAnyObject, IConfig } from '@/types'
 import cloneDeep from 'lodash/cloneDeep'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
+import { generateDefaultValue } from '@/utils/generateDefaultValue'
 
 @Component({
   mixins: [validationMixin],
@@ -35,6 +36,11 @@ export default class JsonSchema extends Vue {
 
   get validationErrors () {
     return (this as any).$v.value
+  }
+
+  created () {
+    const defaultValue = generateDefaultValue(this.processedSchema)
+    this.$emit('init-default', defaultValue)
   }
 
   handleChange ({ path, value } : { path: Array<string>, value: any }) {

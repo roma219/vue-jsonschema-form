@@ -5,6 +5,7 @@
       :schema="schema"
       :ui-schema="uiSchema"
       v-model="value"
+      @init-default="value = $event"
     />
     <pre>{{ formattedValue }}</pre>
   </div>
@@ -33,11 +34,11 @@ export default class App extends Vue {
         title: '',
         properties: {
           a1: { type: 'string', minLength: 1, maxLength: 5 },
-          b2: { type: 'boolean' },
+          b2: { type: 'boolean', default: true },
           ddd: {
             type: 'object',
             properties: {
-              a1: { type: 'string' },
+              a1: { type: 'string', default: 'aaa' },
               b2: { type: 'boolean' }
             }
           }

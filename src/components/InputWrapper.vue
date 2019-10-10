@@ -21,7 +21,7 @@ export default class InputWrapper extends Vue {
 
 <style>
 .input-wrapper {
-  margin-bottom: 17px;
+  margin-bottom: 22px;
   position: relative;
   display: flex;
   align-items: baseline;
@@ -38,6 +38,7 @@ export default class InputWrapper extends Vue {
   text-align: right;
   flex-shrink: 0;
   margin-right: 10px;
+  /* align-items: baseline; */
 }
 
 .input-wrapper-title--empty {
