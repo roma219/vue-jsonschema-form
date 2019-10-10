@@ -1,13 +1,24 @@
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
 import { ISchema, IUiSchema, IConfig } from '@/types'
 import { getComponent } from './getComponent'
-import pick from 'lodash/pick'
 
 export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?: IConfig) : ISchema => {
+
+  const { title, description, minLength, maxLength, minimum, maximum } = schema
+
   const strippedSchema : any = {
-    ...pick(schema, ['title', 'description', 'minLength', 'maxLength', 'minimum', 'maximum', 'enum', 'default']),
+    title,
+    description,
+    minLength,
+    maxLength,
+    minimum,
+    maximum,
+    default: schema.default,
+    enum: schema.enum,
     type: (schema.type !== 'null' && ((typeof schema.type) !== 'object')) ? schema.type : 'string'
   }
+
+  Object.keys(strippedSchema).forEach(key => strippedSchema[key] === undefined && delete strippedSchema[key])
 
   if (schema.properties) {
     strippedSchema.properties = {}
