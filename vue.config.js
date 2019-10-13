@@ -6,7 +6,8 @@ module.exports = {
     plugins: [new BundleAnalyzerPlugin({ token: '2bba2506df16839b5fa01e3a2e56594744ad1786' }), new PacktrackerPlugin({
       project_token: '80ba883f-9a5b-495d-8676-cf33c6d4970a',
       upload: true,
-      fail_build: true
+      fail_build: true,
+      branch: 'master'
     })],
     externals: {
       // 'vue': 'Vue'
