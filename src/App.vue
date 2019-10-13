@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import JsonSchema from './components/JsonSchema/index.vue'
+import JsonSchema from './JsonSchema'
 import { IConfig } from '@/types'
 
 @Component({

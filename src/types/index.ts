@@ -1,13 +1,13 @@
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
 
+type SchemaTypeName = 'string' | 'number' | 'boolean' | 'object' | 'integer' | 'array'
+
 // Schema types
-export interface ISchema {
-  type: JSONSchema7TypeName
+export interface ISchemaBase {
+  type: SchemaTypeName
   title?: string
   description?: string
   format?: string
-  properties?: { [key: string]: ISchema }
-  enum?: Array<any>
   componentName: string
   eventName: string
   props?: any
@@ -16,7 +16,26 @@ export interface ISchema {
   minimum?: number
   maximum?: number
   default?: any
+  properties?: { [key: string]: ISchema }
+  enum?: Array<any>
+  items?: ISchema
 }
+
+export interface ISchemaObject extends ISchemaBase {
+  type: 'object'
+  properties: { [key: string]: ISchema }
+}
+
+export interface ISchemaSelect extends ISchemaBase {
+  enum: Array<any>
+}
+
+export interface ISchemaArray extends ISchemaBase {
+  type: 'array'
+  items: ISchema
+}
+
+export type ISchema = ISchemaBase | ISchemaObject | ISchemaSelect | ISchemaArray
 
 export interface IUiSchema {
   titles?: Array<string>
