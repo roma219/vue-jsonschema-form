@@ -1,3 +1,3 @@
-import JsonSchema from './components/JsonSchema/index.vue'
+import JsonSchema from '@/JsonSchema'
 
 export default JsonSchema
