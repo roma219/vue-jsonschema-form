@@ -5,10 +5,17 @@ const config : IConfig = {
     componentName: 'InputWrapper',
     props: (propName, schema, uiSchema) => ({
       title: schema.title || schema.title === '' ? schema.title : propName,
-      vertical: schema.type === 'object'
+      vertical: schema.type === 'object' || schema.type === 'array'
     })
   },
   components: [{
+    matcher: {
+      type: 'array'
+      // items: { type: 'object' }
+    },
+    componentName: 'JsonSchemaArray',
+    eventName: 'input'
+  }, {
     matcher: {
       type: 'object'
     },

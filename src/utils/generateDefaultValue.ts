@@ -3,6 +3,7 @@ import { JSONSchema7 } from 'json-schema'
 
 export const generateDefaultValue = (schema: ISchema) : { [key: string]: any } => {
   let defaultValue = schema.default
+
   if (schema.type === 'object') {
     defaultValue = {}
     if (schema.properties) {
@@ -11,5 +12,6 @@ export const generateDefaultValue = (schema: ISchema) : { [key: string]: any } =
       })
     }
   }
+
   return defaultValue
 }

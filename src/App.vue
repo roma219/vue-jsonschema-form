@@ -5,8 +5,8 @@
       :schema="schema"
       :ui-schema="uiSchema"
       v-model="value"
-      @init-default="value = $event"
     />
+      <!-- @init-default="value = $event" -->
     <pre>{{ formattedValue }}</pre>
   </div>
 </template>
@@ -27,6 +27,10 @@ export default class App extends Vue {
     type: 'object',
     properties: {
       aaa: { type: 'string', minLength: 1 },
+      arr: {
+        type: 'array',
+        items: { type: 'object', properties: { a: { type: 'string' }, b: { type: 'boolean' } } }
+      },
       bbb: { type: 'boolean' },
       ccc: { type: 'string', enum: ['1', '2', '3'] },
       ddd: {
@@ -60,6 +64,7 @@ export default class App extends Vue {
   }
 
   value = {
+    arr: [{ a: 'qwerty', b: true }],
     aaa: '123asd',
     bbb: true,
     ccc: 3

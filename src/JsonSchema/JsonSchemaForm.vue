@@ -17,22 +17,23 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { ISchema, IUiSchema, IAnyObject, IConfig } from '@/types'
+import { ISchema, ISchemaObject, IUiSchema, IAnyObject, IConfig } from '@/types'
 import { getErrorText } from '@/utils/getErrorText'
 import config from '@/utils/config'
 import TextInput from '@/components/TextInput.vue'
 import Checkbox from '@/components/Checkbox.vue'
 import Select from '@/components/Select.vue'
 import InputWrapper from '@/components/InputWrapper.vue'
+import JsonSchemaArray from './JsonSchemaArray.vue'
 
 @Component({
   name: 'JsonSchemaForm',
   components: {
-    TextInput, Checkbox, Select, InputWrapper
+    TextInput, Checkbox, Select, InputWrapper, JsonSchemaArray
   }
 })
 export default class JsonSchemaForm extends Vue {
-  @Prop({ required: true }) readonly schema!: ISchema
+  @Prop({ required: true }) readonly schema!: ISchemaObject
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
   @Prop() readonly validations!: any
@@ -64,7 +65,7 @@ export default class JsonSchemaForm extends Vue {
 
     if (!this.validations) return errors
 
-    Object.keys(this.schema.properties || {}).forEach(paramName => {
+    Object.keys(this.schema.properties).forEach(paramName => {
       const validation = this.validations[paramName]
 
       if (validation?.$invalid) errors[paramName] = getErrorText(validation)
@@ -83,7 +84,7 @@ export default class JsonSchemaForm extends Vue {
 
     return {
       value: this.value[propName],
-      schema: this.schema.properties?.[propName],
+      schema: this.schema.properties[propName],
       config: this.config,
       validations: this.validations?.[propName] || {},
       uiSchema,
@@ -103,9 +104,9 @@ export default class JsonSchemaForm extends Vue {
   }
 
   handleInput (propName: string, newValue: any) {
-    if (!this.schema.properties) return
-    const path = this.schema.properties[propName].type === 'object' ? [propName, ...newValue.path] : [propName]
-    const value = this.schema.properties[propName].type === 'object' ? newValue.value : newValue
+    const isPropNested = this.schema.properties[propName].type === 'object' || this.schema.properties[propName].type === 'array'
+    const path = isPropNested ? [propName, ...newValue.path] : [propName]
+    const value = isPropNested ? newValue.value : newValue
     this.$emit('input', { path, value })
   }
 }

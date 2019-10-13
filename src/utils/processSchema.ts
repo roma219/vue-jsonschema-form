@@ -3,7 +3,7 @@ import { ISchema, IUiSchema, IConfig } from '@/types'
 import { getComponent } from './getComponent'
 
 export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?: IConfig) : ISchema => {
-  const { title, description, minLength, maxLength, minimum, maximum } = schema
+  const { title, description, items, minLength, maxLength, minimum, maximum } = schema
 
   const strippedSchema : any = {
     title,
@@ -12,6 +12,7 @@ export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?
     maxLength,
     minimum,
     maximum,
+    items,
     default: schema.default,
     enum: schema.enum,
     type: (schema.type !== 'null' && ((typeof schema.type) !== 'object')) ? schema.type : 'string'
@@ -27,6 +28,10 @@ export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?
 
       strippedSchema.properties[propName] = processSchema(propSchema as JSONSchema7, propUiSchema, config)
     })
+  }
+
+  if (schema.items) {
+    strippedSchema.items = processSchema(schema.items as JSONSchema7, uiSchema, config)
   }
 
   const component = getComponent(strippedSchema, uiSchema, config)
