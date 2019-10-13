@@ -34,9 +34,9 @@ describe('getComponent utility function - default config', () => {
     expect(component).toEqual(getComponentByName('Select'))
   })
 
-  it('When couldnt detect component - use TextInput', () => {
+  it('array is special inner component', () => {
     const component = getComponent({ type: 'array' })
 
-    expect(component).toEqual(getComponentByName('TextInput'))
+    expect(component).toEqual(getComponentByName('JsonSchemaArray'))
   })
 })

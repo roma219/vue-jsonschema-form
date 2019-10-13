@@ -1,5 +1,4 @@
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
-// import { isMatch } from 'underscore'
 import { IComponent, ISchema, IUiSchema, IConfig, IAnyObject } from '@/types'
 import config from './config'
 
