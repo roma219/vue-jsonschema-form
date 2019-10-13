@@ -104,7 +104,8 @@ export default class JsonSchemaForm extends Vue {
   }
 
   handleInput (propName: string, newValue: any) {
-    const isPropNested = this.schema.properties[propName].type === 'object' || this.schema.properties[propName].type === 'array'
+    const isPropNested = this.schema.properties[propName].type === 'object' ||
+      this.schema.properties[propName].type === 'array'
     const path = isPropNested ? [propName, ...newValue.path] : [propName]
     const value = isPropNested ? newValue.value : newValue
     this.$emit('input', { path, value })
