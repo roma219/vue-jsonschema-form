@@ -15,8 +15,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'Select'
 })
 export default class Select extends Vue {
-  @Prop({ default: '' }) protected value!: any
-  @Prop({ default: () => ([]) }) protected options!: Array<any>
+  @Prop({ default: '' }) readonly value!: any
+  @Prop({ default: () => ([]) }) readonly options!: Array<any>
 
   handleInput ({ target }: { target: HTMLInputElement }) {
     const { value } = target

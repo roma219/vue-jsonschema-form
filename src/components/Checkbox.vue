@@ -9,7 +9,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'Checkbox'
 })
 export default class Checkbox extends Vue {
-  @Prop({ default: '' }) protected value!: string
+  @Prop({ default: '' }) readonly value!: string
 
   handleInput ({ target }: { target: HTMLInputElement }) {
     const { checked } = target

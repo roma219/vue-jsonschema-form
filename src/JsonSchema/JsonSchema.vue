@@ -14,7 +14,7 @@ import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
 import { processSchema } from '@/utils/processSchema'
 import { setValidators } from '@/utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
-import { ISchema, IUiSchema, IAnyObject, IConfig } from '@/types'
+import { ISchema, IUiSchema, IAnyObject, IConfig, ComponentsConfig } from '@/types'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
 import { generateDefaultValue } from '@/utils/generateDefaultValue'
@@ -29,10 +29,11 @@ const cloneDeep = require('clone-deep')
   }
 })
 export default class JsonSchema extends Vue {
-  @Prop({ required: true }) protected schema!: JSONSchema7
-  @Prop() protected uiSchema!: IUiSchema
-  @Prop({ default: () => ({}) }) protected value!: IAnyObject
-  @Prop() protected config!: IConfig
+  @Prop({ required: true }) readonly schema!: JSONSchema7
+  @Prop() readonly uiSchema!: IUiSchema
+  @Prop({ default: () => ({}) }) readonly value!: IAnyObject
+  @Prop() readonly config!: IConfig
+  @Prop() readonly components!: ComponentsConfig
 
   get validationErrors () {
     return (this as any).$v.value

@@ -9,7 +9,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'TextInput'
 })
 export default class TextInput extends Vue {
-  @Prop({ default: '' }) protected value!: string
+  @Prop({ default: '' }) readonly value!: string
 
   handleInput ({ target }: { target: HTMLInputElement }) {
     const { value } = target

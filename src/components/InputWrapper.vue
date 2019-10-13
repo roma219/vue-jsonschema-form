@@ -13,9 +13,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'InputWrapper'
 })
 export default class InputWrapper extends Vue {
-  @Prop({ default: '' }) protected title!: string
-  @Prop({ default: '' }) protected error!: string
-  @Prop({ default: false }) protected vertical!: boolean
+  @Prop({ default: '' }) readonly title!: string
+  @Prop({ default: '' }) readonly error!: string
+  @Prop({ default: false }) readonly vertical!: boolean
 }
 </script>
 

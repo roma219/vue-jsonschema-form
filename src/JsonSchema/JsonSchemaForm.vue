@@ -32,11 +32,11 @@ import InputWrapper from '@/components/InputWrapper.vue'
   }
 })
 export default class JsonSchemaForm extends Vue {
-  @Prop({ required: true }) protected schema!: ISchema
-  @Prop() protected uiSchema!: IUiSchema
-  @Prop({ default: () => ({}) }) protected value!: IAnyObject
-  @Prop() protected validations!: any
-  @Prop() protected config!: IConfig
+  @Prop({ required: true }) readonly schema!: ISchema
+  @Prop() readonly uiSchema!: IUiSchema
+  @Prop({ default: () => ({}) }) readonly value!: IAnyObject
+  @Prop() readonly validations!: any
+  @Prop() readonly config!: IConfig
 
   get wrapperComponent () {
     return (this.config && this.config.inputWrapper) || config.inputWrapper

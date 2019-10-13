@@ -49,6 +49,13 @@ export interface IConfig {
   components?: Array<IConfigComponent>
   errorMessages?: any
 }
+
+export type ComponentsConfig = Array<IConfigComponent>
+
+export type WrapperComponentConfig = IWrapperComponent
+
+export type ErrorMessagesConfig = any
+
 export interface IComponent {
   componentName: string
   eventName: string
