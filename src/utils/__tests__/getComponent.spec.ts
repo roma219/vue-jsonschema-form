@@ -4,7 +4,7 @@ import { IComponent } from '@/types'
 import config from '@/utils/config'
 
 const getComponentByName = (name: string) => {
-  const { componentName, eventName, props } : any =  (config.components || []).find(component => component.componentName === name)
+  const { componentName, eventName, props } : any = (config.components || []).find(component => component.componentName === name)
 
   return { componentName, eventName, props }
 }

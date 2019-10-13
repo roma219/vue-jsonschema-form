@@ -37,20 +37,20 @@ const testResultSchema = {
       eventName: 'input',
       minLength: 1,
       props: undefined,
-      type: 'string',
+      type: 'string'
     },
     bbb: {
       componentName: 'Checkbox',
       eventName: 'input',
       props: undefined,
-      type: 'boolean',
+      type: 'boolean'
     },
     ccc: {
       componentName: 'Select',
       enum: ['1', '2', '3'],
       eventName: 'input',
       props: (schema: ISchema, uiSchema: IUiSchema) => ({ options: schema.enum }),
-      type: 'string',
+      type: 'string'
     },
     ddd: {
       componentName: 'JsonSchemaForm',
@@ -62,13 +62,13 @@ const testResultSchema = {
           maxLength: 5,
           minLength: 1,
           props: undefined,
-          type: 'string',
+          type: 'string'
         },
         b2: {
           componentName: 'Checkbox',
           eventName: 'input',
           props: undefined,
-          type: 'boolean',
+          type: 'boolean'
         },
         ddd: {
           componentName: 'JsonSchemaForm',
@@ -78,26 +78,26 @@ const testResultSchema = {
               componentName: 'TextInput',
               eventName: 'input',
               props: undefined,
-              type: 'string',
+              type: 'string'
             },
             b2: {
               componentName: 'Checkbox',
               eventName: 'input',
               props: undefined,
-              type: 'boolean',
-            },
+              type: 'boolean'
+            }
           },
           props: undefined,
-          type: 'object',
-        },
+          type: 'object'
+        }
       },
       props: undefined,
       title: '',
-      type: 'object',
-    },
+      type: 'object'
+    }
   },
   props: undefined,
-  type: 'object',
+  type: 'object'
 }
 
 describe('processSchema utility function', () => {
@@ -107,4 +107,3 @@ describe('processSchema utility function', () => {
     expect(processedSchema).toEqual(JSON.parse(JSON.stringify(testResultSchema)))
   })
 })
-

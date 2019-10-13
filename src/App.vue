@@ -59,30 +59,6 @@ export default class App extends Vue {
     }
   }
 
-  elementsUiConfig : IConfig = {
-    components: [{
-      matcher: {
-        type: 'number'
-      },
-      componentName: 'ElInputNumber',
-      eventName: 'input',
-      props: (schema, uiSchema) => ({ min: schema.minimum, max: schema.maximum })
-    },
-    {
-      matcher: {
-        type: 'string'
-      },
-      componentName: 'ElInput',
-      eventName: 'input'
-    }, {
-      matcher: {
-        type: 'boolean'
-      },
-      componentName: 'ElCheckbox',
-      eventName: 'input'
-    }]
-  }
-
   value = {
     aaa: '123asd',
     bbb: true,

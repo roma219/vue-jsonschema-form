@@ -14,7 +14,8 @@ import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
 import { processSchema } from '@/utils/processSchema'
 import { setValidators } from '@/utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
-import { ISchema, IUiSchema, IAnyObject, IConfig, ComponentsConfig } from '@/types'
+import { ISchema, IUiSchema, IAnyObject, IConfig, ComponentsConfig,
+  WrapperComponentConfig, ErrorMessagesConfig } from '@/types.ts'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
 import { generateDefaultValue } from '@/utils/generateDefaultValue'
@@ -33,7 +34,9 @@ export default class JsonSchema extends Vue {
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
   @Prop() readonly config!: IConfig
-  @Prop() readonly components!: ComponentsConfig
+  @Prop() readonly componentsConfig!: ComponentsConfig
+  @Prop() readonly wrapperComponentConfig!: WrapperComponentConfig
+  @Prop() readonly errorMessagesConfig!: ErrorMessagesConfig
 
   get validationErrors () {
     return (this as any).$v.value
