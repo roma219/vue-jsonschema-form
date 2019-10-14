@@ -1,5 +1,5 @@
 <template>
-  <div class="json-schema-wrapper">
+  <div class="json-schema-form">
     <component
       :is="wrapperComponent.componentName"
       v-for="[propName, propSchema] in sortedSchemaProperties"
@@ -111,3 +111,9 @@ export default class JsonSchemaForm extends Vue {
   }
 }
 </script>
+
+<style>
+.json-schema-form {
+  width: 100%;
+}
+</style>

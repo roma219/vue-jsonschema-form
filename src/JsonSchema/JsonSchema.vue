@@ -32,7 +32,7 @@ export default class JsonSchema extends Vue {
   @Prop({ required: true }) readonly schema!: JSONSchema7
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
-  @Prop() readonly componentsConfig!: ComponentsConfig
+  @Prop() readonly components!: ComponentsConfig
   @Prop() readonly wrapperComponentConfig!: WrapperComponentConfig
   @Prop() readonly errorMessagesConfig!: ErrorMessagesConfig
 
@@ -62,7 +62,7 @@ export default class JsonSchema extends Vue {
   }
 
   get processedSchema () : ISchema {
-    return processSchema(this.schema, this.uiSchema, this.componentsConfig)
+    return processSchema(this.schema, this.uiSchema, this.components)
   }
 }
 </script>

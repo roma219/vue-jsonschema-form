@@ -88,5 +88,6 @@ export default class App extends Vue {
 
 .schema {
   margin-right: 100px;
+  width: 400px!important;
 }
 </style>

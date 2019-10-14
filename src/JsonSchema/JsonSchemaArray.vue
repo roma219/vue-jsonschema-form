@@ -77,10 +77,7 @@ export default class JsonSchemaArray extends Vue {
 </script>
 
 <style>
-  .json-schema-array-item {
-    border: 1px solid black;
-  }
-  .json-schema-array-item-controls {
-    text-align: right;
-  }
+.json-schema-array {
+  width: 100%;
+}
 </style>

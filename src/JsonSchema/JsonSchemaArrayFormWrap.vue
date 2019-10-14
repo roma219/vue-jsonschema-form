@@ -22,12 +22,3 @@ export default class JsonSchemaArrayFormWrap extends Vue {
   @Prop({ required: true }) readonly length!: number
 }
 </script>
-
-<style>
-.json-schema-array-item {
-  border: 1px solid black;
-}
-.json-schema-array-item-controls {
-  text-align: right;
-}
-</style>

@@ -1,4 +1,4 @@
-import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { ISchema, IUiSchema, IConfig, ComponentsConfig } from '@/types'
 import { getComponent } from './getComponent'
 
