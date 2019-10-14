@@ -4,7 +4,6 @@
     :ui-schema="uiSchema"
     :value="value"
     :validations="validationErrors"
-    :config="config"
     @input="handleChange"
   />
 </template>
@@ -33,7 +32,6 @@ export default class JsonSchema extends Vue {
   @Prop({ required: true }) readonly schema!: JSONSchema7
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
-  @Prop() readonly config!: IConfig
   @Prop() readonly componentsConfig!: ComponentsConfig
   @Prop() readonly wrapperComponentConfig!: WrapperComponentConfig
   @Prop() readonly errorMessagesConfig!: ErrorMessagesConfig
@@ -64,7 +62,7 @@ export default class JsonSchema extends Vue {
   }
 
   get processedSchema () : ISchema {
-    return processSchema(this.schema, this.uiSchema, this.config)
+    return processSchema(this.schema, this.uiSchema, this.componentsConfig)
   }
 }
 </script>

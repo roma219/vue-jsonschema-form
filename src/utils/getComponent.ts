@@ -1,13 +1,13 @@
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
-import { IComponent, ISchema, IUiSchema, IConfig, IAnyObject } from '@/types'
+import { IComponent, ISchema, IUiSchema, IConfig, IAnyObject, ComponentsConfig } from '@/types'
 import config from './config'
 
 const isMatch = (target : IAnyObject, source : IAnyObject) : boolean => {
   return Object.entries(source).every(([propName, value]) => value === target[propName])
 }
 
-export const getComponent = (schema: any, uiSchema?: IUiSchema, customConfig?: IConfig) : IComponent => {
-  const components = [ ...(customConfig?.components || []), ...config.components || [] ]
+export const getComponent = (schema: any, customComponents: ComponentsConfig = [], uiSchema?: IUiSchema) : IComponent => {
+  const components = [ ...customComponents, ...config.components || [] ]
 
   const component = components.find(configItem => {
     if (configItem.matcher) return isMatch(schema, configItem.matcher)

@@ -1,8 +1,8 @@
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
-import { ISchema, IUiSchema, IConfig } from '@/types'
+import { ISchema, IUiSchema, IConfig, ComponentsConfig } from '@/types'
 import { getComponent } from './getComponent'
 
-export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?: IConfig) : ISchema => {
+export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, componentsConfig?: ComponentsConfig) : ISchema => {
   const { title, description, items, minLength, maxLength, minimum, maximum } = schema
 
   const strippedSchema : any = {
@@ -26,15 +26,15 @@ export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, config?
     Object.entries(schema.properties).forEach(([propName, propSchema]) => {
       const propUiSchema = uiSchema?.properties?.[propName] || undefined
 
-      strippedSchema.properties[propName] = processSchema(propSchema as JSONSchema7, propUiSchema, config)
+      strippedSchema.properties[propName] = processSchema(propSchema as JSONSchema7, propUiSchema, componentsConfig)
     })
   }
 
   if (schema.items) {
-    strippedSchema.items = processSchema(schema.items as JSONSchema7, uiSchema, config)
+    strippedSchema.items = processSchema(schema.items as JSONSchema7, uiSchema, componentsConfig)
   }
 
-  const component = getComponent(strippedSchema, uiSchema, config)
+  const component = getComponent(strippedSchema, componentsConfig, uiSchema)
 
   return {
     ...strippedSchema,
