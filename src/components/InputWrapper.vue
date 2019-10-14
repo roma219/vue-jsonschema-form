@@ -24,12 +24,13 @@ export default class InputWrapper extends Vue {
   margin-bottom: 22px;
   position: relative;
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 .input-wrapper--vertical {
   flex-direction: column;
   margin-bottom: 0;
+  align-items: flex-start;
 }
 
 .input-wrapper-title {
@@ -38,7 +39,7 @@ export default class InputWrapper extends Vue {
   text-align: right;
   flex-shrink: 0;
   margin-right: 10px;
-  /* align-items: baseline; */
+
 }
 
 .input-wrapper-title--empty {
@@ -52,10 +53,10 @@ export default class InputWrapper extends Vue {
 
 .input-wrapper-error {
   position: absolute;
-  bottom: -17px;
+  bottom: -19px;
   left: 110px;
   font-size: 12px;
-  color: red;
+  color: rgb(219, 59, 33);
   line-height: 15px;
 }
 </style>

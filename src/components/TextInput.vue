@@ -29,7 +29,7 @@ export default class TextInput extends Vue {
   box-sizing: border-box;
   color: #606266;
   height: 35px;
-  font: 400 11px system-ui;
+  font: 400 14px system-ui;
   line-height: 35px;
   padding: 0 15px;
   transition: border-color .2s cubic-bezier(.645,.045,.355,1);

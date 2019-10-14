@@ -37,8 +37,6 @@ export const setValidators = (schema: ISchema) : any => {
       // set nested validators
       if (propertyObject.type === 'object') validations[property] = setValidators(propertyObject)
 
-      // if (propertyObject.const) validations[property].isEqual = shouldEqual(propertyObject.const)
-
       if (propertyObject.format === 'phone') validations[property].phone = correctPhone(propertyObject)
 
       // set item validators for array of objects
