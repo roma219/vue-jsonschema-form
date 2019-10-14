@@ -13,6 +13,7 @@
       <JsonSchemaForm
         :schema="schema.items"
         :value="item"
+        :validations="validations && validations.$each && validations.$each.$iter[index] || {}"
         @input="handleInput(index, $event)"
       />
     </component>

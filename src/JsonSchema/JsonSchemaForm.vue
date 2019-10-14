@@ -96,8 +96,10 @@ export default class JsonSchemaForm extends Vue {
 
     const customProps = this.wrapperComponent?.props?.(propName, propSchema, propUiScehma) || {}
 
+    const isPropNested = propSchema.type === 'object' || propSchema.type === 'array'
+
     return {
-      error: propSchema.type !== 'object' ? this.validationErrors[propName] : '',
+      error: isPropNested ? '' : this.validationErrors[propName],
       ...customProps
     }
   }

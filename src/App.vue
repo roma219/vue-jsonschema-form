@@ -29,7 +29,7 @@ export default class App extends Vue {
       aaa: { type: 'string', minLength: 1 },
       arr: {
         type: 'array',
-        items: { type: 'object', properties: { a: { type: 'string' }, b: { type: 'boolean' } } }
+        items: { type: 'object', properties: { a: { type: 'string', minLength: 2 }, b: { type: 'boolean' } } }
       },
       bbb: { type: 'boolean' },
       ccc: { type: 'string', enum: ['1', '2', '3'] },
