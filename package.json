@@ -25,7 +25,6 @@
   ],
   "dependencies": {
     "clone-deep": "^4.0.1",
-    "core-js": "^2.6.9",
     "vuelidate": "^0.7.4"
   },
   "devDependencies": {
