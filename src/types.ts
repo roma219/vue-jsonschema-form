@@ -41,11 +41,6 @@ export interface IUiSchema {
 }
 
 // config types
-export interface IConfig {
-  inputWrapper?: IWrapperComponent
-  components?: Array<IConfigComponent>
-  errorMessages?: any
-}
 
 export type ComponentsConfig = Array<IConfigComponent>
 

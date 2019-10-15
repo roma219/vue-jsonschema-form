@@ -1,5 +1,5 @@
 import { JSONSchema7 } from 'json-schema'
-import { ISchema, IUiSchema, IConfig, ComponentsConfig } from '@/types'
+import { ISchema, IUiSchema, ComponentsConfig } from '@/types'
 import { getComponent } from './getComponent'
 
 export const processSchema = (schema: JSONSchema7) : ISchema => {

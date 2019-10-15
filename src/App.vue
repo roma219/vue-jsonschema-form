@@ -15,7 +15,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import JsonSchema from './JsonSchema'
-import { IConfig } from '@/types'
 
 @Component({
   name: 'App',

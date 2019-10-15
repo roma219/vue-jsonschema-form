@@ -2,8 +2,8 @@
   <div class="json-schema-form pure-form pure-form-aligned">
     <component
       :is="wrapperComponentParams.componentName"
-      v-for="[propName, propSchema] in sortedSchemaProperties"
       :key="propName"
+      v-for="[propName, propSchema] in sortedSchemaProperties"
       v-bind="getWrapperProps(propName, propSchema)"
     >
       <component
@@ -43,8 +43,7 @@ export default class JsonSchemaForm extends Vue {
   @Inject() readonly wrapperComponent!: WrapperComponentConfig
 
   get wrapperComponentParams () {
-    // todo : support custom input wrapper
-    return inputWrapper
+    return this.wrapperComponent || inputWrapper
   }
 
   get propComponents () : { [key: string]: { componentName: string, eventName: string, props: any}} {

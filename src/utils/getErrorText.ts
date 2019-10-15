@@ -12,7 +12,7 @@ const defaultErrorMessages : ErrorMessagesConfig = {
   default: 'Invalid Value'
 }
 
-export const getErrorText = (error: any) : string => {
+export const getErrorText = (error: any, customErrorMessages: ErrorMessagesConfig = {}) : string => {
   if (error.required === false) return errorMessages.required
 
   if (error.minLength === false) return errorMessages.minLength(error.$params.minLength.min)
