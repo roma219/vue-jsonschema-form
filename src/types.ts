@@ -41,7 +41,6 @@ export interface IUiSchema {
 }
 
 // config types
-
 export type ComponentsConfig = Array<IConfigComponent>
 
 export type WrapperComponentConfig = IWrapperComponent
@@ -71,10 +70,3 @@ interface IConfigComponent {
 export interface IAnyObject {
   [key:string] : any
 }
-
-// validations
-// export interface IValidations {
-//   [key: 'required' | 'minLength' | 'maxLength' | 'minimum' | 'maximum' | 'phone'] ?: any
-//   $each?: IValidations
-
-// }
