@@ -2,8 +2,6 @@ import { processSchema } from '../processSchema'
 import { JSONSchema7 } from 'json-schema'
 import { ISchema, IUiSchema } from '@/types'
 
-import config from '@/utils/config'
-
 const schema : JSONSchema7 = {
   type: 'object',
   properties: {

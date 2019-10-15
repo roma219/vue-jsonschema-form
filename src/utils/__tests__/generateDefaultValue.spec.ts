@@ -1,8 +1,6 @@
 import { generateDefaultValue } from '../generateDefaultValue'
 import { ISchema } from '@/types'
 
-import config from '@/utils/config'
-
 describe('generateDefaultValue utility function', () => {
   it('type=string is TextInput', () => {
     const value = generateDefaultValue({

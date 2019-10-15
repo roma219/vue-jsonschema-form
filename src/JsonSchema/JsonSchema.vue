@@ -36,7 +36,8 @@ export default class JsonSchema extends Vue {
   @Prop() readonly wrapperComponentConfig!: WrapperComponentConfig
   @Prop() readonly errorMessagesConfig!: ErrorMessagesConfig
 
-  @Provide('componentsConfig') componentsConfig = this.components
+  @Provide() componentsConfig = this.components
+  @Provide() wrapperComponent = this.wrapperComponentConfig
 
   get validationErrors () {
     return (this as any).$v.value
@@ -64,7 +65,8 @@ export default class JsonSchema extends Vue {
   }
 
   get processedSchema () : ISchema {
-    return processSchema(this.schema, this.uiSchema, this.components)
+    // todo: unref schema => check conditions => finalized schema
+    return processSchema(this.schema)
   }
 }
 </script>

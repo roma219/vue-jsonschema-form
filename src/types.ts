@@ -8,9 +8,6 @@ export interface ISchemaBase {
   title?: string
   description?: string
   format?: string
-  componentName: string
-  eventName: string
-  props?: any
   minLength?: number
   maxLength?: number
   minimum?: number

@@ -1,7 +1,7 @@
 <template>
-  <div class="json-schema-form">
+  <div class="json-schema-form pure-form pure-form-aligned">
     <component
-      :is="wrapperComponent.componentName"
+      :is="wrapperComponentParams.componentName"
       v-for="[propName, propSchema] in sortedSchemaProperties"
       :key="propName"
       v-bind="getWrapperProps(propName, propSchema)"
@@ -17,10 +17,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Inject } from 'vue-property-decorator'
-import { ISchema, ISchemaObject, IUiSchema, IAnyObject, IConfig, ComponentsConfig } from '@/types'
+import { ISchema, ISchemaObject, IUiSchema, IAnyObject, ComponentsConfig, WrapperComponentConfig } from '@/types'
 import { getErrorText } from '@/utils/getErrorText'
 import { getComponent } from '@/utils/getComponent'
-import config from '@/utils/config'
+import { inputWrapper } from '@/utils/defaultComponents'
 import TextInput from '@/components/TextInput.vue'
 import Checkbox from '@/components/Checkbox.vue'
 import Select from '@/components/Select.vue'
@@ -41,32 +41,25 @@ export default class JsonSchemaForm extends Vue {
   @Prop() readonly validations!: any
 
   @Inject() readonly componentsConfig!: ComponentsConfig
+  @Inject() readonly wrapperComponent!: WrapperComponentConfig
 
-  get wrapperComponent () {
+  get wrapperComponentParams () {
     // todo : support custom input wrapper
-    return config.inputWrapper
+    return inputWrapper
   }
 
   get propComponents () : { [key: string]: { componentName: string, eventName: string, props: any}} {
-    return Object.entries(this.schema.properties).reduce((result, prop) => {
-      return { ...result, [prop[0]]: getComponent(prop[1]) }
+    return Object.entries(this.schema.properties).reduce((result, [propName, propSchema]) => {
+      return {
+        ...result,
+        [propName]: getComponent(propSchema, this.componentsConfig, this.uiSchema?.properties?.[propName])
+      }
     }, {})
   }
 
   get sortedSchemaProperties () {
-    if (!this.schema.properties) return
-
-    const uiSchema = (this.uiSchema && this.uiSchema.properties) || {}
-
     return Object.entries(this.schema.properties).sort((a, b) => {
-      const aPosition = uiSchema[a[0]]?.order || 999
-      const bPosition = uiSchema[b[0]]?.order || 999
-
-      if (aPosition < bPosition) return -1
-
-      if (aPosition > bPosition) return 1
-
-      return 0
+      return (this.uiSchema?.properties?.[a[0]]?.order || 0) > (this.uiSchema?.properties?.[b[0]]?.order || 0) ? -1 : 1
     })
   }
 
@@ -89,20 +82,28 @@ export default class JsonSchemaForm extends Vue {
     const customProps = component.props ? component.props(propSchema, {}) : {}
     const uiSchema = this.uiSchema?.properties?.[propName] || undefined
 
-    return {
+    const isNested = propSchema.type === 'object' || propSchema.type === 'array'
+
+    let props = {
       value: this.value[propName],
-      schema: this.schema.properties[propName],
-      validations: this.validations?.[propName] || {},
-      uiSchema,
       ...customProps
     }
+
+    if (isNested) {
+      props = {
+        ...props,
+        schema: this.schema.properties[propName],
+        validations: this.validations?.[propName] || {},
+        uiSchema
+      }
+    }
+
+    return props
   }
 
   getWrapperProps (propName: string, propSchema: ISchema) {
     const propUiScehma = this.uiSchema?.properties?.[propName] || undefined
-
-    const customProps = this.wrapperComponent?.props?.(propName, propSchema, propUiScehma) || {}
-
+    const customProps = this.wrapperComponentParams?.props?.(propName, propSchema, propUiScehma) || {}
     const isPropNested = propSchema.type === 'object' || propSchema.type === 'array'
 
     return {
@@ -116,6 +117,7 @@ export default class JsonSchemaForm extends Vue {
       this.schema.properties[propName].type === 'array'
     const path = isPropNested ? [propName, ...newValue.path] : [propName]
     const value = isPropNested ? newValue.value : newValue
+
     this.$emit('input', { path, value })
   }
 }

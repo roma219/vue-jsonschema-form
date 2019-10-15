@@ -1,19 +1,19 @@
-import config from './config'
+import { errorMessages } from './errorMessages'
 
 const errorTypes = ['required', 'minLength', 'maxLength', 'minValue', 'maxValue', 'url']
 
 export const getErrorText = (error: any) : string => {
-  if (error.required === false) return config.errorMessages.required
+  if (error.required === false) return errorMessages.required
 
-  if (error.minLength === false) return config.errorMessages.minLength(error.$params.minLength.min)
+  if (error.minLength === false) return errorMessages.minLength(error.$params.minLength.min)
 
-  if (error.maxLength === false) return config.errorMessages.maxLength(error.$params.maxLength.max)
+  if (error.maxLength === false) return errorMessages.maxLength(error.$params.maxLength.max)
 
-  if (error.minValue === false) return config.errorMessages.minValue(error.$params.minValue.min)
+  if (error.minValue === false) return errorMessages.minValue(error.$params.minValue.min)
 
-  if (error.maxValue === false) return config.errorMessages.maxValue(error.$params.maxValue.max)
+  if (error.maxValue === false) return errorMessages.maxValue(error.$params.maxValue.max)
 
-  if (error.url === false) return config.errorMessages.url
+  if (error.url === false) return errorMessages.url
 
-  return config.errorMessages.default
+  return errorMessages.default
 }

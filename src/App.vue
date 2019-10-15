@@ -4,6 +4,7 @@
       class="schema"
       :schema="schema"
       :ui-schema="uiSchema"
+      :components="[]"
       v-model="value"
     />
       <!-- @init-default="value = $event" -->

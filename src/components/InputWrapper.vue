@@ -1,8 +1,14 @@
 <template>
-  <div class="input-wrapper" :class="{ 'input-wrapper--vertical': vertical }">
+  <!-- <div class="input-wrapper" :class="{ 'input-wrapper--vertical': vertical }">
     <div class="input-wrapper-title" :class="{ 'input-wrapper-title--empty': !title}">{{ title }}</div>
     <slot/>
     <div class="input-wrapper-error">{{ error }}</div>
+  </div> -->
+
+  <div class="pure-control-group">
+      <label v-if="title">{{ title }}</label>
+      <slot/>
+      <span v-if="error" class="pure-form-message">{{ error }}</span>
   </div>
 </template>
 
@@ -57,5 +63,10 @@ export default class InputWrapper extends Vue {
   font-size: 12px;
   color: rgb(219, 59, 33);
   line-height: 15px;
+}
+
+.pure-form-message {
+  position: relative;
+  left: 176px;
 }
 </style>

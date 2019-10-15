@@ -1,5 +1,5 @@
 <template>
-<div class="json-schema-form-radio">
+<div>
   <div v-for="(option, index) in options" :key="index">
     <input
       type="radio"
@@ -26,15 +26,8 @@ export default class Select extends Vue {
   @Prop({ default: () => ([]) }) readonly options!: Array<any>
 
   handleInput ({ target }: { target: HTMLInputElement }) {
-    console.log(target)
     const { value } = target
     this.$emit('input', value)
   }
 }
 </script>
-
-<style>
-.json-schema-form-radio {
-  align-self: flex-start;
-}
-</style>

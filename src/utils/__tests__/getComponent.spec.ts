@@ -1,10 +1,9 @@
 import { getComponent } from '../getComponent'
 import { IComponent } from '@/types'
-
-import config from '@/utils/config'
+import { defaultComponents } from '../defaultComponents'
 
 const getComponentByName = (name: string) => {
-  const { componentName, eventName, props } : any = (config.components || []).find(component => component.componentName === name)
+  const { componentName, eventName, props } : any = (defaultComponents || []).find(component => component.componentName === name)
 
   return { componentName, eventName, props }
 }
@@ -29,7 +28,7 @@ describe('getComponent utility function - default config', () => {
   })
 
   it('enum is Select', () => {
-    const component = getComponent({ enum: [1, 2, 3] })
+    const component = getComponent({ enum: [1, 2, 3] } as any)
 
     expect(component).toEqual(getComponentByName('Select'))
   })
@@ -41,7 +40,7 @@ describe('getComponent utility function - default config', () => {
   })
 
   it('use TextInput when could not detect component', () => {
-    const component = getComponent({ type: 'kek' })
+    const component = getComponent({ type: 'kek' } as any)
 
     expect(component).toEqual(getComponentByName('TextInput'))
   })
