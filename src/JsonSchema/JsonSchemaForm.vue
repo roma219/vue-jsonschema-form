@@ -7,18 +7,19 @@
       v-bind="getWrapperProps(propName, propSchema)"
     >
       <component
-        :is="propSchema.componentName"
+        :is="propComponents[propName].componentName"
         v-bind="getProps(propName, propSchema)"
-        @[getEventName(propSchema)]="handleInput(propName, $event)"
+        @[propComponents[propName].eventName]="handleInput(propName, $event)"
       />
   </component>
 </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Inject } from 'vue-property-decorator'
 import { ISchema, ISchemaObject, IUiSchema, IAnyObject, IConfig, ComponentsConfig } from '@/types'
 import { getErrorText } from '@/utils/getErrorText'
+import { getComponent } from '@/utils/getComponent'
 import config from '@/utils/config'
 import TextInput from '@/components/TextInput.vue'
 import Checkbox from '@/components/Checkbox.vue'
@@ -39,9 +40,17 @@ export default class JsonSchemaForm extends Vue {
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
   @Prop() readonly validations!: any
 
+  @Inject() readonly componentsConfig!: ComponentsConfig
+
   get wrapperComponent () {
     // todo : support custom input wrapper
     return config.inputWrapper
+  }
+
+  get propComponents () : { [key: string]: { componentName: string, eventName: string, props: any}} {
+    return Object.entries(this.schema.properties).reduce((result, prop) => {
+      return { ...result, [prop[0]]: getComponent(prop[1]) }
+    }, {})
   }
 
   get sortedSchemaProperties () {
@@ -75,12 +84,9 @@ export default class JsonSchemaForm extends Vue {
     return errors
   }
 
-  getEventName (propSchema : ISchema) {
-    return propSchema.eventName
-  }
-
   getProps (propName: string, propSchema: ISchema) {
-    const customProps = propSchema.props ? propSchema.props(propSchema, {}) : {}
+    const component = this.propComponents[propName]
+    const customProps = component.props ? component.props(propSchema, {}) : {}
     const uiSchema = this.uiSchema?.properties?.[propName] || undefined
 
     return {

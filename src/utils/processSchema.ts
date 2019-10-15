@@ -34,10 +34,12 @@ export const processSchema = (schema: JSONSchema7, uiSchema?: IUiSchema, compone
     strippedSchema.items = processSchema(schema.items as JSONSchema7, uiSchema, componentsConfig)
   }
 
-  const component = getComponent(strippedSchema, componentsConfig, uiSchema)
+  // const component = getComponent(strippedSchema, componentsConfig, uiSchema)
+
+  // todo: process conditions ("then") aswell
 
   return {
     ...strippedSchema,
-    ...component
+    // ...component
   }
 }

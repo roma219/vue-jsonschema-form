@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
+import { Component, Prop, Vue, Mixins, Provide } from 'vue-property-decorator'
 import { processSchema } from '@/utils/processSchema'
 import { setValidators } from '@/utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
@@ -35,6 +35,8 @@ export default class JsonSchema extends Vue {
   @Prop() readonly components!: ComponentsConfig
   @Prop() readonly wrapperComponentConfig!: WrapperComponentConfig
   @Prop() readonly errorMessagesConfig!: ErrorMessagesConfig
+
+  @Provide('componentsConfig') componentsConfig = this.components
 
   get validationErrors () {
     return (this as any).$v.value

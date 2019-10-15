@@ -39,7 +39,6 @@ export default class InputWrapper extends Vue {
   text-align: right;
   flex-shrink: 0;
   margin-right: 10px;
-
 }
 
 .input-wrapper-title--empty {
