@@ -13,7 +13,7 @@ import { Component, Prop, Vue, Mixins, Provide } from 'vue-property-decorator'
 import { processSchema } from '@/utils/processSchema'
 import { setValidators } from '@/utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
-import { ISchema, IUiSchema, IAnyObject, IConfig, ComponentsConfig,
+import { ISchema, IUiSchema, IAnyObject, ComponentsConfig,
   WrapperComponentConfig, ErrorMessagesConfig } from '@/types.ts'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
@@ -44,8 +44,7 @@ export default class JsonSchema extends Vue {
   }
 
   created () {
-    const defaultValue = generateDefaultValue(this.processedSchema)
-    this.$emit('init-default', defaultValue)
+    this.$emit('init-default', generateDefaultValue(this.processedSchema))
   }
 
   handleChange ({ path, value } : { path: Array<string>, value: any }) {
@@ -55,13 +54,16 @@ export default class JsonSchema extends Vue {
     let target = newValue
     path.forEach(paramName => {
       if (!target[paramName]) target[paramName] = {}
-
       target = target[paramName]
     })
 
     target[paramName] = value
 
     this.$emit('input', newValue)
+  }
+
+  get unreffedSchema () : any {
+    return {}
   }
 
   get processedSchema () : ISchema {

@@ -39,7 +39,6 @@ export default class JsonSchemaForm extends Vue {
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
   @Prop() readonly validations!: any
-
   @Inject() readonly componentsConfig!: ComponentsConfig
   @Inject() readonly wrapperComponent!: WrapperComponentConfig
 

@@ -1,4 +1,6 @@
-export const errorMessages : any = {
+import { ErrorMessagesConfig } from '@/types'
+
+export const errorMessages : ErrorMessagesConfig = {
   minLength: (value: number) => `Minimal length: ${value}`,
   maxLength: (value: number) => `Maximum length: ${value}`,
   minValue: (value: number) => `Minimal value: ${value}`,

@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { ISchemaArray, IUiSchema, IAnyObject, IConfig } from '@/types'
+import { ISchemaArray, IUiSchema, IAnyObject } from '@/types'
 import { generateDefaultValue } from '@/utils/generateDefaultValue'
 import JsonSchemaArrayFormWrap from './JsonSchemaArrayFormWrap.vue'
 
@@ -39,7 +39,6 @@ export default class JsonSchemaArray extends Vue {
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject[]
   @Prop() readonly validations!: any
-  @Prop() readonly config!: IConfig
 
   get formWrapComponent () {
     return 'JsonSchemaArrayFormWrap'

@@ -1,5 +1,5 @@
 import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
-import { IComponent, ISchema, IUiSchema, IConfig, IAnyObject, ComponentsConfig } from '@/types'
+import { IComponent, ISchema, IUiSchema, IAnyObject, ComponentsConfig } from '@/types'
 import { defaultComponents } from './defaultComponents'
 
 const isMatch = (target : IAnyObject, source : IAnyObject) : boolean => {
