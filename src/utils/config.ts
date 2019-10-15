@@ -11,7 +11,6 @@ const config : IConfig = {
   components: [{
     matcher: {
       type: 'array'
-      // items: { type: 'object' }
     },
     componentName: 'JsonSchemaArray',
     eventName: 'input'
@@ -23,7 +22,7 @@ const config : IConfig = {
     eventName: 'input'
   }, {
     contains: 'enum',
-    componentName: 'Select',
+    componentName: 'Radio',
     eventName: 'input',
     props: (schema, uiSchema) => ({ options: schema.enum })
   }, {

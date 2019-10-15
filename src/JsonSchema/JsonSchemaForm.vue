@@ -23,13 +23,14 @@ import config from '@/utils/config'
 import TextInput from '@/components/TextInput.vue'
 import Checkbox from '@/components/Checkbox.vue'
 import Select from '@/components/Select.vue'
+import Radio from '@/components/Radio.vue'
 import InputWrapper from '@/components/InputWrapper.vue'
 import JsonSchemaArray from './JsonSchemaArray.vue'
 
 @Component({
   name: 'JsonSchemaForm',
   components: {
-    TextInput, Checkbox, Select, InputWrapper, JsonSchemaArray
+    TextInput, Checkbox, Select, InputWrapper, JsonSchemaArray, Radio
   }
 })
 export default class JsonSchemaForm extends Vue {

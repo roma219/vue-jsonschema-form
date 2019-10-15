@@ -24,7 +24,7 @@ export default class InputWrapper extends Vue {
   margin-bottom: 22px;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .input-wrapper--vertical {
