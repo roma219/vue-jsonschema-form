@@ -8,6 +8,7 @@
     "url": "https://github.com/roma219/vue-jsonschema-form.git"
   },
   "author": "Roman Sabirov roma219@yandex.ru",
+  "license" : "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
