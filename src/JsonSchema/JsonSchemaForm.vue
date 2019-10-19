@@ -83,7 +83,7 @@ export default class JsonSchemaForm extends Vue {
 
   getProps (propName: string, propSchema: ISchema) {
     const component = this.propComponents[propName]
-    const customProps = component.props ? component.props(propSchema, {}) : {}
+    const customProps = component.props ? component.props(propName, propSchema, {}) : {}
     const uiSchema = this.getUiSchemaByPropName(propName)
 
     const isNested = propSchema.type === 'object' || propSchema.type === 'array'

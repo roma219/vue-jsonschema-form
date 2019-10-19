@@ -39,30 +39,30 @@ export default {
       tsconfig: false,
       experimentalDecorators: true,
       module: 'es2015',
-      "target": "esnext",
-      "strict": true,
-      "jsx": "preserve",
-      "importHelpers": true,
-      "moduleResolution": "node",
-      "experimentalDecorators": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "sourceMap": true,
-      "baseUrl": ".",
-      "types": [
-        "webpack-env",
-        "jest"
+      target: 'esnext',
+      strict: true,
+      jsx: 'preserve',
+      importHelpers: true,
+      moduleResolution: 'node',
+      experimentalDecorators: true,
+      esModuleInterop: true,
+      allowSyntheticDefaultImports: true,
+      sourceMap: true,
+      baseUrl: '.',
+      types: [
+        'webpack-env',
+        'jest'
       ],
-      "paths": {
-        "@/*": [
-          "src/*"
+      paths: {
+        '/*': [
+          'src/*'
         ]
       },
-      "lib": [
-        "esnext",
-        "dom",
-        "dom.iterable",
-        "scripthost"
+      lib: [
+        'esnext',
+        'dom',
+        'dom.iterable',
+        'scripthost'
       ]
     }),
     vue(),
@@ -75,42 +75,3 @@ export default {
     visualizer({ sourcemap: true })
   ]
 }
-
-// "compilerOptions": {
-//   "target": "esnext",
-//   "module": "esnext",
-//   "strict": true,
-//   "jsx": "preserve",
-//   "importHelpers": true,
-//   "moduleResolution": "node",
-//   "experimentalDecorators": true,
-//   "esModuleInterop": true,
-//   "allowSyntheticDefaultImports": true,
-//   "sourceMap": true,
-//   "baseUrl": ".",
-//   "types": [
-//     "webpack-env",
-//     "jest"
-//   ],
-//   "paths": {
-//     "@/*": [
-//       "src/*"
-//     ]
-//   },
-//   "lib": [
-//     "esnext",
-//     "dom",
-//     "dom.iterable",
-//     "scripthost"
-//   ]
-// },
-// "include": [
-//   "src/**/*.ts",
-//   "src/**/*.tsx",
-//   "src/**/*.vue",
-//   "tests/**/*.ts",
-//   "tests/**/*.tsx"
-// ],
-// "exclude": [
-//   "node_modules"
-// ]

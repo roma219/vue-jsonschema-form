@@ -19,7 +19,7 @@ import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
 import { generateDefaultValue } from '@/utils/generateDefaultValue'
 import clone from 'nanoclone'
-require('purecss/build/pure-min.css')
+// require('purecss/build/pure-min.css')
 
 @Component({
   mixins: [validationMixin],
@@ -46,7 +46,6 @@ export default class JsonSchema extends Vue {
 
   created () {
     this.$emit('init-default', generateDefaultValue(this.processedSchema))
-    Vue.component(JsonSchemaForm.name, JsonSchemaForm)
   }
 
   handleChange ({ path, value } : { path: Array<string>, value: any }) {
