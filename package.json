@@ -14,9 +14,7 @@
     "build": "rollup -c --environment BUILD:production",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "coveralls": "npm run test:unit && cat ./coverage/lcov.info | coveralls",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "coveralls": "npm run test:unit && cat ./coverage/lcov.info | coveralls"
   },
   "main": "./dist/JsonSchema.js",
   "files": [
