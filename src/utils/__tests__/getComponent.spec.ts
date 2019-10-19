@@ -13,7 +13,6 @@ const getComponentByNameAndType = (name: string, type: string = 'string') => {
 }
 
 describe('getComponent utility function - default config', () => {
-
   it('type=boolean is Checkbox', () => {
     const component = getComponent({ type: 'boolean' })
 

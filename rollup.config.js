@@ -17,22 +17,12 @@ export default {
     sourcemap: true,
     globals: {
       vue: 'Vue',
-      vuelidate: 'vuelidate',
-      'vuelidate/lib/validators/required': 'vuelidate/lib/validators/required',
-      'vuelidate/lib/validators/minLength': 'vuelidate/lib/validators/minLength',
-      'vuelidate/lib/validators/maxLength': 'vuelidate/lib/validators/maxLength',
-      'vuelidate/lib/validators/minValue': 'vuelidate/lib/validators/minValue',
-      'vuelidate/lib/validators/maxValue': 'vuelidate/lib/validators/maxValue'
+      vuelidate: 'vuelidate'
     }
   },
   external: [
     'vue',
-    'vuelidate',
-    'vuelidate/lib/validators/required',
-    'vuelidate/lib/validators/minLength',
-    'vuelidate/lib/validators/maxLength',
-    'vuelidate/lib/validators/minValue',
-    'vuelidate/lib/validators/maxValue'
+    'vuelidate'
   ],
   plugins: [
     progress(),
