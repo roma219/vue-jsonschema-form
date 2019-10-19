@@ -35,35 +35,7 @@ export default {
   ],
   plugins: [
     progress(),
-    typescript({
-      tsconfig: false,
-      experimentalDecorators: true,
-      module: 'es2015',
-      target: 'esnext',
-      strict: true,
-      jsx: 'preserve',
-      importHelpers: true,
-      moduleResolution: 'node',
-      esModuleInterop: true,
-      allowSyntheticDefaultImports: true,
-      sourceMap: true,
-      baseUrl: '.',
-      types: [
-        'webpack-env',
-        'jest'
-      ],
-      paths: {
-        '/*': [
-          'src/*'
-        ]
-      },
-      lib: [
-        'esnext',
-        'dom',
-        'dom.iterable',
-        'scripthost'
-      ]
-    }),
+    typescript(),
     vue(),
     buble({
       objectAssign: 'Object.assign'
