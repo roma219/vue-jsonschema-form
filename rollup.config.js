@@ -6,6 +6,7 @@ import typescript from 'rollup-plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 import visualizer from 'rollup-plugin-visualizer'
 import progress from 'rollup-plugin-progress'
+import replace from 'rollup-plugin-replace'
 
 export default {
   input: 'src/JsonSchema/JsonSchema.vue',
@@ -36,6 +37,10 @@ export default {
   plugins: [
     progress(),
     typescript(),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.BUILD': JSON.stringify('web')
+    }),
     vue(),
     buble({
       objectAssign: 'Object.assign'

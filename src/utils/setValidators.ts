@@ -4,15 +4,15 @@ import minLength from 'vuelidate/lib/validators/minLength'
 import maxLength from 'vuelidate/lib/validators/maxLength'
 import minValue from 'vuelidate/lib/validators/minValue'
 import maxValue from 'vuelidate/lib/validators/maxValue'
-import { withParams } from 'vuelidate'
+// import { withParams } from 'vuelidate'
 
 import { ISchema } from '@/types'
 
-const correctPhone = (valueToCompare: any) => {
-  const regexp = RegExp('^(\\+\\d{1,3}|\\d)?(\\s\\d{3,5}\\s)(\\d{1,3}[-]\\d{2}[-]\\d{2})$')
+// const correctPhone = (valueToCompare: any) => {
+//   const regexp = RegExp('^(\\+\\d{1,3}|\\d)?(\\s\\d{3,5}\\s)(\\d{1,3}[-]\\d{2}[-]\\d{2})$')
 
-  return withParams({ type: 'phone', value: valueToCompare }, (value: any) => regexp.test(value))
-}
+//   return withParams({ type: 'phone', value: valueToCompare }, (value: any) => regexp.test(value))
+// }
 
 export const setValidators = (schema: ISchema) : any => {
   const validations : any = {}
@@ -42,7 +42,7 @@ export const setValidators = (schema: ISchema) : any => {
       // set nested validators
       if (propertyObject.type === 'object') validations[property] = setValidators(propertyObject)
 
-      if (propertyObject.format === 'phone') validations[property].phone = correctPhone(propertyObject)
+      // if (propertyObject.format === 'phone') validations[property].phone = correctPhone(propertyObject)
 
       // set item validators for array of objects
       if (propertyObject.type === 'array' && propertyObject.items && propertyObject.items.type === 'object') {
