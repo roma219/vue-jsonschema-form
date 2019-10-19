@@ -1,4 +1,9 @@
-import { required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators'
+// import { required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators'
+import required from 'vuelidate/lib/validators/required'
+import minLength from 'vuelidate/lib/validators/minLength'
+import maxLength from 'vuelidate/lib/validators/maxLength'
+import minValue from 'vuelidate/lib/validators/minValue'
+import maxValue from 'vuelidate/lib/validators/maxValue'
 import { withParams } from 'vuelidate'
 
 import { ISchema } from '@/types'

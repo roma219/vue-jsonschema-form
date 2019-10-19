@@ -26,7 +26,7 @@ export default class App extends Vue {
   schema = {
     type: 'object',
     properties: {
-      aaa: { type: 'string', minLength: 1 },
+      aaa: { type: 'number', maximum: 10 },
       arr: {
         type: 'array',
         items: { type: 'object', properties: { a: { type: 'string', minLength: 2 }, b: { type: 'boolean' } } }

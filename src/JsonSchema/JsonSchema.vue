@@ -18,7 +18,7 @@ import { ISchema, IUiSchema, IAnyObject, ComponentsConfig,
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
 import { generateDefaultValue } from '@/utils/generateDefaultValue'
-const cloneDeep = require('clone-deep')
+import clone from 'nanoclone'
 
 @Component({
   mixins: [validationMixin],
@@ -48,7 +48,7 @@ export default class JsonSchema extends Vue {
   }
 
   handleChange ({ path, value } : { path: Array<string>, value: any }) {
-    const newValue = cloneDeep(this.value)
+    const newValue = clone(this.value)
     const paramName = path.pop() || ''
 
     let target = newValue

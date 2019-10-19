@@ -249,3 +249,9 @@ declare module 'vuelidate/lib/validators' {
      */
     function and(...validators: ValidationPredicate[]): () => boolean;
 }
+
+declare module 'vuelidate/lib/validators/required'
+declare module 'vuelidate/lib/validators/minLength'
+declare module 'vuelidate/lib/validators/maxLength'
+declare module 'vuelidate/lib/validators/minValue'
+declare module 'vuelidate/lib/validators/maxValue'

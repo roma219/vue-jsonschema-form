@@ -57,7 +57,7 @@ export default class JsonSchemaForm extends Vue {
 
   get sortedSchemaProperties () {
     return Object.entries(this.schema.properties).sort((a, b) => {
-      return (this.uiSchema?.properties?.[a[0]]?.order || 0) > (this.uiSchema?.properties?.[b[0]]?.order || 0) ? -1 : 1
+      return (this.uiSchema.properties?.[a[0]]?.order || 0) > (this.uiSchema?.properties?.[b[0]]?.order || 0) ? -1 : 1
     })
   }
 

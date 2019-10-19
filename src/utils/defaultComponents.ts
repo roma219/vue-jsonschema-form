@@ -19,6 +19,13 @@ export const defaultComponents : ComponentsConfig = [{
   props: (schema, uiSchema) => ({ options: schema.enum })
 }, {
   matcher: {
+    type: 'number'
+  },
+  componentName: 'TextInput',
+  props: () => ({ type: 'number' }),
+  eventName: 'input'
+}, {
+  matcher: {
     type: 'string'
   },
   componentName: 'TextInput',

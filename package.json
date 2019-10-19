@@ -13,6 +13,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:lib": "vue-cli-service build --target lib --name index ./src/entry.ts",
+    "build:roll": "rollup -c --environment BUILD:production",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "coveralls": "npm run test:unit && cat ./coverage/lcov.info | coveralls",
@@ -25,12 +26,15 @@
     "src/*"
   ],
   "dependencies": {
-    "core-js": "^2.6.9",
-    "clone-deep": "^4.0.1",
+    "nanoclone": "^0.2.1",
+    "vuelidate": "^0.7.4"
+  },
+  "peerDependencies": {
     "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@babel/preset-env": "^7.6.3",
     "@types/jest": "^24.0.18",
     "@types/json-schema": "^7.0.3",
     "@vue/cli-plugin-babel": "^4.0.4",
@@ -43,9 +47,13 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "core-js": "^2.6.9",
     "coveralls": "^3.0.6",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "rollup": "^1.25.0",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "rollup-plugin-vue": "^5.0.1",
     "ts-jest": "^23.0.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.7.0-dev.20191018",
