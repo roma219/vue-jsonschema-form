@@ -1,46 +1,40 @@
 import { getComponent } from '../getComponent'
 import { defaultComponents } from '../defaultComponents'
 
-const getComponentByName = (name: string) => {
-  const { componentName, eventName, props } : any = (defaultComponents || []).find(component => component.componentName === name)
+const getComponentByNameAndType = (name: string, type: string = 'string') => {
+  const components : any = (defaultComponents || []).filter(component => component.componentName === name)
+  let component = components[0]
+  if (components.length > 1) {
+    let component = components.find((item: any) => item.matcher.type === type)
+  }
+  const { componentName, eventName, props } = component
 
   return { componentName, eventName, props }
 }
 
 describe('getComponent utility function - default config', () => {
-  it('type=string is TextInput', () => {
-    const component = getComponent({ type: 'string' })
-
-    expect(component).toEqual(getComponentByName('TextInput'))
-  })
 
   it('type=boolean is Checkbox', () => {
     const component = getComponent({ type: 'boolean' })
 
-    expect(component).toEqual(getComponentByName('Checkbox'))
+    expect(component).toEqual(getComponentByNameAndType('Checkbox'))
   })
 
   it('type=object is JsonSchemaForm', () => {
     const component = getComponent({ type: 'object' })
 
-    expect(component).toEqual(getComponentByName('JsonSchemaForm'))
+    expect(component).toEqual(getComponentByNameAndType('JsonSchemaForm'))
   })
 
   it('enum is Select', () => {
     const component = getComponent({ enum: [1, 2, 3] } as any)
 
-    expect(component).toEqual(getComponentByName('Select'))
+    expect(component).toEqual(getComponentByNameAndType('Select'))
   })
 
   it('array is special inner component', () => {
     const component = getComponent({ type: 'array' })
 
-    expect(component).toEqual(getComponentByName('JsonSchemaArray'))
-  })
-
-  it('use TextInput when could not detect component', () => {
-    const component = getComponent({ type: 'kek' } as any)
-
-    expect(component).toEqual(getComponentByName('TextInput'))
+    expect(component).toEqual(getComponentByNameAndType('JsonSchemaArray'))
   })
 })
