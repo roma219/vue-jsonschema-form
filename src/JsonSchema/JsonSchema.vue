@@ -10,14 +10,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Mixins, Provide } from 'vue-property-decorator'
-import { processSchema } from '@/utils/processSchema'
-import { setValidators } from '@/utils/setValidators'
+import { processSchema } from '../utils/processSchema'
+import { setValidators } from '../utils/setValidators'
 import { JSONSchema7 } from 'json-schema'
 import { ISchema, IUiSchema, IAnyObject, ComponentsConfig,
   WrapperComponentConfig, ErrorMessagesConfig } from '@/types'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
-import { generateDefaultValue } from '@/utils/generateDefaultValue'
+import { generateDefaultValue } from '../utils/generateDefaultValue'
 import clone from 'nanoclone'
 // require('purecss/build/pure-min.css')
 
