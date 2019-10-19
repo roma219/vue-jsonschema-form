@@ -1,5 +1,4 @@
 import { getComponent } from '../getComponent'
-import { IComponent } from '@/types'
 import { defaultComponents } from '../defaultComponents'
 
 const getComponentByName = (name: string) => {

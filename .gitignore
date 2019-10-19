@@ -2,6 +2,7 @@
 node_modules
 /dist
 /coverage
+stats.html
 
 # local env files
 .env.local

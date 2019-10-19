@@ -17,15 +17,15 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Inject } from 'vue-property-decorator'
-import { ISchema, ISchemaObject, IUiSchema, IAnyObject, ComponentsConfig, WrapperComponentConfig } from '@/types'
-import { getErrorText } from '@/utils/getErrorText'
-import { getComponent } from '@/utils/getComponent'
-import { inputWrapper } from '@/utils/defaultComponents'
-import TextInput from '@/components/TextInput.vue'
-import Checkbox from '@/components/Checkbox.vue'
-import Select from '@/components/Select.vue'
-import Radio from '@/components/Radio.vue'
-import InputWrapper from '@/components/InputWrapper.vue'
+import { ISchema, ISchemaObject, IUiSchema, IAnyObject, ComponentsConfig, WrapperComponentConfig } from '../types'
+import { getErrorText } from '../utils/getErrorText'
+import { getComponent } from '../utils/getComponent'
+import { inputWrapper } from '../utils/defaultComponents'
+import TextInput from '../components/TextInput.vue'
+import Checkbox from '../components/Checkbox.vue'
+import Select from '../components/Select.vue'
+import Radio from '../components/Radio.vue'
+import InputWrapper from '../components/InputWrapper.vue'
 import JsonSchemaArray from './JsonSchemaArray.vue'
 
 @Component({
@@ -50,14 +50,16 @@ export default class JsonSchemaForm extends Vue {
     return Object.entries(this.schema.properties).reduce((result, [propName, propSchema]) => {
       return {
         ...result,
-        [propName]: getComponent(propSchema, this.componentsConfig, this.uiSchema?.properties?.[propName])
+        [propName]: getComponent(propSchema, this.componentsConfig, this.getUiSchemaByPropName(propName))
       }
     }, {})
   }
 
   get sortedSchemaProperties () {
     return Object.entries(this.schema.properties).sort((a, b) => {
-      return (this.uiSchema.properties?.[a[0]]?.order || 0) > (this.uiSchema?.properties?.[b[0]]?.order || 0) ? -1 : 1
+      const orderA : number = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[a[0]] && this.uiSchema.properties[a[0]].order) || 0
+      const orderB : number = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[b[0]] && this.uiSchema.properties[b[0]].order) || 0
+      return orderA > orderB ? -1 : 1
     })
   }
 
@@ -69,16 +71,20 @@ export default class JsonSchemaForm extends Vue {
     Object.keys(this.schema.properties).forEach(paramName => {
       const validation = this.validations[paramName]
 
-      if (validation?.$invalid) errors[paramName] = getErrorText(validation)
+      if (validation && validation.$invalid) errors[paramName] = getErrorText(validation)
     })
 
     return errors
   }
 
+  getUiSchemaByPropName (propName: string) : IUiSchema | undefined {
+    return (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
+  }
+
   getProps (propName: string, propSchema: ISchema) {
     const component = this.propComponents[propName]
     const customProps = component.props ? component.props(propSchema, {}) : {}
-    const uiSchema = this.uiSchema?.properties?.[propName] || undefined
+    const uiSchema = this.getUiSchemaByPropName(propName)
 
     const isNested = propSchema.type === 'object' || propSchema.type === 'array'
 
@@ -91,7 +97,7 @@ export default class JsonSchemaForm extends Vue {
       props = {
         ...props,
         schema: this.schema.properties[propName],
-        validations: this.validations?.[propName] || {},
+        validations: (this.validations && this.validations[propName]) || {},
         uiSchema
       }
     }
@@ -100,8 +106,8 @@ export default class JsonSchemaForm extends Vue {
   }
 
   getWrapperProps (propName: string, propSchema: ISchema) {
-    const propUiScehma = this.uiSchema?.properties?.[propName] || undefined
-    const customProps = this.wrapperComponentParams?.props?.(propName, propSchema, propUiScehma) || {}
+    const propUiScehma = this.getUiSchemaByPropName(propName)
+    const customProps = (this.wrapperComponentParams && this.wrapperComponentParams.props && this.wrapperComponentParams.props(propName, propSchema, propUiScehma)) || {}
     const isPropNested = propSchema.type === 'object' || propSchema.type === 'array'
 
     return {

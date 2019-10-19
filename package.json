@@ -1,7 +1,7 @@
 {
   "name": "@roma219/vue-jsonschema-form",
   "description": "Input Form generator based on JSON Schema",
-  "version": "0.0.7",
+  "version": "0.0.93",
   "private": false,
   "repository": {
     "type": "git",
@@ -11,30 +11,28 @@
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build:lib": "vue-cli-service build --target lib --name index ./src/entry.ts",
-    "build:roll": "rollup -c --environment BUILD:production",
+    "build": "rollup -c --environment BUILD:production",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "coveralls": "npm run test:unit && cat ./coverage/lcov.info | coveralls",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "main": "./dist/index.umd.js",
+  "main": "./dist/JsonSchema.js",
   "files": [
     "dist/*",
     "src/*"
   ],
   "dependencies": {
     "nanoclone": "^0.2.1",
+    "purecss": "^1.0.1",
     "vuelidate": "^0.7.4"
   },
   "peerDependencies": {
-    "vuelidate": "^0.7.4"
+    "vuelidate": "^0.7.4",
+    "purecss": "^1.0.1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
-    "@babel/preset-env": "^7.6.3",
     "@types/jest": "^24.0.18",
     "@types/json-schema": "^7.0.3",
     "@vue/cli-plugin-babel": "^4.0.4",
@@ -52,7 +50,14 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "rollup": "^1.25.0",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-progress": "^1.1.1",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-typescript2": "^0.24.3",
+    "rollup-plugin-visualizer": "^2.6.0",
     "rollup-plugin-vue": "^5.0.1",
     "ts-jest": "^23.0.0",
     "ts-node": "^8.4.1",
@@ -61,7 +66,6 @@
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.2.2",
     "vue-template-compiler": "^2.6.10",
-    "vuepress": "^1.1.0",
-    "webpack-bundle-analyzer": "^3.5.2"
+    "vuepress": "^1.1.0"
   }
 }
