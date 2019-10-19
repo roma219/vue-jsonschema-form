@@ -44,7 +44,6 @@ export default {
       jsx: 'preserve',
       importHelpers: true,
       moduleResolution: 'node',
-      experimentalDecorators: true,
       esModuleInterop: true,
       allowSyntheticDefaultImports: true,
       sourceMap: true,
