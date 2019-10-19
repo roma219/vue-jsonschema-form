@@ -24,7 +24,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { ISchemaArray, IUiSchema, IAnyObject } from '@/types'
-import { generateDefaultValue } from '@/utils/generateDefaultValue'
+import { generateDefaultValue } from '../utils/generateDefaultValue'
 import JsonSchemaArrayFormWrap from './JsonSchemaArrayFormWrap.vue'
 
 @Component({
