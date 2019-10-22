@@ -4,6 +4,8 @@ type SchemaTypeName = 'string' | 'number' | 'boolean' | 'object' | 'integer' | '
 
 // Schema types
 export interface ISchemaBase {
+  definitions: { [key: string]: ISchemaBase }
+  $ref?: string
   type: SchemaTypeName
   title?: string
   description?: string
@@ -16,6 +18,10 @@ export interface ISchemaBase {
   properties?: { [key: string]: ISchema }
   enum?: Array<any>
   items?: ISchema
+  allOf?: any[]
+  oneOf?: any[]
+  if?: any
+  then?: any
 }
 
 export interface ISchemaObject extends ISchemaBase {
@@ -63,7 +69,7 @@ interface IConfigComponent {
   contains?: string,
   componentName: string,
   eventName: string,
-  props?: (schema: any, uiSchema: IUiSchema | undefined) => IAnyObject
+  props?: (propName: string, schema: ISchema, uiSchema: IUiSchema | undefined) => IAnyObject
 }
 
 // common types
