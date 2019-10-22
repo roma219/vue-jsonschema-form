@@ -31,8 +31,6 @@ type IRequirment = any
 export const processSchemaConditions = (schema: ISchema, data: IAnyObject) => {
   const newSchema = { ...schema }
 
-  console.log(newSchema, data)
-
   if (schema.allOf) {
     schema.allOf.forEach(condition => processCondition(condition, data, newSchema))
   }
@@ -75,10 +73,9 @@ const processCondition = (condition: ICondition, data: IAnyObject, newSchema: IS
   if (checkRequierment(condition.if, data)) applyCondition(newSchema, condition.then)
 }
 
-export const checkRequierment = (requirment: IRequirment, data: IAnyObject) => {
+export const checkRequierment = (requirment: IRequirment, data: IAnyObject = {}) => {
   // TODO: different types of requirments
   // TODO: allOf, oneOf
-  console.log(requirment, data)
 
   let currentPath = requirment.not ? requirment.not.properties : requirment.properties
   let currentValue = data
