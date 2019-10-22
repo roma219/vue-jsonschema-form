@@ -1,5 +1,5 @@
 import clone from 'nanoclone'
-import { ISchema, ISchemaObject } from '@/types'
+import { ISchema, ISchemaObject, IDefinition } from '@/types'
 import { JSONSchema7 } from 'json-schema'
 
 export const unrefSchema = (schema: ISchemaObject) => {
@@ -66,7 +66,7 @@ export const unrefSchema = (schema: ISchemaObject) => {
     return newSchema
   }
 
-  const definitions = schema.definitions || []
+  const definitions : any = schema.definitions || {}
   const definitionNames = Object.keys(definitions)
   const dereferencedSchema = checkSchemaForRefs(schema)
 

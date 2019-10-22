@@ -1,5 +1,6 @@
 import { getComponent } from '../getComponent'
 import { defaultComponents } from '../defaultComponents'
+import { ISchema } from '@/types'
 
 const getComponentByNameAndType = (name: string, type: string = 'string') => {
   const components : any = (defaultComponents || []).filter(component => component.componentName === name)
@@ -14,13 +15,13 @@ const getComponentByNameAndType = (name: string, type: string = 'string') => {
 
 describe('getComponent utility function - default config', () => {
   it('type=boolean is Checkbox', () => {
-    const component = getComponent({ type: 'boolean' })
+    const component = getComponent({ type: 'boolean' } as ISchema)
 
     expect(component).toEqual(getComponentByNameAndType('Checkbox'))
   })
 
   it('type=object is JsonSchemaForm', () => {
-    const component = getComponent({ type: 'object' })
+    const component = getComponent({ type: 'object' } as ISchema)
 
     expect(component).toEqual(getComponentByNameAndType('JsonSchemaForm'))
   })
@@ -32,7 +33,7 @@ describe('getComponent utility function - default config', () => {
   })
 
   it('array is special inner component', () => {
-    const component = getComponent({ type: 'array' })
+    const component = getComponent({ type: 'array' } as ISchema)
 
     expect(component).toEqual(getComponentByNameAndType('JsonSchemaArray'))
   })

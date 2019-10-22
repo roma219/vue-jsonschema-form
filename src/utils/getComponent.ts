@@ -9,9 +9,10 @@ const isMatch = (target : IAnyObject, source : IAnyObject) : boolean => {
 export const getComponent = (schema: ISchema, customComponents: ComponentsConfig = [], uiSchema?: IUiSchema) : IComponent => {
   const components = [ ...customComponents, ...defaultComponents || [] ]
 
-  const component = components.find(configItem => {
-    if (configItem.matcher) return isMatch(schema, configItem.matcher)
-    if (configItem.contains) return schema.hasOwnProperty(configItem.contains)
+  const component = components.find(component => {
+    if (component.matcher) return isMatch(schema, component.matcher)
+    if (component.contains) return schema.hasOwnProperty(component.contains)
+    return false
   })
 
   const { componentName = 'TextInput', eventName = 'input', props = undefined } = (component || {})

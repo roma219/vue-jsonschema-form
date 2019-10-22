@@ -74,9 +74,7 @@ export default class JsonSchema extends Vue {
   }
 
   get conditionedScheema () : ISchema {
-    // console.log(this.unreffedSchema)
-    // if (!this.processedSchema) return
-    return processSchemaConditions(clone(this.processedSchema), this.value)
+    return processSchemaConditions(clone(this.unreffedSchema), this.value)
   }
 }
 </script>

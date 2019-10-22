@@ -4,7 +4,7 @@ type SchemaTypeName = 'string' | 'number' | 'boolean' | 'object' | 'integer' | '
 
 // Schema types
 export interface ISchemaBase {
-  definitions: { [key: string]: ISchemaBase }
+  definitions?: { [key: string]: ISchemaBase }
   $ref?: string
   type: SchemaTypeName
   title?: string
@@ -40,6 +40,8 @@ export interface ISchemaArray extends ISchemaBase {
 
 export type ISchema = ISchemaBase | ISchemaObject | ISchemaSelect | ISchemaArray
 
+export type IDefinition = { [key: string] : ISchema }
+
 export interface IUiSchema {
   titles?: Array<string>
   order?: number
@@ -56,7 +58,7 @@ export type ErrorMessagesConfig = any
 export interface IComponent {
   componentName: string
   eventName: string
-  props?: (schema: any, uiSchema: IUiSchema) => IAnyObject,
+  props?: (propName: string, schema: any, uiSchema: IUiSchema) => IAnyObject,
 }
 
 export interface IWrapperComponent {
