@@ -3,7 +3,7 @@ import { ISchema, ISchemaObject } from '@/types'
 import { JSONSchema7 } from 'json-schema'
 
 export const unrefSchema = (schema: ISchemaObject) => {
-  function getSchemaByRef(ref: string) : ISchema {
+  function getSchemaByRef (ref: string) : ISchema {
     const refName = ref.substring(ref.lastIndexOf('/') + 1)
 
     if (!definitionNames.includes(refName)) console.warn(`[JSON-SCHEMA] Ref="${ref}" not found in definitions`)
@@ -11,7 +11,7 @@ export const unrefSchema = (schema: ISchemaObject) => {
     return !definitionNames.includes(refName) ? schema : clone(definitions[refName])
   }
 
-  function checkSchemaForRefs(schema: ISchemaObject) : ISchemaObject {
+  function checkSchemaForRefs (schema: ISchemaObject) : ISchemaObject {
     const newSchema = { ...schema }
 
     if (newSchema.type === 'object' && !newSchema.properties) newSchema.properties = {}
@@ -36,7 +36,7 @@ export const unrefSchema = (schema: ISchemaObject) => {
             ? getSchemaByRef((newSchema.properties[propertyName].items as any).$ref as string)
             : newSchema.properties[propertyName].items
 
-          ;(newSchema.properties[propertyName].items as any)= {
+          ;(newSchema.properties[propertyName].items as any) = {
             ...newSchema.properties[propertyName].items,
             ...definedSchema
           }
@@ -48,7 +48,6 @@ export const unrefSchema = (schema: ISchemaObject) => {
           newSchema.properties[propertyName] = checkSchemaForRefs(newSchema.properties[propertyName] as ISchemaObject)
         }
       })
-
     }
 
     // unref conditions

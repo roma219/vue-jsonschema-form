@@ -18,9 +18,7 @@ import JsonSchema from './JsonSchema'
 
 @Component({
   name: 'App',
-  components: {
-    JsonSchema
-  }
+  components: { JsonSchema }
 })
 export default class App extends Vue {
   schema = {
@@ -47,6 +45,18 @@ export default class App extends Vue {
             }
           }
         }
+      }
+    },
+    if: {
+      properties: {
+        aaa: {
+          const: 10
+        }
+      }
+    },
+    then: {
+      properties: {
+        newField: { type: 'string' }
       }
     }
   }
