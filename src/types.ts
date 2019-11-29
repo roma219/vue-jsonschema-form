@@ -50,12 +50,12 @@ export type ErrorMessagesConfig = any
 export interface IComponent {
   componentName: string
   eventName: string
-  props?: (schema: any, uiSchema: IUiSchema) => IAnyObject,
+  props?: (propName: string, schema: any, uiSchema: IUiSchema) => IAnyObject,
 }
 
 export interface IWrapperComponent {
   componentName: string,
-  props?: (propName: string, schema: any, uiSchema: IUiSchema | undefined) => IAnyObject
+  props?: (propName: string, schema: any, uiSchema?: IUiSchema | undefined) => IAnyObject
 }
 
 interface IConfigComponent {
@@ -63,7 +63,7 @@ interface IConfigComponent {
   contains?: string,
   componentName: string,
   eventName: string,
-  props?: (schema: any, uiSchema: IUiSchema | undefined) => IAnyObject
+  props?: (propName: string, schema: any, uiSchema?: IUiSchema) => IAnyObject
 }
 
 // common types

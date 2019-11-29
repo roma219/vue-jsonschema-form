@@ -22,7 +22,8 @@ export default {
   },
   external: [
     'vue',
-    'vuelidate'
+    'vuelidate',
+    'vuelidate/*'
   ],
   plugins: [
     progress(),
