@@ -1,6 +1,6 @@
 <template>
   <JsonSchemaForm
-    :schema="processedSchema"
+    :schema="conditionedScheema"
     :ui-schema="uiSchema"
     :value="value"
     :validations="validationErrors"
@@ -12,12 +12,14 @@
 import { Component, Prop, Vue, Mixins, Provide } from 'vue-property-decorator'
 import { processSchema } from '../utils/processSchema'
 import { setValidators } from '../utils/setValidators'
+import { unrefSchema } from '../utils/unrefSchema'
+import { generateDefaultValue } from '../utils/generateDefaultValue'
+import { processSchemaConditions } from '../utils/processConditions'
 import { JSONSchema7 } from 'json-schema'
 import { ISchema, IUiSchema, IAnyObject, ComponentsConfig,
-  WrapperComponentConfig, ErrorMessagesConfig } from '@/types'
+  WrapperComponentConfig, ErrorMessagesConfig, ISchemaBase, ISchemaObject } from '@/types'
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
-import { generateDefaultValue } from '../utils/generateDefaultValue'
 import clone from 'nanoclone'
 // require('purecss/build/pure-min.css')
 
@@ -63,13 +65,16 @@ export default class JsonSchema extends Vue {
     this.$emit('input', newValue)
   }
 
-  get unreffedSchema () : any {
-    return {}
+  get processedSchema () : ISchema {
+    return processSchema(this.schema)
   }
 
-  get processedSchema () : ISchema {
-    // todo: unref schema => check conditions => finalized schema
-    return processSchema(this.schema)
+  get unreffedSchema () {
+    return unrefSchema(this.schema as ISchemaObject)
+  }
+
+  get conditionedScheema () : ISchema {
+    return processSchemaConditions(clone(this.unreffedSchema), this.value)
   }
 }
 </script>

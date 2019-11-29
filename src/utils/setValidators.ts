@@ -1,18 +1,10 @@
-// import { required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators'
 import required from 'vuelidate/lib/validators/required'
 import minLength from 'vuelidate/lib/validators/minLength'
 import maxLength from 'vuelidate/lib/validators/maxLength'
 import minValue from 'vuelidate/lib/validators/minValue'
 import maxValue from 'vuelidate/lib/validators/maxValue'
-// import { withParams } from 'vuelidate'
 
 import { ISchema } from '@/types'
-
-// const correctPhone = (valueToCompare: any) => {
-//   const regexp = RegExp('^(\\+\\d{1,3}|\\d)?(\\s\\d{3,5}\\s)(\\d{1,3}[-]\\d{2}[-]\\d{2})$')
-
-//   return withParams({ type: 'phone', value: valueToCompare }, (value: any) => regexp.test(value))
-// }
 
 export const setValidators = (schema: ISchema) : any => {
   const validations : any = {}
