@@ -8,6 +8,13 @@ export const defaultComponents : ComponentsConfig = [{
   eventName: 'input'
 }, {
   matcher: {
+    format: 'radio'
+  },
+  componentName: 'Radio',
+  eventName: 'input',
+  props: (propName, schema) => ({ options: schema.enum })
+}, {
+  matcher: {
     type: 'object'
   },
   componentName: 'JsonSchemaForm',

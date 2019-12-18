@@ -4,10 +4,8 @@
       class="schema"
       :schema="schema"
       :ui-schema="uiSchema"
-      :components="[]"
       v-model="value"
     />
-      <!-- @init-default="value = $event" -->
     <pre>{{ formattedValue }}</pre>
   </div>
 </template>
@@ -25,7 +23,7 @@ const schema = {
       items: { type: 'object', properties: { a: { type: 'string', minLength: 2 }, b: { type: 'boolean' } } }
     },
     bbb: { type: 'boolean' },
-    ccc: { type: 'string', enum: ['1', '2', '3'] },
+    ccc: { type: 'string', enum: ['1', '2', '3'], format: 'radio' },
     ddd: {
       type: 'object',
       title: '',
