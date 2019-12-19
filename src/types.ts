@@ -46,6 +46,7 @@ export interface IUiSchema {
   titles?: Array<string>
   order?: number
   properties?: { [key: string]: IUiSchema }
+  disabled?: boolean
 }
 
 // config types

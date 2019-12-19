@@ -49,6 +49,7 @@ export const inputWrapper : WrapperComponentConfig = {
   componentName: 'InputWrapper',
   props: (propName, schema, uiSchema) => ({
     title: schema.title || schema.title === '' ? schema.title : propName,
+    disabled: uiSchema && uiSchema.disabled,
     vertical: schema.type === 'object' || schema.type === 'array'
   })
 }

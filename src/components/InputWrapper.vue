@@ -5,7 +5,7 @@
     <div class="input-wrapper-error">{{ error }}</div>
   </div> -->
 
-  <div class="pure-control-group">
+  <div class="pure-control-group" :class="{ 'pure-control-group--disabled' : disabled }">
       <label v-if="title">{{ title }}</label>
       <slot/>
       <span v-if="error" class="pure-form-message">{{ error }}</span>
@@ -22,6 +22,7 @@ export default class InputWrapper extends Vue {
   @Prop({ default: '' }) readonly title!: string
   @Prop({ default: '' }) readonly error!: string
   @Prop({ default: false }) readonly vertical!: boolean
+  @Prop({ default: false }) readonly disabled!: boolean
 }
 </script>
 
@@ -68,5 +69,10 @@ export default class InputWrapper extends Vue {
 .pure-form-message {
   position: relative;
   left: 176px;
+}
+
+.pure-control-group--disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 </style>
