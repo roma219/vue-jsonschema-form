@@ -10,7 +10,11 @@ export const getComponent = (schema: ISchema, customComponents: ComponentsConfig
   const components = [ ...customComponents, ...defaultComponents || [] ]
 
   const component = components.find(component => {
-    if (component.matcher) return isMatch(schema, component.matcher)
+    if (component.matcher) {
+      if (component.uiSchemaMatcher) return isMatch(uiSchema || {}, component.uiSchemaMatcher) && isMatch(schema, component.matcher)
+      return isMatch(schema, component.matcher)
+    }
+    if (component.uiSchemaMatcher) return isMatch(uiSchema || {}, component.uiSchemaMatcher)
     if (component.contains) return schema.hasOwnProperty(component.contains)
     return false
   })

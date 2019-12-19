@@ -7,8 +7,8 @@ export const defaultComponents : ComponentsConfig = [{
   componentName: 'JsonSchemaArray',
   eventName: 'input'
 }, {
-  matcher: {
-    format: 'radio'
+  uiSchemaMatcher: {
+    uiType: 'radio'
   },
   componentName: 'Radio',
   eventName: 'input',

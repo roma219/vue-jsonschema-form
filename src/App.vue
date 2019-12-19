@@ -23,7 +23,7 @@ const schema = {
       items: { type: 'object', properties: { a: { type: 'string', minLength: 2 }, b: { type: 'boolean' } } }
     },
     bbb: { type: 'boolean' },
-    ccc: { type: 'string', enum: ['1', '2', '3'], format: 'radio' },
+    ccc: { type: 'string', enum: ['1', '2', '3'] },
     ddd: {
       type: 'object',
       title: '',

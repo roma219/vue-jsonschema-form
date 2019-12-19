@@ -69,6 +69,7 @@ export interface IWrapperComponent {
 
 interface IConfigComponent {
   matcher?: IAnyObject,
+  uiSchemaMatcher?: IAnyObject,
   contains?: string,
   componentName: string,
   eventName: string,
