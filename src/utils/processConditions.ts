@@ -1,32 +1,44 @@
 import { ISchema, IAnyObject } from '@/types'
 import clone from 'nanoclone'
+import { mergeDeep } from './mergeDeep'
 
-export function isObject (item: any) {
-  return (item && typeof item === 'object' && !Array.isArray(item))
+type AllOfCondition = {
+  allOf: Array<SimpleCondition>
+  then: IAnyObject
 }
 
-export function mergeDeep (target: IAnyObject, ...sources: IAnyObject[]) : IAnyObject {
-  if (!sources.length) return target
-  const source = sources.shift()
-
-  if (isObject(target) && isObject(source)) {
-    if (!source) return target
-
-    for (const key in source) {
-      if (isObject(source[key])) {
-        if (!target[key]) Object.assign(target, { [key]: {} })
-        mergeDeep(target[key], source[key])
-      } else {
-        Object.assign(target, { [key]: source[key] })
-      }
-    }
-  }
-
-  return mergeDeep(target, ...sources)
+type OneOfCondition = {
+  oneOf: Array<SimpleCondition>
+  then: IAnyObject
 }
 
-type ICondition = any
-type IRequirment = any
+type SimpleCondition = {
+  if: any,
+  then: IAnyObject
+}
+
+type ICondition = SimpleCondition | AllOfCondition | OneOfCondition
+
+//  requirment types
+
+type ConstRequirment = { const: any }
+
+type MinLengthRequirment = { minLength: number }
+
+type IRequirment = ConstRequirment | MinLengthRequirment
+
+// type IRequirmentTree = {
+//   properties: {
+//     [key: string]: IRequirmentTree | ConstRequirment | MinLengthRequirment
+//   },
+//   not: undefined
+// }
+
+type IRequirmentTree = any
+
+type BaseRequirment = {
+  not: IRequirmentTree
+} | IRequirmentTree
 
 export const processSchemaConditions = (schema: ISchema, data: IAnyObject) => {
   const newSchema = { ...schema }
@@ -35,7 +47,7 @@ export const processSchemaConditions = (schema: ISchema, data: IAnyObject) => {
     schema.allOf.forEach(condition => processCondition(condition, data, newSchema))
   }
 
-  if (schema.if) processCondition(schema, data, newSchema)
+  if (schema.if) processCondition(schema as SimpleCondition, data, newSchema)
 
   Object.keys(schema.properties || {}).forEach(property => {
     if (schema.properties && schema.properties[property].type === 'object') {
@@ -46,12 +58,12 @@ export const processSchemaConditions = (schema: ISchema, data: IAnyObject) => {
   return newSchema
 }
 
-const processCondition = (condition: ICondition, data: IAnyObject, newSchema: ISchema) => {
+const processCondition = (condition: SimpleCondition, data: IAnyObject, newSchema: ISchema) => {
   // several requirments
   if (condition.if.allOf) {
     const requirments = condition.if.allOf
 
-    if (requirments.every((requirment: IRequirment) => checkRequierment(requirment, data))) {
+    if (requirments.every((requirment: BaseRequirment) => checkRequierment(requirment, data))) {
       applyCondition(newSchema, condition.then)
     }
 
@@ -62,7 +74,7 @@ const processCondition = (condition: ICondition, data: IAnyObject, newSchema: IS
   if (condition.if.oneOf) {
     const requirments = condition.if.oneOf
 
-    if (requirments.some((requirment: IRequirment) => checkRequierment(requirment, data))) {
+    if (requirments.some((requirment: BaseRequirment) => checkRequierment(requirment, data))) {
       applyCondition(newSchema, condition.then)
     }
 
@@ -73,9 +85,10 @@ const processCondition = (condition: ICondition, data: IAnyObject, newSchema: IS
   if (checkRequierment(condition.if, data)) applyCondition(newSchema, condition.then)
 }
 
-export const checkRequierment = (requirment: IRequirment, data: IAnyObject = {}) => {
+export const checkRequierment = (requirment: BaseRequirment, data: IAnyObject = {}) => {
   // TODO: different types of requirments
   // TODO: allOf, oneOf
+  // now only minLength and const are supported
 
   let currentPath = requirment.not ? requirment.not.properties : requirment.properties
   let currentValue = data
@@ -116,6 +129,6 @@ export const checkRequierment = (requirment: IRequirment, data: IAnyObject = {})
   return false
 }
 
-const applyCondition = (schema: ISchema, then: ISchema) => {
+const applyCondition = (schema: ISchema, then: IAnyObject) => {
   return mergeDeep(schema, then)
 }

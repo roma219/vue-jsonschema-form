@@ -56,15 +56,17 @@ export type WrapperComponentConfig = IWrapperComponent
 
 export type ErrorMessagesConfig = any
 
+type PropsFunction = (propName: string, schema: any, uiSchema?: IUiSchema) => IAnyObject
+
 export interface IComponent {
   componentName: string
   eventName: string
-  props?: (propName: string, schema: any, uiSchema: IUiSchema) => IAnyObject,
+  props?: PropsFunction
 }
 
 export interface IWrapperComponent {
   componentName: string,
-  props?: (propName: string, schema: any, uiSchema?: IUiSchema | undefined) => IAnyObject
+  props?: PropsFunction
 }
 
 interface IConfigComponent {
@@ -73,7 +75,7 @@ interface IConfigComponent {
   contains?: string,
   componentName: string,
   eventName: string,
-  props?: (propName: string, schema: ISchema, uiSchema: IUiSchema | undefined) => IAnyObject
+  props?: PropsFunction
 }
 
 // common types
