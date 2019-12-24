@@ -9,7 +9,6 @@ export const processSchema = (schema: JSONSchema7) : ISchema => {
     ...schema,
     type: (schema.type !== 'null' && ((typeof schema.type) !== 'object')) ? schema.type : 'string'
   }
-  // Object.keys(strippedSchema).forEach(key => strippedSchema[key] === undefined && delete strippedSchema[key])
 
   if (schema.properties) {
     strippedSchema.properties = {}
