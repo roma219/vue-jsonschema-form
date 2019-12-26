@@ -37,4 +37,10 @@ describe('getComponent utility function - default config', () => {
 
     expect(component).toEqual(getComponentByNameAndType('JsonSchemaArray'))
   })
+
+  it('when component is not found, string input is used', () => {
+    const component = getComponent({ type: 'kekh' } as any)
+
+    expect(component).toEqual({ componentName: 'TextInput', eventName: 'input' })
+  })
 })
