@@ -13,13 +13,13 @@ describe('Restrict input directive', () => {
 
     directive.bind(input, { value: { isNumber: true }, modifiers: { number: true } })
 
-    let event = new KeyboardEvent('keydown', { 'keyCode': 50 } as any)
+    let event = new KeyboardEvent('keydown', { keyCode: 8 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
 
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(0);
 
-    event = new KeyboardEvent('keydown', { 'keyCode': 2 } as any)
+    event = new KeyboardEvent('keydown', { keyCode: 2 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(1);
@@ -33,13 +33,13 @@ describe('Restrict input directive', () => {
 
     directive.bind(input, { value: { isNumber: true }, modifiers: { } })
 
-    let event = new KeyboardEvent('keydown', { 'keyCode': 50 } as any)
+    let event = new KeyboardEvent('keydown', { keyCode: 50 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
 
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(1);
 
-    event = new KeyboardEvent('keydown', { 'keyCode': 2 } as any)
+    event = new KeyboardEvent('keydown', { keyCode: 2 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
@@ -52,7 +52,7 @@ describe('Restrict input directive', () => {
 
     directive.bind(input, { value: { isNumber: true }, modifiers: { decimal: true } })
 
-    let event = new KeyboardEvent('keydown', { 'keyCode': 110 } as any)
+    let event = new KeyboardEvent('keydown', { keyCode: 110 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
 
@@ -62,7 +62,7 @@ describe('Restrict input directive', () => {
     input.type = 'text';
     directive.bind(input, { value: { isNumber: true }, modifiers: {} })
 
-    event = new KeyboardEvent('keydown', { 'keyCode': 110 } as any)
+    event = new KeyboardEvent('keydown', { keyCode: 110 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(1)
@@ -75,7 +75,7 @@ describe('Restrict input directive', () => {
 
     directive.bind(input, { value: { isNumber: true }, modifiers: { decimal: true } })
 
-    let event = new KeyboardEvent('keydown', { 'keyCode': 189 } as any)
+    let event = new KeyboardEvent('keydown', { keyCode: 189 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
 
@@ -87,7 +87,7 @@ describe('Restrict input directive', () => {
     input.selectionStart = 2
     directive.bind(input, { value: { isNumber: true, negativeNumber: true }, modifiers: {} })
 
-    event = new KeyboardEvent('keydown', { 'keyCode': 189 } as any)
+    event = new KeyboardEvent('keydown', { keyCode: 189 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
@@ -96,11 +96,45 @@ describe('Restrict input directive', () => {
     input.type = 'text';
     directive.bind(input, { value: { isNumber: true, negativeNumber: true }, modifiers: {} })
 
-    event = new KeyboardEvent('keydown', { 'keyCode': 189 } as any)
+    event = new KeyboardEvent('keydown', { keyCode: 189 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.value = '123'
     input.selectionStart = 0
     input.dispatchEvent(event)
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(2)
+  })
+
+  it('allows dot when float option is provided', () => {
+    const mockedPreventDefaultClb = jest.fn()
+    let input = document.createElement('input')
+    input.type = 'text';
+
+    directive.bind(input, { value: { isNumber: true, isFloat: true }, modifiers: { } })
+    input.value = '12323'
+    let event = new KeyboardEvent('keydown', { keyCode: 190 } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(0)
+
+    input = document.createElement('input')
+    input.type = 'text';
+    directive.bind(input, { value: { isNumber: true, isFloat: true }, modifiers: { } })
+    event = new KeyboardEvent('keydown', { keyCode: 190 } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.value = '1234.34'
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(1)
+  })
+
+  it('allows numbers without shift', () => {
+    const mockedPreventDefaultClb = jest.fn()
+    let input = document.createElement('input')
+    input.type = 'text';
+
+    directive.bind(input, { value: { isNumber: true }, modifiers: { number: true } })
+    let event = new KeyboardEvent('keydown', { keyCode: 97 } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(0)
   })
 })
