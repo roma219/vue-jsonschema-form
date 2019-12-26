@@ -5,11 +5,13 @@ describe('generateDefaultValue utility function', () => {
     const value = generateDefaultValue({
       type: 'object',
       properties: {
-        a: { type: 'string', default: 'aaa', componentName: '', eventName: '' },
-        b: { type: 'number', default: 123, componentName: '', eventName: '' }
+        a: { type: 'string' },
+        b: { type: 'number', default: 123 },
+        c: { type: 'object', properties: { d: {type: 'string', default: 'a' } } },
+        e: { type: 'object' }
       }
     })
 
-    expect(value).toEqual({ a: 'aaa', b: 123 })
+    expect(value).toEqual({ b: 123, c: { d: 'a' }, e: {} })
   })
 })
