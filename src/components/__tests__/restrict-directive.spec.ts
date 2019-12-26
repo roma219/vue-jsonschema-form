@@ -19,27 +19,80 @@ describe('Restrict input directive', () => {
 
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(0);
 
+    event = new KeyboardEvent('keydown', { keyCode: 7 } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(1);
+
     event = new KeyboardEvent('keydown', { keyCode: 2 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
-    expect(mockedPreventDefaultClb.mock.calls.length).toBe(1);
-
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
   })
 
   it('doesnt prevent non-numbers when corresponding modifier is not provided', () => {
     const mockedPreventDefaultClb = jest.fn()
     const input = document.createElement('input');
     input.type = 'text';
-
     directive.bind(input, { value: { isNumber: true }, modifiers: { } })
 
     let event = new KeyboardEvent('keydown', { keyCode: 50 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(1);
 
+    event = new KeyboardEvent('keydown', { keyCode: 65, ctrlKey: true, metaKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(1);
 
     event = new KeyboardEvent('keydown', { keyCode: 2 } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 65, ctrlKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 65, metaKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 67, ctrlKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 67, metaKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 86, ctrlKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 86, metaKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 88, ctrlKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 88, metaKey: true } as any)
+    event.preventDefault = mockedPreventDefaultClb
+    input.dispatchEvent(event)
+    expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);
+
+    event = new KeyboardEvent('keydown', { keyCode: 36 } as any)
     event.preventDefault = mockedPreventDefaultClb
     input.dispatchEvent(event)
     expect(mockedPreventDefaultClb.mock.calls.length).toBe(2);

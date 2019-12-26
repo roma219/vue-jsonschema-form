@@ -15,13 +15,13 @@ function checkKeyDown (el: HTMLElement, binding: any) {
       special.indexOf(e.keyCode) !== -1 ||
       // Ctrl+A
       (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-      // Ctrl+C
+      // // Ctrl+C
       (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) ||
-      // Ctrl+V
+      // // Ctrl+V
       (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) ||
-      // Ctrl+X
+      // // Ctrl+X
       (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) ||
-      // home, end, left, right
+      // // home, end, left, right
       (e.keyCode >= 35 && e.keyCode <= 39)
     ) {
       return // allow
