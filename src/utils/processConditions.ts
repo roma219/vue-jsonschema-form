@@ -126,7 +126,7 @@ export const checkRequierment = (requirment: BaseRequirment, data: IAnyObject = 
       : currentPath.minLength <= (currentValue || '').length
   }
 
-  // return false
+  return false
 }
 
 const applyCondition = (schema: ISchema, then: IAnyObject) => {

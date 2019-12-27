@@ -55,6 +55,7 @@ describe('[JSON-SCHEMA] checkRequierment function', () => {
 
     expect(checkRequierment(testRequirment, { a: 'aaaaaa' })).toBe(false)
     expect(checkRequierment(testRequirment, {})).toBe(true)
+
   })
 
   it('detects invalid condition', () => {
