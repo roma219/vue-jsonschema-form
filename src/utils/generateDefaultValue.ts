@@ -7,7 +7,6 @@ export const generateDefaultValue = (schema: ISchema) : { [key: string]: any } =
   if (schema.type === 'object') {
     defaultValue = {}
     Object.entries(schema.properties || {}).forEach(([propName, value]) => {
-      console.log(value.default, value.type)
       if (value.default || value.type === 'object') defaultValue[propName] = generateDefaultValue(value)
     })
   }
