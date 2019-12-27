@@ -49,18 +49,33 @@ describe('[JSON-SCHEMA] checkRequierment function', () => {
     expect(checkRequierment(testRequirment, { a: 5 })).toBe(false)
     expect(checkRequierment(testRequirment, { a: 123 })).toBe(true)
   })
+
+  it('detects "not" + "minLength" condition', () => {
+    const testRequirment = { not: { properties: { a: { minLength: 5 } } } }
+
+    expect(checkRequierment(testRequirment, { a: 'aaaaaa' })).toBe(false)
+    expect(checkRequierment(testRequirment, {})).toBe(true)
+  })
+
   it('detects invalid condition', () => {
     console.warn = jest.fn()
 
     const testRequirment = { not: { properties: { b: { asdasd: 5 } } } }
 
     expect(checkRequierment(testRequirment, { a: 5 })).toBe(false)
+    expect(checkRequierment({ properties: 5}, { a: 5 })).toBe(false)
     expect(console.warn).toHaveBeenCalledWith('[JSON-SCHEMA] Invalid IF condition: ', testRequirment)
   })
   it('Not validates unsupported condition', () => {
     const testRequirment = { not: { properties: { a: { maximum: 5 } } } }
 
     expect(checkRequierment(testRequirment, { a: 5 })).toBe(false)
+  })
+
+  it('Handles empty second parameter', () => {
+    const testRequirment = { not: { properties: { a: { maximum: 5 } } } }
+
+    expect(checkRequierment(testRequirment)).toBe(false)
   })
 })
 
