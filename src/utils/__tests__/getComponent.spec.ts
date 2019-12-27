@@ -43,4 +43,5 @@ describe('getComponent utility function - default config', () => {
 
     expect(component).toEqual({ componentName: 'TextInput', eventName: 'input' })
   })
+
 })

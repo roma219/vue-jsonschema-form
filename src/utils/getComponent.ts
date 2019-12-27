@@ -7,16 +7,12 @@ const isMatch = (target : IAnyObject, source : IAnyObject) : boolean => {
 }
 
 export const getComponent = (schema: ISchema, customComponents: ComponentsConfig = [], uiSchema?: IUiSchema) : IComponent => {
-  const components = [ ...customComponents, ...defaultComponents || [] ]
+  const components = [ ...customComponents, ...defaultComponents ]
 
   const component = components.find(component => {
-    if (component.matcher) {
-      if (component.uiSchemaMatcher) return isMatch(uiSchema || {}, component.uiSchemaMatcher) && isMatch(schema, component.matcher)
-      return isMatch(schema, component.matcher)
-    }
+    if (component.matcher) return isMatch(schema, component.matcher)
     if (component.uiSchemaMatcher) return isMatch(uiSchema || {}, component.uiSchemaMatcher)
     if (component.contains) return schema.hasOwnProperty(component.contains)
-    return false
   })
 
   const { componentName = 'TextInput', eventName = 'input', props = undefined } = (component || {})
