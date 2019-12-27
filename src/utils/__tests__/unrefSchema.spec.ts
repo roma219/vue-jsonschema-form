@@ -18,6 +18,8 @@ describe('unrefSchema utility function', () => {
   })
 
   it('uses definitions', () => {
+    console.warn = jest.fn()
+
     const value = unrefSchema({
       definitions: {
         a: { type: 'string', title: 'myref' },
@@ -28,7 +30,8 @@ describe('unrefSchema utility function', () => {
         a: { $ref: '#/definitions/a' },
         b: { type: 'array', items: { $ref: '#/definitions/itemSchema' } },
         b2: { type: 'array', items: { type: 'string' } },
-        c: { type: 'object', properties: { d: { $ref: '#/definitions/a' } } }
+        c: { type: 'object', properties: { d: { $ref: '#/definitions/a' } } },
+        x: { $ref: '#/definitions/x' }
       },
       if: { properties: { a: { const: 5 } } },
       then: { properties: { z: { $ref: '#/definitions/a' } } },
@@ -50,7 +53,8 @@ describe('unrefSchema utility function', () => {
         a: { $ref: '#/definitions/a', type: 'string', title: 'myref' },
         b: { type: 'array', items: { $ref: '#/definitions/itemSchema', type: 'number' } },
         b2: { type: 'array', items: { type: 'string' } },
-        c: { type: 'object', properties: { d: { $ref: '#/definitions/a', type: 'string', title: 'myref' } } }
+        c: { type: 'object', properties: { d: { $ref: '#/definitions/a', type: 'string', title: 'myref' } } },
+        x: { $ref: '#/definitions/x', type: 'string' }
       },
       if: { properties: { a: { const: 5 } } },
       then: { properties: { z: { $ref: '#/definitions/a', type: 'string', title: 'myref' } } },
@@ -65,6 +69,7 @@ describe('unrefSchema utility function', () => {
         then: { z: { minLength: 7 } }
       }]
     })
+    expect(console.warn).toHaveBeenCalledWith('[JSON-SCHEMA] Ref="#/definitions/x" not found in definitions')
   })
 
   // it('handles incorrect definition', () => {

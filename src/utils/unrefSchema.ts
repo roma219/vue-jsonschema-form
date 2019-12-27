@@ -8,7 +8,7 @@ export const unrefSchema = (schema: ISchemaObject) => {
 
     if (!definitionNames.includes(refName)) console.warn(`[JSON-SCHEMA] Ref="${ref}" not found in definitions`)
 
-    return !definitionNames.includes(refName) ? schema : clone(definitions[refName])
+    return !definitionNames.includes(refName) ? { type: 'string' } : clone(definitions[refName])
   }
 
   function checkSchemaForRefs (schema: ISchemaObject) : ISchemaObject {
