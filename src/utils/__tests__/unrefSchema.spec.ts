@@ -72,27 +72,4 @@ describe('unrefSchema utility function', () => {
     expect(console.warn).toHaveBeenCalledWith('[JSON-SCHEMA] Ref="#/definitions/x" not found in definitions')
   })
 
-  // it('handles incorrect definition', () => {
-  //   console.warn = jest.fn()
-  //   const value = unrefSchema({
-  //     definitions: {
-  //       a: { type: 'string', title: 'myref' },
-  //       itemSchema: { type: 'number' }
-  //     },
-  //     type: 'object',
-  //     properties: {
-  //       a: { $ref: '#/definitions/x' }
-  //     }
-  //   } as any)
-
-  //   // expect(value).toEqual({
-  //   //   type: 'object',
-  //   //   properties: {
-  //   //     a: { $ref: '#/definitions/a' },
-  //   //   }
-  //   // })
-
-  //   expect(console.warn).toHaveBeenCalledWith(`[JSON-SCHEMA] Ref="x" not found in definitions`)
-  // })
-
 })

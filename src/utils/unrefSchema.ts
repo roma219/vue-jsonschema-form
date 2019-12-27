@@ -14,8 +14,6 @@ export const unrefSchema = (schema: ISchemaObject) => {
   function checkSchemaForRefs (schema: ISchemaObject) : ISchemaObject {
     const newSchema = { ...schema }
 
-    // if (newSchema.type === 'object' && !newSchema.properties) newSchema.properties = {}
-
     // unref properties
     if (newSchema.properties) {
       Object.keys(newSchema.properties).forEach(propertyName => {
