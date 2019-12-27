@@ -11,7 +11,7 @@ export const setValidators = (schema: ISchema) : any => {
 
   if (schema.properties) {
     Object.keys(schema.properties).forEach((property) => {
-      const propertyObject : any = schema.properties ? schema.properties[property] : {}
+      const propertyObject : any = (schema.properties as any)[property]
 
       validations[property] = {}
 

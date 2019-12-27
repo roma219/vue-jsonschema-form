@@ -50,4 +50,8 @@ describe('[JSON-SCHEMA] utils.setValidators helper function', () => {
       }
     }))
   })
+  it('handles empty schema', () => {
+    const validations = setValidators({ type: 'object' } as ISchema)
+    expect(validations).toEqual({})
+  })
 })
