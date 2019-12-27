@@ -36,6 +36,7 @@ describe('defaultComponents', () => {
     expect(typeof inputWrapper.props).toBe('function')
     if (inputWrapper.props) {
       expect(typeof inputWrapper.props('q', {}, {})).toBe('object')
+      expect(inputWrapper.props('q', { title: 'kek', type: 'object' }, {})).toEqual({ title: 'kek', vertical: true })
     }
   })
 })
