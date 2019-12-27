@@ -14,11 +14,11 @@ export const unrefSchema = (schema: ISchemaObject) => {
   function checkSchemaForRefs (schema: ISchemaObject) : ISchemaObject {
     const newSchema = { ...schema }
 
-    if (newSchema.type === 'object' && !newSchema.properties) newSchema.properties = {}
+    // if (newSchema.type === 'object' && !newSchema.properties) newSchema.properties = {}
 
     // unref properties
     if (newSchema.properties) {
-      Object.keys(newSchema.properties || {}).forEach(propertyName => {
+      Object.keys(newSchema.properties).forEach(propertyName => {
         if (newSchema.properties[propertyName].$ref) {
           const definedSchema = getSchemaByRef(newSchema.properties[propertyName].$ref as string)
 
@@ -31,7 +31,7 @@ export const unrefSchema = (schema: ISchemaObject) => {
         if (newSchema.properties[propertyName].type === 'array' &&
           newSchema.properties[propertyName].items
         ) {
-          if (!newSchema.properties[propertyName].items) return
+          // if (!newSchema.properties[propertyName].items) return
           const definedSchema = newSchema.properties[propertyName] && newSchema.properties[propertyName].items && (newSchema.properties[propertyName].items as any).$ref
             ? getSchemaByRef((newSchema.properties[propertyName].items as any).$ref as string)
             : newSchema.properties[propertyName].items
@@ -51,13 +51,11 @@ export const unrefSchema = (schema: ISchemaObject) => {
     }
 
     // unref conditions
-    if (newSchema.allOf) {
-      newSchema.allOf.forEach(condition => {
-        if (condition.then && condition.then.properties) {
-          condition.then = checkSchemaForRefs(condition.then)
-        }
-      })
-    }
+    (newSchema.allOf || []).forEach(condition => {
+      if (condition.then && condition.then.properties) {
+        condition.then = checkSchemaForRefs(condition.then)
+      }
+    })
 
     if (newSchema.then && newSchema.then.properties) {
       newSchema.then = checkSchemaForRefs(newSchema.then)
