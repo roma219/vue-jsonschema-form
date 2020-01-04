@@ -23,7 +23,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component({
   name: 'Radio'
 })
-export default class Select extends Vue {
+export default class Radio extends Vue {
   @Prop({ default: '' }) readonly value!: any
   @Prop({ default: () => ([]) }) readonly options!: Array<any>
 
