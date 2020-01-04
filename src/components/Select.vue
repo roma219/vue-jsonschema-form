@@ -4,7 +4,10 @@
       v-for="(option, index) in options"
       :key="index"
       :selected="option === value ? 'true' : 'false'"
-      :value="option">{{ option }}</option>
+      :value="option"
+    >
+      {{ option }}
+    </option>
   </select>
 </template>
 
@@ -18,7 +21,7 @@ export default class Select extends Vue {
   @Prop({ default: '' }) readonly value!: any
   @Prop({ default: () => ([]) }) readonly options!: Array<any>
 
-  handleInput ({ target }: { target: HTMLInputElement }) {
+  handleInput ({ target } : { target: HTMLInputElement }) {
     const { value } = target
     this.$emit('input', value)
   }

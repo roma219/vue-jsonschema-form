@@ -11,7 +11,8 @@ const testSchema = {
       }
     },
     c: { type: 'string', enum: ['1', '2', '3'] },
-    d: { type: 'array', items: { type: 'number' } }
+    d: { type: 'array', items: { type: 'number' } },
+    e: { type: 'array', items: { type: 'object', properties: { f: { type: 'string', default: 'kek' }} } },
   }
 }
 
