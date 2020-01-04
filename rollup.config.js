@@ -9,7 +9,7 @@ import progress from 'rollup-plugin-progress'
 import replace from 'rollup-plugin-replace'
 
 export default {
-  input: 'src/JsonSchema/JsonSchema.vue',
+  input: 'src/main.ts',
   output: {
     format: 'esm',
     dir: 'dist',
