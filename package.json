@@ -25,7 +25,8 @@
     "@babel/preset-env": "^7.6.3",
     "nanoclone": "^0.2.1",
     "purecss": "^1.0.1",
-    "vuelidate": "^0.7.4"
+    "vuelidate": "^0.7.4",
+    "vuepress-plugin-typescript": "^0.1.1"
   },
   "peerDependencies": {
     "vuelidate": "^0.7.4",

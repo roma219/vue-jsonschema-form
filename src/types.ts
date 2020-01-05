@@ -1,5 +1,3 @@
-import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
-
 type SchemaTypeName = 'string' | 'number' | 'boolean' | 'object' | 'integer' | 'array'
 
 // Schema types

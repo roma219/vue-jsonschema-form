@@ -1,4 +1,3 @@
-import { JSONSchema7, JSONSchema7TypeName } from 'json-schema'
 import { IComponent, ISchema, IUiSchema, IAnyObject, ComponentsConfig } from '@/types'
 import { defaultComponents } from './defaultComponents'
 

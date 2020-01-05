@@ -1,5 +1,3 @@
-import { ISchemaObject } from '@/types'
-
 export const testSchemaForDefaultData = {
   type: 'object',
   properties: {

@@ -1,5 +1,4 @@
 import { ISchema, IAnyObject } from '@/types'
-import clone from 'nanoclone'
 import { mergeDeep } from './mergeDeep'
 
 type AllOfCondition = {

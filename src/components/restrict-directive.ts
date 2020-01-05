@@ -1,5 +1,3 @@
-import Vue, { DirectiveOptions } from 'vue'
-
 function checkKeyDown (el: HTMLElement, binding: any) {
   el.addEventListener('keydown', (e: KeyboardEvent) => {
     // delete, backpsace, tab, escape, enter,

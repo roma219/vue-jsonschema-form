@@ -1,4 +1,4 @@
-import { ComponentsConfig, WrapperComponentConfig, IUiSchema } from '@/types'
+import { ComponentsConfig, WrapperComponentConfig } from '@/types'
 
 export const defaultComponents : ComponentsConfig = [{
   matcher: {
