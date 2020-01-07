@@ -1,6 +1,5 @@
 import clone from 'nanoclone'
-import { ISchema, ISchemaObject, IDefinition } from '@/types'
-import { JSONSchema7 } from 'json-schema'
+import { ISchema, ISchemaObject } from '@/types'
 
 export const unrefSchema = (schema: ISchemaObject) => {
   function getSchemaByRef (ref: string) : ISchema {
