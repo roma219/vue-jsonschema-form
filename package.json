@@ -14,7 +14,9 @@
     "build": "rollup -c --environment BUILD:production",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "coveralls": "npm run test:unit && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "npm run test:unit && cat ./coverage/lcov.info | coveralls",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "main": "./dist/JsonSchema.js",
   "files": [
@@ -44,6 +46,7 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/eslint-config-typescript": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.30",
+    "@vuepress/plugin-register-components": "^1.2.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "core-js": "^2.6.10",
@@ -69,6 +72,7 @@
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.2.2",
     "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.2.0",
     "vuepress-plugin-typescript": "^0.1.1"
   }
 }
