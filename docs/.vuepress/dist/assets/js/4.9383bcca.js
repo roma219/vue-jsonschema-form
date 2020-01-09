@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{195:function(n,e,t){"use strict";t.r(e);var s={},o=t(0),c=Object(o.a)(s,(function(){var n=this.$createElement,e=this._self._c||n;return e("div",[this._v("\n  json schema demo\n  "),e("DemoApp")],1)}),[],!1,null,null,null);e.default=c.exports}}]);
