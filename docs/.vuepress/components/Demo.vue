@@ -1,20 +1,37 @@
 <template>
   <div>
-    <JsonSchema
-      :schema="schema"
-      :ui-schema="uiSchema"
-      v-model="value"/>
-    </JsonSchema>
-    <pre>
-      {{ schema }}
-    </pre>
-    <pre>
-      {{ value }}
-    </pre>
+    <!-- <div class="tabs">
+      <div
+        v-for="(tab, index) in tabs"
+        :key="index"
+        :class="{ 'active': activeTab === tab }"
+        @click="activeTab = tab"
+      >
+        {{ tab }}
+      </div>
+    </div> -->
+    <!-- <Content slot-key="name"/> -->
+    <SourceCode title="Schema">
+      <slot></slot>
+    </SourceCode>
+    <div class="content">
+      <!-- <pre v-highlightjs="schema">
+        <code class="javascript"></code>
+      </pre> -->
+      <!-- <div v-highlightjs="schema"><code class="javascript">{{ schema }}</code></div> -->
+      <JsonSchema
+        class="json-schema-demo"
+        :schema="schema"
+        :ui-schema="uiSchema"
+        v-model="value"/>
+      </JsonSchema>
+    </div>
+
   </div>
 </template>
 
 <script>
+// import testSchema from '../schemas/testSchema.js'
 const testSchema = {
   type: 'object',
   properties: {
@@ -67,12 +84,48 @@ export default {
     }
   },
   data: () => ({
-    value: {}
+    value: {},
+    activeTab: 'Data'
   }),
   computed: {
     schema() {
       return testSchema
+    },
+    stringifiedSchema() {
+      return JSON.stringify(this.schema, null, 2)
+    },
+    tabs() {
+      const tabs =  ['Data', 'JSON Schema']
+      if (Object.keys(this.uiSchema).length) tabs.push('UI Schema')
+      return tabs
     }
   }
 }
 </script>
+
+<style scoped>
+.tabs {
+  display: flex;
+}
+.tabs > div {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.tabs > div.active {
+  font-weight: bold;
+}
+
+.content {
+  justify-content: space-between;
+}
+
+.content pre {
+  flex-grow: 1;
+}
+
+.json-schema-demo {
+  margin-top: 15px;
+  /* width: 50%; */
+}
+</style>

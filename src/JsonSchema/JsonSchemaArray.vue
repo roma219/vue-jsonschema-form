@@ -37,7 +37,7 @@ import JsonSchemaArrayFormWrap from './JsonSchemaArrayFormWrap.vue'
 export default class JsonSchemaArray extends Vue {
   @Prop({ required: true }) readonly schema!: ISchemaArray
   @Prop() readonly uiSchema!: IUiSchema
-  @Prop({ default: () => ({}) }) readonly value!: IAnyObject[]
+  @Prop({ default: () => ([]) }) readonly value!: IAnyObject[]
   @Prop() readonly validations!: any
 
   get formWrapComponent () {
