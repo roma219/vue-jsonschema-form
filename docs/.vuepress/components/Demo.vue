@@ -88,6 +88,7 @@ export default {
 
 .content {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -97,6 +98,18 @@ export default {
 
 .json-schema-demo {
   margin-top: 15px;
-  width: 50%;
 }
+
+
+  @media (min-width: 800px) {
+
+    .json-schema-demo {
+      width: 50%;
+    }
+
+    .content {
+      flex-direction: row;
+    }
+
+  }
 </style>
