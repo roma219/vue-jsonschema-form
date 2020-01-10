@@ -1,44 +1,44 @@
-language: node_js
-node_js:
-- "node"
-- lts/*
-
-cache: npm
-
-install:
- - npm ci
-
-script:
-  - npm run lint
-  - npm run test:unit
-  - npm run build
-  - npm run docs:build
-
-after_script:
-  - cat ./coverage/lcov.info | coveralls
-
-deploy:
-provider: pages
-skip_cleanup: true
-github_token: $GITHUB_TOKEN
-keep_history: true
-local_dir: docs/.vuepress/dist
-target-branch: master
-repo: roma219/vue-jsonschema-form
-on:
-  branch: master
 # language: node_js
 # node_js:
-#   - lts/*
+# - "node"
+# - lts/*
+
+# cache: npm
+
 # install:
-#   - yarn install # npm ci
+#  - npm ci
+
 # script:
-#   - yarn docs:build # npm run docs:build
+#   - npm run lint
+#   - npm run test:unit
+#   - npm run build
+#   - npm run docs:build
+
+# after_script:
+#   - cat ./coverage/lcov.info | coveralls
+
 # deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   local_dir: docs/.vuepress/dist
-#   github_token: $GITHUB_TOKEN # A token generated on GitHub allowing Travis to push code on you repository. Set in the Travis settings page of your repository, as a secure variable
-#   keep_history: true
-#   on:
-#     branch: master
+# provider: pages
+# skip_cleanup: true
+# github_token: $GITHUB_TOKEN
+# keep_history: true
+# local_dir: docs/.vuepress/dist
+# target-branch: master
+# repo: roma219/vue-jsonschema-form
+# on:
+#   branch: master
+language: node_js
+node_js:
+  - lts/*
+install:
+  - yarn install # npm ci
+script:
+  - yarn docs:build # npm run docs:build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs/.vuepress/dist
+  github_token: $GITHUB_TOKEN # A token generated on GitHub allowing Travis to push code on you repository. Set in the Travis settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
