@@ -1,3 +1,3 @@
-module.exports = {
-  publicPath: 'docs/.vuepress/dist/'
-}
+// module.exports = {
+//   publicPath: 'docs/.vuepress/dist/'
+// }
