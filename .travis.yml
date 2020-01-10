@@ -6,7 +6,7 @@ node_js:
 cache: npm
 
 install:
- - npm install
+ - npm ci
 
 script:
   - npm run lint
@@ -23,5 +23,7 @@ skip_cleanup: true
 github_token: $GITHUB_TOKEN
 keep_history: true
 local_dir: docs/.vuepress/dist
+target-branch: master
+repo: roma219/vue-jsonschema-form
 on:
   branch: master
