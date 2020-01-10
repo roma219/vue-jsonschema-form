@@ -14,7 +14,7 @@ export default {
     format: 'esm',
     dir: 'dist',
     name: 'index',
-    sourcemap: true,
+    sourcemap: true
     // globals: {
     //   vue: 'Vue',
     //   vuelidate: 'vuelidate'

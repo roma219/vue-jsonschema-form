@@ -1,12 +1,12 @@
-jest.mock('../JsonSchema/JsonSchema.vue');
+jest.mock('../JsonSchema/JsonSchema.vue')
 
 describe('entry.ts', () => {
   it('should render app in #app', () => {
-    document.body.innerHTML ='<div id="app"></div>';
+    document.body.innerHTML = '<div id="app"></div>'
 
     require('../main')
 
-    const pElement = document.getElementsByClassName('schema');
-    expect(pElement.length).toBeTruthy();
+    const pElement = document.getElementsByClassName('schema')
+    expect(pElement.length).toBeTruthy()
   })
 })

@@ -7,9 +7,9 @@ describe('processSchema utility function', () => {
       properties: {
         a: { type: 'null' },
         b: { type: 'number', default: 123 },
-        c: { type: 'object', properties: { d: {type: 'string', default: 'a' } } },
+        c: { type: 'object', properties: { d: { type: 'string', default: 'a' } } },
         e: { type: 'object' },
-        f: { type: 'array', items: { type: 'string'} }
+        f: { type: 'array', items: { type: 'string' } }
       },
       kek: 5
     } as any)
@@ -19,9 +19,9 @@ describe('processSchema utility function', () => {
       properties: {
         a: { type: 'string' },
         b: { type: 'number', default: 123 },
-        c: { type: 'object', properties: { d: {type: 'string', default: 'a' } } },
+        c: { type: 'object', properties: { d: { type: 'string', default: 'a' } } },
         e: { type: 'object' },
-        f: { type: 'array', items: { type: 'string'} }
+        f: { type: 'array', items: { type: 'string' } }
       },
       kek: 5
     })

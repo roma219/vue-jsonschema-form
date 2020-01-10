@@ -55,7 +55,6 @@ describe('[JSON-SCHEMA] checkRequierment function', () => {
 
     expect(checkRequierment(testRequirment, { a: 'aaaaaa' })).toBe(false)
     expect(checkRequierment(testRequirment, {})).toBe(true)
-
   })
 
   it('detects invalid condition', () => {
@@ -64,7 +63,7 @@ describe('[JSON-SCHEMA] checkRequierment function', () => {
     const testRequirment = { not: { properties: { b: { asdasd: 5 } } } }
 
     expect(checkRequierment(testRequirment, { a: 5 })).toBe(false)
-    expect(checkRequierment({ properties: 5}, { a: 5 })).toBe(false)
+    expect(checkRequierment({ properties: 5 }, { a: 5 })).toBe(false)
     expect(console.warn).toHaveBeenCalledWith('[JSON-SCHEMA] Invalid IF condition: ', testRequirment)
   })
   it('Not validates unsupported condition', () => {
@@ -133,7 +132,7 @@ describe('[JSON-SCHEMA] processSchemaConditions function', () => {
       ...testCondition
     })
     expect(processSchemaConditions(testSchema, { a: '234' })).toEqual({
-      type: "object",
+      type: 'object',
       properties: {
         a: { type: 'string' },
         b: { type: 'integer' },

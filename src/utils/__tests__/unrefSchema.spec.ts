@@ -6,13 +6,13 @@ describe('unrefSchema utility function', () => {
       type: 'object',
       properties: {
         a: { type: 'string' }
-      },
+      }
     } as any)
 
     expect(value).toEqual({
       type: 'object',
       properties: {
-        a: { type: 'string' },
+        a: { type: 'string' }
       }
     })
   })
@@ -60,7 +60,7 @@ describe('unrefSchema utility function', () => {
       then: { properties: { z: { $ref: '#/definitions/a', type: 'string', title: 'myref' } } },
       allOf: [{
         if: { properties: { a: { const: 5 } } },
-        then: { properties: { z: { $ref: '#/definitions/a', type: 'string', title: 'myref'} } }
+        then: { properties: { z: { $ref: '#/definitions/a', type: 'string', title: 'myref' } } }
       }, {
         if: { properties: { a: { const: 5 } } },
         then: { properties: { z: { minLength: 7 } } }
@@ -71,5 +71,4 @@ describe('unrefSchema utility function', () => {
     })
     expect(console.warn).toHaveBeenCalledWith('[JSON-SCHEMA] Ref="#/definitions/x" not found in definitions')
   })
-
 })

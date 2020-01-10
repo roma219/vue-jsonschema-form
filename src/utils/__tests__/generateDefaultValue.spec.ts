@@ -7,7 +7,7 @@ describe('generateDefaultValue utility function', () => {
       properties: {
         a: { type: 'string' },
         b: { type: 'number', default: 123 },
-        c: { type: 'object', properties: { d: {type: 'string', default: 'a' } } },
+        c: { type: 'object', properties: { d: { type: 'string', default: 'a' } } },
         e: { type: 'object' }
       }
     })

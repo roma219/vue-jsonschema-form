@@ -8,7 +8,7 @@ describe('TextInput component', () => {
   })
 
   it('should correctly compute its type', () => {
-    const wrapper = mount(TextInput, { propsData: { type: 'number' }})
+    const wrapper = mount(TextInput, { propsData: { type: 'number' } })
     expect((wrapper.vm as any).isNumber).toBe(true)
     expect((wrapper.vm as any).isFloat).toBe(false)
 

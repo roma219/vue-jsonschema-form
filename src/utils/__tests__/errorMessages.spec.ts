@@ -11,7 +11,7 @@ describe('errorMessages', () => {
 
   it('errorMessage callback functions should return string value', () => {
     expect(
-      Object.values(errorMessages).filter(errorMessage => typeof errorMessage === 'function').every((errorMessage: any) => typeof errorMessage() === 'string' )
+      Object.values(errorMessages).filter(errorMessage => typeof errorMessage === 'function').every((errorMessage: any) => typeof errorMessage() === 'string')
     ).toBe(true)
   })
 })

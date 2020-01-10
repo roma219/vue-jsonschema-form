@@ -8,7 +8,7 @@ describe('Select component', () => {
   })
 
   it('emits event on input', () => {
-    const wrapper = mount(Select, { propsData: { options: ['1', '2', '3'], value: '2' }})
+    const wrapper = mount(Select, { propsData: { options: ['1', '2', '3'], value: '2' } })
     ;(wrapper.vm.$el as any).value = '3'
     wrapper.trigger('input')
     expect(wrapper.emitted().input[0]).toEqual(['3'])
