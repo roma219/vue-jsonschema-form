@@ -5,7 +5,6 @@ module.exports = {
   title: 'Vue JSON Schema',
   description: 'JSON Schema-based form generator - simple and customizable',
   base: '/vue-jsonschema-form/',
-  publicPath: 'docs/.vuepress/dist/',
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }]
   ],
