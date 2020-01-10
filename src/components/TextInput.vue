@@ -33,7 +33,10 @@ export default class TextInput extends Vue {
 
   handleInput ({ target }: { target: HTMLInputElement }) {
     let { value } = target
-
+    if (this.isNumber && !value) {
+      this.$emit('input', undefined)
+      return
+    }
     this.$emit('input', this.isNumber && value ? parseInt(value) : value)
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h3 class="title">{{ title }}</h3>
-    <button @click="expanded = !expanded">toggle</button>
+    <!-- <h3 class="title">{{ title }}</h3> -->
+    <!-- <button @click="expanded = !expanded">toggle</button> -->
     <slot v-if="expanded"></slot>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: false
     }
   },
   data: () => ({

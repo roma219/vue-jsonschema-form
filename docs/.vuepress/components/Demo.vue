@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo">
     <!-- <div class="tabs">
       <div
         v-for="(tab, index) in tabs"
@@ -11,64 +11,31 @@
       </div>
     </div> -->
     <!-- <Content slot-key="name"/> -->
-    <SourceCode title="Schema">
+    <SourceCode>
       <slot></slot>
     </SourceCode>
     <div class="content">
-      <!-- <pre v-highlightjs="schema">
-        <code class="javascript"></code>
-      </pre> -->
       <!-- <div v-highlightjs="schema"><code class="javascript">{{ schema }}</code></div> -->
       <JsonSchema
         class="json-schema-demo"
         :schema="schema"
         :ui-schema="uiSchema"
-        v-model="value"/>
-      </JsonSchema>
+        v-model="value"
+        @init-default="value = $event"
+      />
+      <pre v-highlightjs="formattedValue"><code class="javascript"></code></pre>
     </div>
 
   </div>
 </template>
 
 <script>
-// import testSchema from '../schemas/testSchema.js'
 const testSchema = {
   type: 'object',
   properties: {
-    aaa: { type: 'number', maximum: 10 },
-    arr: {
-      type: 'array',
-      items: { type: 'object', properties: { a: { type: 'string', minLength: 2 }, b: { type: 'boolean' } } }
-    },
-    bbb: { type: 'boolean' },
-    ccc: { type: 'string', enum: ['1', '2', '3'] },
-    ddd: {
-      type: 'object',
-      title: '',
-      properties: {
-        a1: { type: 'string', minLength: 1, maxLength: 5 },
-        b2: { type: 'boolean', default: true },
-        ddd: {
-          type: 'object',
-          properties: {
-            a1: { type: 'string', default: 'aaa' },
-            b2: { type: 'boolean' }
-          }
-        }
-      }
-    }
-  },
-  if: {
-    properties: {
-      aaa: {
-        const: 10
-      }
-    }
-  },
-  then: {
-    properties: {
-      newField: { type: 'string' }
-    }
+    a: { type: 'string', title: 'Text Input' },
+    b: { type: 'number', title: 'Digits Only' },
+    c: { type: 'boolean', default: true }
   }
 }
 
@@ -98,6 +65,9 @@ export default {
       const tabs =  ['Data', 'JSON Schema']
       if (Object.keys(this.uiSchema).length) tabs.push('UI Schema')
       return tabs
+    },
+    formattedValue() {
+      return JSON.stringify(this.value, null, 2)
     }
   }
 }
@@ -117,6 +87,7 @@ export default {
 }
 
 .content {
+  display: flex;
   justify-content: space-between;
 }
 
@@ -126,6 +97,6 @@ export default {
 
 .json-schema-demo {
   margin-top: 15px;
-  /* width: 50%; */
+  width: 50%;
 }
 </style>

@@ -11,9 +11,10 @@ module.exports = {
   themeConfig: {
     repo: 'roma219/vue-jsonschema-form',
     docsDir: 'docs',
+    search: false,
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/' },
+      // { text: 'Guide', link: '/guide/' },
     ],
     sidebar: [
       {
