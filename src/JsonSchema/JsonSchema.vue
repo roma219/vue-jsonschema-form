@@ -21,7 +21,6 @@ import { ISchema, IUiSchema, IAnyObject, ComponentsConfig,
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
 import clone from 'nanoclone'
-// require('purecss/build/pure-min.css')
 
 @Component({
   mixins: [validationMixin],
