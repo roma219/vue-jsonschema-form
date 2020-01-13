@@ -1,4 +1,5 @@
-.theme-default-content:not(.custom) {
+.theme-default-content:not(.custom),
+.page-nav {
   max-width: none!important;
 }
 
