@@ -12,9 +12,9 @@ npm install --save @roma219/vue-jsonschema-form
 
 ## JSON Schema
 Schema should follow [JSON Schema Standard](https://json-schema.org/). Root shema should always be an object.
-Supported JSON Schema features:
+<!-- Supported JSON Schema features:
 - refs
-- conditions (if -> then, allof/oneof-if -> then, if -> then/allof-then). Only equality conditions (`const`) are supported
+- conditions (if -> then, allof/oneof-if -> then, if -> then/allof-then). Only equality conditions (`const`) are supported -->
 
 ## Props
 | Prop Name       | Value Type          | Description  |
