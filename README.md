@@ -7,6 +7,9 @@
 # vue-jsonschema-form
 JSON Schema based form generator built with Vue.js. Currently Work in Progress.
 
+### Full Guide and Examples
+https://roma219.github.io/vue-jsonschema-form/guide/
+
 ### Installation
 ```
 npm install @roma219/vue-jsonschema-form
