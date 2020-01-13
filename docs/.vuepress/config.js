@@ -12,28 +12,22 @@ module.exports = {
     repo: 'roma219/vue-jsonschema-form',
     docsDir: 'docs',
     search: false,
+    displayAllHeaders: true,
     nav: [
       { text: 'Home', link: '/' },
-      // { text: 'Guide', link: '/guide/' },
+      { text: 'Guide', link: '/guide/' },
     ],
     sidebar: [
       {
-        title: 'Installation',   // required
-        path: '/installation/',      // optional, which should be a absolute path.
-        collapsable: false, // optional, defaults to true
-        sidebarDepth: 0,
-        children: [
-          '/'
-        ]
+        title: 'Guide',   // required
+        path: '/guide/',      // optional, which should be a absolute path.
+        collapsable: false,
+        sidebarDepth: 1
       },
-      {
-        title: 'Usage',   // required
-        path: '/usage/',      // optional, which should be a absolute path.
-        sidebarDepth: 1,    // optional, defaults to 1
-        children: [
-          '/'
-        ]
-      }
+      // {
+      //   title: 'Examples',
+      //   path: '/examples/'
+      // }
     ]
   },
   plugins: [

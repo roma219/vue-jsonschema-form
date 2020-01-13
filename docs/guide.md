@@ -1,5 +1,0 @@
-# this is guide
-
-## bek
-
-...

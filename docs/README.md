@@ -2,7 +2,7 @@
 home: true
 heroImage:
 actionText: Get Started →
-# actionLink: /guide
+actionLink: /guide/
 features:
 - title: Zero Configuration
   details: Has built-in components that allow you to quickstart your form with only JSON Schema provided
