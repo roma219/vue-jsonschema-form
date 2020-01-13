@@ -3,15 +3,10 @@ import minLength from 'vuelidate/lib/validators/minLength'
 import maxLength from 'vuelidate/lib/validators/maxLength'
 import minValue from 'vuelidate/lib/validators/minValue'
 import maxValue from 'vuelidate/lib/validators/maxValue'
-// const required = require('vuelidate/lib/validators/required')
-// const minLength = require('vuelidate/lib/validators/minLength')
-// const maxLength = require('vuelidate/lib/validators/maxLength')
-// const minValue = require('vuelidate/lib/validators/minValue')
-// const maxValue = require('vuelidate/lib/validators/maxValue')
-
 import { ISchema } from '@/types'
 
 export const setValidators = (schema: ISchema) : any => {
+  console.log('setting validations')
   const validations : any = {}
 
   if (schema.properties) {

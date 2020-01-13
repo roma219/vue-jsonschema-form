@@ -1,0 +1,7 @@
+.theme-default-content:not(.custom) {
+  max-width: none!important;
+}
+
+.hljs {
+  color: #c0c5ce!important;
+}

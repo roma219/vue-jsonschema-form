@@ -27,8 +27,7 @@ import clone from 'nanoclone'
   name: 'JsonSchema',
   components: { JsonSchemaForm },
   validations () {
-    return {}
-    // return { value: setValidators((this as any).processedSchema) }
+    return { value: setValidators((this as any).processedSchema) }
   }
 })
 export default class JsonSchema extends Vue {

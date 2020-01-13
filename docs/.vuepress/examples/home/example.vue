@@ -1,1 +1,1 @@
-<JsonSchema :schema="schema" v-model="value"/>
+<JsonSchema :schema="schema" v-model="dataModel"/>

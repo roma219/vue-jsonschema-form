@@ -6,7 +6,7 @@ npm install --save @roma219/vue-jsonschema-form
 
 
 ## Usage
-```
+``` vue
 <JsonSchema :schema="schema" v-model="dataModel"/>
 ```
 

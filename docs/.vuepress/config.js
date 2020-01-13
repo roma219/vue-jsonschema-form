@@ -1,5 +1,7 @@
 require('dotenv').config()
 const webpack = require('webpack')
+console.log(process)
+console.log('kek')
 
 module.exports = {
   title: 'Vue JSON Schema',
@@ -11,7 +13,7 @@ module.exports = {
   themeConfig: {
     repo: 'roma219/vue-jsonschema-form',
     docsDir: 'docs',
-    search: false,
+    search: true,
     displayAllHeaders: true,
     nav: [
       { text: 'Home', link: '/' },
@@ -24,10 +26,10 @@ module.exports = {
         collapsable: false,
         sidebarDepth: 1
       },
-      // {
-      //   title: 'Examples',
-      //   path: '/examples/'
-      // }
+      {
+        title: 'Examples',
+        path: '/examples/'
+      }
     ]
   },
   plugins: [

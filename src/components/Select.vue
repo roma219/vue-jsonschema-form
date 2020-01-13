@@ -1,5 +1,6 @@
 <template>
   <select @input="handleInput">
+    <option style="display:none;" :selected="!value ? 'true' : 'false'"></option>
     <option
       v-for="(option, index) in options"
       :key="index"

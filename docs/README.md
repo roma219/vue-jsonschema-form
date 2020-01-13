@@ -15,9 +15,10 @@ footer: Vue JSON Schema Form 2020
 
 ### Example
 
-<<< @/docs/.vuepress/examples/home/schema.js
 <<< @/docs/.vuepress/examples/home/example.vue
-<Demo/>
+<ClientOnly>
+<Demo schema-name="home"/>
+</ClientOnly>
 
 ---
 <p style="text-align: center;"><b>This is currently work in progress. More details coming soon...</b></p>
