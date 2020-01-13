@@ -1,7 +1,5 @@
 require('dotenv').config()
 const webpack = require('webpack')
-console.log(process)
-console.log('kek')
 
 module.exports = {
   title: 'Vue JSON Schema',
@@ -21,8 +19,8 @@ module.exports = {
     ],
     sidebar: [
       {
-        title: 'Guide',   // required
-        path: '/guide/',      // optional, which should be a absolute path.
+        title: 'Guide',
+        path: '/guide/',
         collapsable: false,
         sidebarDepth: 1
       },

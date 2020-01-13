@@ -4,7 +4,7 @@ export default {
     properties: {
       a: { type: 'string', title: 'Text Input', minLength: 1, maxLength: 5 },
       b: { type: 'number', maximum: 10 },
-      c: { type: 'boolean', default: true }
+      c: { type: 'boolean' }
     }
   },
   basic: {
@@ -24,6 +24,7 @@ export default {
       a: { type: 'string' },
       b: {
         type: 'object',
+        title: '',
         properties: {
           c: { type: 'boolean' }
         }
@@ -40,6 +41,35 @@ export default {
           properties: { name: { type: 'string' } }
         }
       }
+    }
+  },
+  conditions: {
+    type: 'object',
+    properties: {
+      a: { type: 'string' },
+      b: { type: 'number' }
+    },
+    if: {
+      properties: {
+        a: {
+          const: 'aaa'
+        }
+      }
+    },
+    then: {
+      properties: {
+        b: {
+          minimum: 1
+        },
+        c: { type: 'boolean' }
+      }
+    }
+  },
+  defaults: {
+    type: 'object',
+    properties: {
+      a: { type: 'string', default: 'aaa' },
+      b: { type: 'boolean' }
     }
   }
 }

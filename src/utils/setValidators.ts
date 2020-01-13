@@ -6,7 +6,6 @@ import maxValue from 'vuelidate/lib/validators/maxValue'
 import { ISchema } from '@/types'
 
 export const setValidators = (schema: ISchema) : any => {
-  console.log('setting validations')
   const validations : any = {}
 
   if (schema.properties) {
@@ -34,7 +33,6 @@ export const setValidators = (schema: ISchema) : any => {
       // set nested validators
       if (propertyObject.type === 'object') validations[property] = setValidators(propertyObject)
 
-      // if (propertyObject.format === 'phone') validations[property].phone = correctPhone(propertyObject)
 
       // set item validators for array of objects
       if (propertyObject.type === 'array' && propertyObject.items && propertyObject.items.type === 'object') {

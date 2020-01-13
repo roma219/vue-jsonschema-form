@@ -27,7 +27,7 @@ import clone from 'nanoclone'
   name: 'JsonSchema',
   components: { JsonSchemaForm },
   validations () {
-    return { value: setValidators((this as any).processedSchema) }
+    return { value: setValidators((this as any).conditionedScheema) }
   }
 })
 export default class JsonSchema extends Vue {
@@ -80,4 +80,8 @@ export default class JsonSchema extends Vue {
 
 <style>
 @import url("../../node_modules/purecss/build/pure-min.css");
+
+.pure-control-group {
+  overflow: hidden;
+}
 </style>

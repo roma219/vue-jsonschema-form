@@ -10,16 +10,7 @@
         {{ tab }}
       </div>
     </div>
-    <!-- <Content slot-key="name"/> -->
-    <SourceCode>
-      <slot></slot>
-    </SourceCode>
     <div class="content">
-      <!-- <pre><code>{{ schema }}</code></pre> -->
-      <!-- <highlight-code lang="json">
-        {{ stringifiedSchema }}
-      </highlight-code> -->
-      <!-- <pre class="language-json" v-html="stringifiedSchema">{{ schema }}</pre> -->
       <pre v-highlightjs="activeTab === 'JSON Schema' ? stringifiedSchema : formattedValue"><code class="json"></code></pre>
       <ClientOnly>
         <JsonSchema
@@ -27,6 +18,7 @@
           :schema="schema"
           :ui-schema="uiSchema"
           v-model="value"
+          @init-default="handleDefaultValue"
         />
       </ClientOnly>
     </div>
@@ -35,21 +27,9 @@
 </template>
 
 <script>
-// import JsonSchema from '../../../src/JsonSchema/JsonSchema.vue'
-
-const testSchema = {
-  type: 'object',
-  properties: {
-    a: { type: 'string', title: 'Text Input' },
-    b: { type: 'number', title: 'Digits Only' },
-    c: { type: 'boolean', default: true }
-  }
-}
-
 import schemas from '../schemas'
 
 export default {
-  // components: { JsonSchema: () => import('../../../src/JsonSchema/JsonSchema.vue') },
   props: {
     schemaName: {
       type: String,
@@ -58,6 +38,10 @@ export default {
     uiSchema: {
       type: Object,
       default: () => ({})
+    },
+    useDefaults: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -79,6 +63,11 @@ export default {
     formattedValue() {
       return JSON.stringify(this.value, null, 2)
     }
+  },
+  methods: {
+    handleDefaultValue(value) {
+      if (this.useDefaults) this.value = value
+    }
   }
 }
 </script>
@@ -93,10 +82,14 @@ export default {
 .tabs > div {
   margin-right: 10px;
   cursor: pointer;
+  border-bottom: 1px dashed black;
+  color: black;
+  opacity: 0.7
 }
 
 .tabs > div.active {
   font-weight: bold;
+  opacity: 1;
 }
 
 .content {

@@ -131,4 +131,8 @@ export default class JsonSchemaForm extends Vue {
 .json-schema-form {
   width: 100%;
 }
+.pure-form-message {
+  color: #f14668!important;
+  margin-left: 4px;
+}
 </style>
