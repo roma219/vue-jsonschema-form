@@ -94,7 +94,8 @@ export default {
   cursor: pointer;
   border-bottom: 1px dashed black;
   color: black;
-  opacity: 0.7
+  opacity: 0.7;
+  height: 22px;
 }
 
 .tabs > div.active {
@@ -117,15 +118,15 @@ export default {
 }
 
 
-  @media (min-width: 800px) {
+@media (min-width: 800px) {
 
-    .json-schema-demo {
-      width: 50%;
-    }
-
-    .content {
-      flex-direction: row;
-    }
-
+  .json-schema-demo {
+    width: 50%;
   }
+
+  .content {
+    flex-direction: row;
+  }
+
+}
 </style>
