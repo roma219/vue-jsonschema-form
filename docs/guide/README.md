@@ -1,9 +1,10 @@
+## Introduction
+Vue JSON Schema Form library uses object presented in a [JSON Schema Standard](https://json-schema.org/) to generate an input form and update provided data model.
 
 ## Installation
 ```
 npm install --save @roma219/vue-jsonschema-form
 ```
-
 
 ## Usage
 ``` vue
@@ -73,16 +74,6 @@ This is the list of built-in components and corresponding JSON Schema blocks.
     <Select :options="['option 1', 'option 2', 'option 3']"/>
 </div>
 
-### Radio
-```js
-{
-    enum: ['option 1', 'option 2', 'option 3'],
-    format: 'radio'
-}
-```
-<div class="json-schema-form pure-form pure-form-aligned">
-    <Radio :options="['option 1', 'option 2', 'option 3']"/>
-</div>
 
 ### Object
 ```js
@@ -113,4 +104,33 @@ This is the list of built-in components and corresponding JSON Schema blocks.
 ```
 <div class="json-schema-form pure-form pure-form-aligned">
     <JsonSchema :schema="{ type: 'object' , properties: { arr: { type: 'array', title: '', items: { type: 'object', properties: { a: { type: 'string' }, b: { type: 'number' } } } } } }"/>
+</div>
+
+
+## UI Schema
+UI Schema is an optional schema which can provide additional UI features that cannot be implemented via regular JSON Schema, such as using specific UI Component.
+```js
+// schema
+{
+    type: 'object',
+    properties: {
+        a: {
+            type: 'string',
+            enum: ['option 1', 'option 2', 'option 3']
+        }
+    }
+}
+
+// ui schema
+{
+    properties: {
+        a: {
+            uiType: 'radio'
+        }
+    }
+}
+```
+
+<div class="json-schema-form pure-form pure-form-aligned">
+    <Radio :options="['option 1', 'option 2', 'option 3']"/>
 </div>
