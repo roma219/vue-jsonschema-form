@@ -2,7 +2,7 @@ require('dotenv').config()
 const webpack = require('webpack')
 
 module.exports = {
-  title: 'Vue JSON Schema',
+  title: 'Vue JSON Schema Form',
   description: 'JSON Schema-based form generator - simple and customizable',
   base: '/vue-jsonschema-form/',
   head: [
