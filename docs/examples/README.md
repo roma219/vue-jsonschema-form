@@ -9,8 +9,12 @@ Nesting objects is supported. If you want to omit nested object's property name 
 To specify schema for each array element, provide `items` parameter in array's schema.
 <Demo schema-name="arrayOfObjects"/>
 ## Validations
+Supported validations: `minLength` and `maxLength` for strings, `minimum` and `maximum` for numbers.
 <Demo schema-name="home"/>
 ## Conditions
+If condition is met, schema is merged with schema inside `then`. Minimum length (`minLength`) and equality (`const`) conditions are supported. Also `oneOf` (condition is met if only one `if` is met) and `allOf` (condition is met if all `if`s are met) combinations can be used.
+
+Try settings `a` to `aaa`.
 <Demo schema-name="conditions"/>
 ## Default Values
 Sometimes, usually when initializing a new data instance, you would want to use some default values. Full data model object with default values is emitted after initialization through a `@init-default` event.

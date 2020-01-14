@@ -46,7 +46,7 @@ export default {
   },
   data: () => ({
     value: {},
-    activeTab: 'JSON Schema'
+    activeTab: 'Data Model'
   }),
   computed: {
     schema() {
@@ -56,7 +56,7 @@ export default {
       return JSON.stringify(this.schema, null, 2)
     },
     tabs() {
-      const tabs =  ['JSON Schema', 'Data Model']
+      const tabs =  ['Data Model', 'JSON Schema']
       if (Object.keys(this.uiSchema).length) tabs.push('UI Schema')
       return tabs
     },
