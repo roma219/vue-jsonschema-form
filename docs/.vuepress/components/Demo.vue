@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="content">
-      <pre v-highlightjs="activeTab === 'JSON Schema' ? stringifiedSchema : formattedValue"><code class="json"></code></pre>
+      <pre v-highlightjs="codeContent"><code class="json"></code></pre>
       <ClientOnly>
         <JsonSchema
           class="json-schema-demo"
@@ -28,6 +28,7 @@
 
 <script>
 import schemas from '../schemas'
+import uiSchemas from '../ui-schemas'
 
 export default {
   props: {
@@ -35,9 +36,9 @@ export default {
       type: String,
       required: true
     },
-    uiSchema: {
-      type: Object,
-      default: () => ({})
+    useUiSchema: {
+      type: Boolean,
+      default: false
     },
     useDefaults: {
       type: Boolean,
@@ -46,22 +47,31 @@ export default {
   },
   data: () => ({
     value: {},
-    activeTab: 'Data Model'
+    activeTab: 'JSON Schema'
   }),
   computed: {
     schema() {
       return schemas[this.schemaName]
     },
-    stringifiedSchema() {
-      return JSON.stringify(this.schema, null, 2)
+    uiSchema() {
+      return uiSchemas[this.schemaName]
     },
     tabs() {
-      const tabs =  ['Data Model', 'JSON Schema']
-      if (Object.keys(this.uiSchema).length) tabs.push('UI Schema')
+      const tabs =  ['JSON Schema', 'Data Model']
+      if (this.useUiSchema) tabs.push('UI Schema')
       return tabs
     },
-    formattedValue() {
-      return JSON.stringify(this.value, null, 2)
+    codeContent() {
+      switch (this.activeTab) {
+        case 'JSON Schema':
+          return JSON.stringify(this.schema, null, 2)
+          break
+        case 'Data Model':
+          return JSON.stringify(this.value, null, 2)
+          break
+        case 'UI Schema':
+          return JSON.stringify(this.uiSchema, null, 2)
+      }
     }
   },
   methods: {

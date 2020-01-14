@@ -71,5 +71,31 @@ export default {
       a: { type: 'string', default: 'aaa' },
       b: { type: 'boolean' }
     }
+  },
+  radio: {
+    type: 'object',
+    properties: {
+      a: {
+        type: 'string',
+        enum: ['option 1', 'option 2', 'option 3']
+      }
+    }
+  },
+  order: {
+    type: 'object',
+    properties: {
+      a: { type: 'string' },
+      b: { type: 'boolean' },
+      c: { type: 'string' }
+    }
+  },
+  selectTitles: {
+    type: 'object',
+    properties: {
+      a: {
+        type: 'string',
+        enum: ['option 1', 'option 2', 'option 3']
+      }
+    }
   }
 }
