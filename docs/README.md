@@ -24,4 +24,3 @@ footer: Vue JSON Schema Form 2020
 </ClientOnly>
 
 ---
-<p style="text-align: center;"><b>This is currently work in progress. More details coming soon...</b></p>
