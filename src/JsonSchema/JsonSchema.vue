@@ -51,7 +51,7 @@ export default class JsonSchema extends Vue {
 
   handleChange ({ path, value } : { path: Array<string>, value: any }) {
     const newValue = { ...this.value }
-    const paramName = path.pop() || ''
+    const paramName = path.pop()
 
     let target = newValue
     path.forEach(paramName => {
