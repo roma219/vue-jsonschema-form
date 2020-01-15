@@ -13,7 +13,7 @@ const testSchema = {
     // x: { type: 'number', minimum: 1 },
     // z: { type: 'string', minLength: 1 },
     c: { type: 'string', enum: ['1', '2', '3'] },
-    d: { type: 'array', items: { type: 'number' } },
+    // d: { type: 'array', items: { type: 'number' } },
     e: {
       type: 'array',
       items: {
