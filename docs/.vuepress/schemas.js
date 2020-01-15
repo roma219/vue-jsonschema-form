@@ -10,23 +10,24 @@ export default {
   basic: {
     type: 'object',
     properties: {
-      a: { type: 'string' },
-      b: { type: 'boolean' },
+      a: { type: 'string', title: 'Username' },
+      b: { type: 'boolean', title: 'Use Avatar' },
       mySelect: {
         type: 'string',
-        enum: ['option1', 'option2', 'option3']
+        title: 'Account Type',
+        enum: ['User', 'Editor', 'Admin']
       }
     }
   },
   nested: {
     type: 'object',
     properties: {
-      a: { type: 'string' },
+      a: { type: 'string', title: 'Username' },
       b: {
         type: 'object',
         title: '',
         properties: {
-          c: { type: 'boolean' }
+          c: { type: 'boolean', title: 'Is Admin' }
         }
       }
     }
@@ -36,9 +37,10 @@ export default {
     properties: {
       array: {
         type: 'array',
+        title: 'Users',
         items: {
           type: 'object',
-          properties: { name: { type: 'string' } }
+          properties: { name: { type: 'string', title: 'Username' } }
         }
       }
     }
@@ -46,13 +48,13 @@ export default {
   conditions: {
     type: 'object',
     properties: {
-      a: { type: 'string' },
-      b: { type: 'number' }
+      a: { type: 'string', title: 'Your favourite front-end framework?' },
+      b: { type: 'number', title: 'Amount of likes' }
     },
     if: {
       properties: {
         a: {
-          const: 'aaa'
+          const: 'Vue'
         }
       }
     },
@@ -61,15 +63,15 @@ export default {
         b: {
           minimum: 1
         },
-        c: { type: 'boolean' }
+        c: { type: 'boolean', title: 'Are you sure?' }
       }
     }
   },
   defaults: {
     type: 'object',
     properties: {
-      a: { type: 'string', default: 'aaa' },
-      b: { type: 'boolean' }
+      a: { title: 'User Provider', type: 'string', default: 'Fabric №1' },
+      b: { type: 'boolean', title: 'Yes?' }
     }
   },
   radio: {
@@ -77,16 +79,17 @@ export default {
     properties: {
       a: {
         type: 'string',
-        enum: ['option 1', 'option 2', 'option 3']
+        title: 'User Type',
+        enum: ['User', 'Editor', 'Admin']
       }
     }
   },
   order: {
     type: 'object',
     properties: {
-      a: { type: 'string' },
-      b: { type: 'boolean' },
-      c: { type: 'string' }
+      a: { type: 'string', title: 'Name' },
+      b: { type: 'boolean', title: 'Superuser' },
+      c: { type: 'string', title: 'Surname' }
     }
   },
   selectTitles: {

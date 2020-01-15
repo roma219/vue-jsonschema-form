@@ -1,6 +1,6 @@
 # Examples
 ## Basic Inputs
-Full list of supported built-it components can be found [here](kek).
+Full list of supported built-it components can be found [here](/guide/#built-in-components).
 <Demo schema-name="basic"/>
 
 ## Nested Object
