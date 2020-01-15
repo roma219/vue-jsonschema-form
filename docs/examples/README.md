@@ -18,7 +18,7 @@ Supported validations: `minLength` and `maxLength` for strings, `minimum` and `m
 ## Conditions
 If condition is met, schema is merged with schema inside `then`. Minimum length (`minLength`) and equality (`const`) conditions are supported. Also `oneOf` (condition is met if only one `if` is met) and `allOf` (condition is met if all `if`s are met) combinations can be used.
 
-Try settings `a` to `aaa`.
+Try typing in `Vue`.
 <Demo schema-name="conditions"/>
 
 ## Default Values
