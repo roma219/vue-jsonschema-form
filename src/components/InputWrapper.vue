@@ -66,13 +66,12 @@ export default class InputWrapper extends Vue {
   line-height: 15px;
 }
 
-.pure-form-message {
-  position: relative;
-  left: 176px;
-}
-
 .pure-control-group--disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.pure-form-message {
+  color: #f14668!important;
 }
 </style>

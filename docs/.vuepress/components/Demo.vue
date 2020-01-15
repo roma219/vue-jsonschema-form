@@ -121,7 +121,8 @@ export default {
 @media (min-width: 800px) {
 
   .json-schema-demo {
-    width: 50%;
+    width: 45%;
+    margin-left: 15px;
   }
 
   .content {

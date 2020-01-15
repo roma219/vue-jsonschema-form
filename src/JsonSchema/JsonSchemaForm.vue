@@ -1,5 +1,5 @@
 <template>
-  <div class="json-schema-form pure-form pure-form-aligned">
+  <div class="json-schema-form pure-form pure-form-stacked">
     <component
       :is="wrapperComponentParams.componentName"
       :key="propName"
@@ -130,9 +130,5 @@ export default class JsonSchemaForm extends Vue {
 <style>
 .json-schema-form {
   width: 100%;
-}
-.pure-form-message {
-  color: #f14668!important;
-  margin-left: 4px;
 }
 </style>
