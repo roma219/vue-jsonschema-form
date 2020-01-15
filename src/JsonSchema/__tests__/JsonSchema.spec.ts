@@ -10,10 +10,7 @@ const testSchema = {
         c: { type: 'string', minLength: 1 }
       }
     },
-    // x: { type: 'number', minimum: 1 },
-    // z: { type: 'string', minLength: 1 },
     c: { type: 'string', enum: ['1', '2', '3'] },
-    // d: { type: 'array', items: { type: 'number' } },
     e: {
       type: 'array',
       items: {
@@ -32,7 +29,8 @@ const testSchema = {
 const testUiSchema = {
   properties: {
     c: {
-      uiType: 'radio'
+      uiType: 'radio',
+      order: 2
     },
     d: {
       order: 1
