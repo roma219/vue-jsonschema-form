@@ -1,5 +1,3 @@
-jest.mock('../JsonSchema/JsonSchema.vue')
-
 describe('entry.ts', () => {
   it('should render app in #app', () => {
     document.body.innerHTML = '<div id="app"></div>'
