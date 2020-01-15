@@ -2,9 +2,9 @@ export default {
   home: {
     type: 'object',
     properties: {
-      a: { type: 'string', title: 'Text Input', minLength: 1, maxLength: 5 },
-      b: { type: 'number', maximum: 10 },
-      c: { type: 'boolean' }
+      a: { type: 'string', title: 'Name', minLength: 1 },
+      b: { type: 'number', title: 'Age', maximum: 99 },
+      c: { type: 'boolean', title: 'Agree' }
     }
   },
   basic: {
