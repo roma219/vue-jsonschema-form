@@ -80,8 +80,4 @@ export default class JsonSchemaArray extends Vue {
 .json-schema-array {
   width: 100%;
 }
-
-.add-new-arr-item {
-  /* font-size: 20px; */
-}
 </style>

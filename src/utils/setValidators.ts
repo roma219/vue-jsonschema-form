@@ -33,7 +33,6 @@ export const setValidators = (schema: ISchema) : any => {
       // set nested validators
       if (propertyObject.type === 'object') validations[property] = setValidators(propertyObject)
 
-
       // set item validators for array of objects
       if (propertyObject.type === 'array' && propertyObject.items && propertyObject.items.type === 'object') {
         validations[property] = {
