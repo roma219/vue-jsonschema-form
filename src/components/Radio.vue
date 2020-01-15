@@ -1,7 +1,7 @@
 <template>
 <div>
   <div v-for="(option, index) in options" :key="index">
-    <label :for="option + 'radio'">
+    <label :for="option + 'radio'" class="pure-radio">
       <input
         type="radio"
         name="radio1"
@@ -33,3 +33,9 @@ export default class Radio extends Vue {
   }
 }
 </script>
+
+<style>
+.pure-radio {
+  margin-left: 1px!important;
+}
+</style>
