@@ -7,7 +7,7 @@
     <meta name="description" content="JSON Schema-based form generator - simple and customizable">
     <link rel="icon" href="/vue-jsonschema-form/logo.png">
     
-    <link rel="preload" href="/vue-jsonschema-form/assets/css/0.styles.6d352b7d.css" as="style"><link rel="preload" href="/vue-jsonschema-form/assets/js/app.0a086434.js" as="script"><link rel="preload" href="/vue-jsonschema-form/assets/js/2.62489a76.js" as="script"><link rel="preload" href="/vue-jsonschema-form/assets/js/8.00413530.js" as="script"><link rel="preload" href="/vue-jsonschema-form/assets/js/3.98aa812e.js" as="script"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/10.e6a20268.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/4.48d9daf2.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/5.44106b34.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/6.b9314a44.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/7.35559a4e.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/9.6af9acf4.js">
+    <link rel="preload" href="/vue-jsonschema-form/assets/css/0.styles.6d352b7d.css" as="style"><link rel="preload" href="/vue-jsonschema-form/assets/js/app.026b9c83.js" as="script"><link rel="preload" href="/vue-jsonschema-form/assets/js/2.62489a76.js" as="script"><link rel="preload" href="/vue-jsonschema-form/assets/js/8.bf9cbb47.js" as="script"><link rel="preload" href="/vue-jsonschema-form/assets/js/3.4b26b557.js" as="script"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/10.e6a20268.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/4.48d9daf2.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/5.44106b34.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/6.b9314a44.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/7.35559a4e.js"><link rel="prefetch" href="/vue-jsonschema-form/assets/js/9.6af9acf4.js">
     <link rel="stylesheet" href="/vue-jsonschema-form/assets/css/0.styles.6d352b7d.css">
   </head>
   <body>
@@ -40,6 +40,21 @@
       JSON Schema
     </div><div data-v-13f5350d>
       Data Model
+    </div></div> <div class="content" data-v-13f5350d><pre data-v-13f5350d><code class="json" data-v-13f5350d></code></pre> <!----></div></div></p> <p><code>oneOf</code> usage example. Condition is met when <code>a</code> is <code>Vue</code> or <code>React</code>.
+<div class="demo" data-v-13f5350d><div class="tabs" data-v-13f5350d><div class="active" data-v-13f5350d>
+      JSON Schema
+    </div><div data-v-13f5350d>
+      Data Model
+    </div></div> <div class="content" data-v-13f5350d><pre data-v-13f5350d><code class="json" data-v-13f5350d></code></pre> <!----></div></div></p> <p><code>allOf</code> usage example. Condition is met when a is <code>Vue</code> and <code>c</code> is <code>true</code>.
+<div class="demo" data-v-13f5350d><div class="tabs" data-v-13f5350d><div class="active" data-v-13f5350d>
+      JSON Schema
+    </div><div data-v-13f5350d>
+      Data Model
+    </div></div> <div class="content" data-v-13f5350d><pre data-v-13f5350d><code class="json" data-v-13f5350d></code></pre> <!----></div></div></p> <p><code>allOf</code> can also be used on the top level to implement multiple conditions. Try setting <code>a</code> to <code>Vue</code> and to <code>React</code>.
+<div class="demo" data-v-13f5350d><div class="tabs" data-v-13f5350d><div class="active" data-v-13f5350d>
+      JSON Schema
+    </div><div data-v-13f5350d>
+      Data Model
     </div></div> <div class="content" data-v-13f5350d><pre data-v-13f5350d><code class="json" data-v-13f5350d></code></pre> <!----></div></div></p> <h2 id="default-values"><a href="#default-values" class="header-anchor">#</a> Default Values</h2> <p>Sometimes, usually when initializing a new data instance, you would want to use some default values. Full data model object with default values is emitted after initialization through a <code>@init-default</code> event.</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>JsonSchema</span> <span class="token attr-name">:schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>schema<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>dataModel<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@init-default</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>dataModel = $event<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
 </code></pre></div><div class="demo" data-v-13f5350d><div class="tabs" data-v-13f5350d><div class="active" data-v-13f5350d>
       JSON Schema
@@ -61,6 +76,6 @@
     </div></div> <div class="content" data-v-13f5350d><pre data-v-13f5350d><code class="json" data-v-13f5350d></code></pre> <!----></div></div></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/vue-jsonschema-form/guide/" class="prev">Guide</a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/vue-jsonschema-form/assets/js/app.0a086434.js" defer></script><script src="/vue-jsonschema-form/assets/js/2.62489a76.js" defer></script><script src="/vue-jsonschema-form/assets/js/8.00413530.js" defer></script><script src="/vue-jsonschema-form/assets/js/3.98aa812e.js" defer></script>
+    <script src="/vue-jsonschema-form/assets/js/app.026b9c83.js" defer></script><script src="/vue-jsonschema-form/assets/js/2.62489a76.js" defer></script><script src="/vue-jsonschema-form/assets/js/8.bf9cbb47.js" defer></script><script src="/vue-jsonschema-form/assets/js/3.4b26b557.js" defer></script>
   </body>
 </html>
