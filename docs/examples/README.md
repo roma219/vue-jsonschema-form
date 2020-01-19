@@ -21,6 +21,15 @@ If condition is met, schema is merged with schema inside `then`. Minimum length 
 Try typing in `Vue`.
 <Demo schema-name="conditions"/>
 
+`oneOf` usage example. Condition is met when `a` is `Vue` or `React`.
+<Demo schema-name="conditionsOneOf"/>
+
+`allOf` usage example. Condition is met when a is `Vue` and `c` is `true`.
+<Demo schema-name="conditionsAllOf"/>
+
+`allOf` can also be used on the top level to implement multiple conditions. Try setting `a` to `Vue` and to `React`.
+<Demo schema-name="conditionsAllOfSeveral"/>
+
 ## Default Values
 Sometimes, usually when initializing a new data instance, you would want to use some default values. Full data model object with default values is emitted after initialization through a `@init-default` event.
 ``` vue

@@ -67,6 +67,106 @@ export default {
       }
     }
   },
+  conditionsOneOf: {
+    type: 'object',
+    properties: {
+      a: { type: 'string', title: 'Your favourite front-end framework?' },
+      b: { type: 'number', title: 'Amount of likes' }
+    },
+    if: {
+      oneOf: [{
+        properties: {
+          a: {
+            const: 'Vue'
+          }
+        }
+      }, {
+        properties: {
+          a: {
+            const: 'React'
+          }
+        }
+      }
+      ]
+    },
+    then: {
+      properties: {
+        b: {
+          minimum: 1
+        },
+        c: { type: 'boolean', title: 'Are you sure?' }
+      }
+    }
+  },
+  conditionsAllOf: {
+    type: 'object',
+    properties: {
+      a: { type: 'string', title: 'Your favourite front-end framework?' },
+      b: { type: 'number', title: 'Amount of likes' },
+      c: { type: 'boolean', title: 'Are you sure?' }
+    },
+    if: {
+      allOf: [{
+        properties: {
+          a: {
+            const: 'Vue'
+          }
+        }
+      }, {
+        properties: {
+          c: {
+            const: true
+          }
+        }
+      }]
+    },
+    then: {
+      properties: {
+        x: {
+          type: 'string', title: 'Field'
+        }
+      }
+    }
+  },
+  conditionsAllOfSeveral: {
+    type: 'object',
+    properties: {
+      a: { type: 'string', title: 'Your favourite front-end framework?' },
+      b: { type: 'number', title: 'Amount of likes' },
+      c: { type: 'boolean', title: 'Are you sure?' }
+    },
+    allOf: [{
+      if: {
+        properties: {
+          a: {
+            const: 'Vue'
+          }
+        }
+      },
+      then: {
+        properties: {
+          x: {
+            type: 'string', title: 'Field'
+          }
+        }
+      }
+    }, {
+      if: {
+        properties: {
+          a: {
+            const: 'React'
+          }
+        }
+      },
+      then: {
+        properties: {
+          y: {
+            type: 'boolean', title: 'Another'
+          }
+        }
+      }
+    }]
+  },
   defaults: {
     type: 'object',
     properties: {
