@@ -12,7 +12,7 @@ npm install --save @roma219/vue-jsonschema-form
 ```
 
 ## JSON Schema
-Schema should follow [JSON Schema Standard](https://json-schema.org/). Root shema should always be an object.
+Schema should follow [JSON Schema Standard](https://json-schema.org/). Root shema should always be of type `object`.
 
 Supported JSON Schema features: TBA
 
@@ -22,6 +22,9 @@ Supported JSON Schema features: TBA
 | schema      | object | JSON Schema |
 | ui-schema      | object      |   UI Schema |
 | value | object      | Data model object |
+| components | array | [Custom Components](/guide/#custom-components) |
+| wrapper | object | [Custom Wrapper Component](/guide/#custom-wrapper-component) |
+| errors | array | [Custom Error Messages](/guide/#custom-error-messages) |
 
 ## Events
 | Event Name        | Emitted Value Type | Description  |
@@ -134,3 +137,32 @@ UI Schema is an optional schema which can provide additional UI features that ca
 <div class="json-schema-form pure-form pure-form-aligned">
     <Radio :options="['option 1', 'option 2', 'option 3']"/>
 </div>
+
+## Custom Components
+You can use custom input components with Vue JSON Schema Form.
+### Requirements
+- These components should be globally registered in Vue
+- They should have a `prop` to "receive" value
+- They should emit an event on every value change
+
+matcher?: IAnyObject,
+uiSchemaMatcher?: IAnyObject,
+contains?: string,
+componentName: string,
+eventName: string,
+props?: PropsFunction
+
+### `components` prop
+Should be an array of components configs.
+
+### Component Config Structure
+| Parameter       | Value Type          | Required |Description  |
+| ------------- |:-------------:| :-------------:| -----:|
+| matcher      |object | yes | Object that should be contained in property's schema to be rendered |
+| componentName      | string      | yes |   Name of the Vue component |
+| eventName      | string   | no (`input` by default)   |   Name of event that is gonna be emitted on each value change |
+| props | function      | no | Function that should return a props object, that is gonna be passed into component. Receives 3 arguments: `propName` (property name), `schema` (corresponding JSON Schema), `uiSchema` (corresponding UI Schema) |
+## Custom Wrapper Component
+Custom Wrapper Guide
+## Custom Error Messages
+Custom Error Messages

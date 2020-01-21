@@ -35,11 +35,12 @@ export default class JsonSchema extends Vue {
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
   @Prop() readonly components!: ComponentsConfig
-  @Prop() readonly wrapperComponentConfig!: WrapperComponentConfig
-  @Prop() readonly errorMessagesConfig!: ErrorMessagesConfig
+  @Prop() readonly wrapper!: WrapperComponentConfig
+  @Prop() readonly errors!: ErrorMessagesConfig
 
   @Provide() componentsConfig = this.components
-  @Provide() wrapperComponent = this.wrapperComponentConfig
+  @Provide() wrapperComponent = this.wrapper
+  @Provide() customErrors = this.errors
 
   get validationErrors () {
     return (this as any).$v.value
