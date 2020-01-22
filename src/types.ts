@@ -67,7 +67,7 @@ export interface IWrapperComponent {
   props?: PropsFunction
 }
 
-interface IConfigComponent {
+export interface IConfigComponent {
   matcher?: IAnyObject,
   uiSchemaMatcher?: IAnyObject,
   contains?: string,

@@ -14,6 +14,7 @@ import { Component, Prop, Vue, Mixins, Provide } from 'vue-property-decorator'
 import { processSchema } from '../utils/processSchema'
 import { setValidators } from '../utils/setValidators'
 import { unrefSchema } from '../utils/unrefSchema'
+import { mergeComponents } from '../utils/getComponent'
 import { generateDefaultValue } from '../utils/generateDefaultValue'
 import { processSchemaConditions } from '../utils/processConditions'
 import { JSONSchema7 } from 'json-schema'
@@ -35,12 +36,12 @@ export default class JsonSchema extends Vue {
   @Prop({ required: true }) readonly schema!: JSONSchema7
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
-  @Prop() readonly components!: ComponentsConfig
+  @Prop({ default: () => ([]) }) readonly components!: ComponentsConfig
   @Prop() readonly wrapper!: WrapperComponentConfig
   @Prop() readonly errors!: ErrorMessagesConfig
   @Prop({ default: true }) readonly useDefaultStyles!: boolean
 
-  @Provide() componentsConfig = this.components
+  @Provide() componentsConfig = mergeComponents(this.components)
   @Provide() wrapperComponent = this.wrapper
   @Provide() customErrors = this.errors
 
