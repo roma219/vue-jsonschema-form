@@ -10,6 +10,7 @@ import VueHighlightJS from 'vue-highlightjs'
 import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
 import Vuetify, { VTextField, VSwitch, VSelect, VApp } from 'vuetify/lib'
+import '@mdi/font/css/materialdesignicons.css'
 import 'highlight.js/styles/ocean.css';
 import './styles.css'
 

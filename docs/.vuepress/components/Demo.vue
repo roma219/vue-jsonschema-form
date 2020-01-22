@@ -87,7 +87,7 @@ export default {
       return this.useCustomComponents ? [{
         componentName: 'VSelect',
         contains: 'enum',
-        props: (propName, schema) => ({ items: schema.enum }),
+        props: (propName, schema) => ({ label: schema.title || propName, items: schema.enum, outlined: true }),
         eventName: 'change'
       }, {
         componentName: 'VSwitch',
@@ -97,7 +97,7 @@ export default {
       },{
         componentName: 'VTextField',
         matcher: { type: 'string' },
-        props: (propName, schema) => ({ label: schema.title || propName })
+        props: (propName, schema) => ({ label: schema.title || propName, outlined: true })
       }] : []
     },
     wrapper() {
