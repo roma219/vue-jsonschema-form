@@ -139,7 +139,7 @@ UI Schema is an optional schema which can provide additional UI features that ca
 </div>
 
 ## Custom Components
-You can use custom input components with Vue JSON Schema Form.
+You can use custom input components with Vue JSON Schema Form. Component is selected for rendering a piece of schema by checking the `matcher` parameter.
 ### Requirements
 - These components should be globally registered in Vue
 - They should have a `prop` to "receive" value
@@ -156,12 +156,13 @@ props?: PropsFunction
 Should be an array of components configs.
 
 ### Component Config Structure
-| Parameter       | Value Type          | Required |Description  |
-| ------------- |:-------------:| :-------------:| -----:|
-| matcher      |object | yes | Object that should be contained in property's schema to be rendered |
-| componentName      | string      | yes |   Name of the Vue component |
-| eventName      | string   | no (`input` by default)   |   Name of event that is gonna be emitted on each value change |
-| props | function      | no | Function that should return a props object, that is gonna be passed into component. Receives 3 arguments: `propName` (property name), `schema` (corresponding JSON Schema), `uiSchema` (corresponding UI Schema) |
+| Parameter       | Value Type          | Required | Default |Description  |
+| ------------- |:-------------:| :-------------:| :-------------:| -----:|
+| matcher      |object | yes | - | Object that should be contained in property's schema to be rendered |
+| contains      |string | no | - | Name of the parameter that should be presend in a schema to select the component. |
+| componentName      | string      | yes | - | Name of the Vue component |
+| eventName      | string   | no | `input`  | Name of event that is gonna be emitted on each value change |
+| props | function      | no | - | Function that should return an object, that will be bound as props to component. <br/>`(propName, schema, uiSchema) => ({ ... })`|
 ## Custom Wrapper Component
 Custom Wrapper Guide
 ## Custom Error Messages
