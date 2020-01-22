@@ -206,8 +206,8 @@ export default {
     type: 'object',
     properties: {
       a: { title: 'Name', type: 'string' },
-      b: { type: 'boolean' },
-      c: { title: 'Planet', type: 'string', enum: ['Earth', 'Mars', 'Jupiter'] }
+      confirm: { type: 'boolean' },
+      c: { title: 'Planet', type: 'string', enum: ['Earth', 'Mars', 'Jupiter'], default: 'Mars' }
     }
   }
 }

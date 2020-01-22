@@ -1,5 +1,5 @@
 <template>
-  <v-app class="demo">
+    <component :is="wrapperComponentName" class="demo">
     <div class="tabs">
       <div
         v-for="(tab, index) in tabs"
@@ -18,6 +18,7 @@
           :schema="schema"
           :ui-schema="uiSchema"
           :components="customComponents"
+          :wrapper="wrapper"
           :use-default-styles="!useCustomComponents"
           v-model="value"
           @init-default="handleDefaultValue"
@@ -25,7 +26,7 @@
       </ClientOnly>
     </div>
 
-  </v-app>
+  </component>
 </template>
 
 <script>
@@ -98,6 +99,12 @@ export default {
         matcher: { type: 'string' },
         props: (propName, schema) => ({ label: schema.title || propName })
       }] : []
+    },
+    wrapper() {
+      return this.useCustomComponents ? { componentName: 'InputWrapper' } : undefined
+    },
+    wrapperComponentName() {
+      return this.useCustomComponents ? 'v-app' : 'div'
     }
   },
   methods: {
