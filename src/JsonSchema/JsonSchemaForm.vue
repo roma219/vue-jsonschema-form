@@ -1,5 +1,5 @@
 <template>
-  <div class="json-schema-form pure-form pure-form-stacked">
+  <div class="json-schema-form" :class="{'pure-form pure-form-stacked': useDefaultStyles}">
     <component
       :is="wrapperComponentParams.componentName"
       :key="propName"
@@ -39,6 +39,8 @@ export default class JsonSchemaForm extends Vue {
   @Prop() readonly uiSchema!: IUiSchema
   @Prop({ default: () => ({}) }) readonly value!: IAnyObject
   @Prop() readonly validations!: any
+  @Prop({ default: true }) readonly useDefaultStyles!: boolean
+
   @Inject() readonly componentsConfig!: ComponentsConfig
   @Inject() readonly wrapperComponent!: WrapperComponentConfig
 

@@ -4,6 +4,7 @@
     :ui-schema="uiSchema"
     :value="value"
     :validations="validationErrors"
+    :use-default-styles="useDefaultStyles"
     @input="handleChange"
   />
 </template>
@@ -37,6 +38,7 @@ export default class JsonSchema extends Vue {
   @Prop() readonly components!: ComponentsConfig
   @Prop() readonly wrapper!: WrapperComponentConfig
   @Prop() readonly errors!: ErrorMessagesConfig
+  @Prop({ default: true }) readonly useDefaultStyles!: boolean
 
   @Provide() componentsConfig = this.components
   @Provide() wrapperComponent = this.wrapper
@@ -79,7 +81,7 @@ export default class JsonSchema extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 @import url("../../node_modules/purecss/build/pure-min.css");
 
 .pure-control-group {

@@ -43,9 +43,7 @@ Sometimes, usually when initializing a new data instance, you would want to use 
 ### Setting display order
 Setting `order` property in UI schema will set the order of the corresponding components rendering. The bigger `order` - the higher component will be displayed.
 <Demo schema-name="order" :use-ui-schema="true" :use-defaults="true"/>
-<!-- ### Provide titles for select
-You can provide titles to use it in selects instead of value titles.
-<Demo schema-name="selectTitles" :use-ui-schema="true" :use-defaults="true"/> -->
 
 ## Custom Components
-Example will be here
+Example showcases usage with some Vuetify components.
+<Demo schema-name="customComponents" :use-custom-components="true"/>

@@ -145,22 +145,16 @@ You can use custom input components with Vue JSON Schema Form. Component is sele
 - They should have a `prop` to "receive" value
 - They should emit an event on every value change
 
-matcher?: IAnyObject,
-uiSchemaMatcher?: IAnyObject,
-contains?: string,
-componentName: string,
-eventName: string,
-props?: PropsFunction
-
 ### `components` prop
 Should be an array of components configs.
 
 ### Component Config Structure
 | Parameter       | Value Type          | Required | Default |Description  |
 | ------------- |:-------------:| :-------------:| :-------------:| -----:|
-| matcher      |object | yes | - | Object that should be contained in property's schema to be rendered |
-| contains      |string | no | - | Name of the parameter that should be presend in a schema to select the component. |
-| componentName      | string      | yes | - | Name of the Vue component |
+| matcher      |object | no | - | Object that should be contained in property's Schema to be rendered |
+| uiSchemaMatcher      |object | no | - | Object that should be contained in property's UI Schema to be rendered. Used if `matcher` is not provided. |
+| contains      |string | no | - | Name of the parameter that should be presend in a schema to select the component. Used if `matcher` and `uiSchemaMatcher` are not provided.|
+| componentName      | string      | yes | `TextInput` | Name of the Vue component |
 | eventName      | string   | no | `input`  | Name of event that is gonna be emitted on each value change |
 | props | function      | no | - | Function that should return an object, that will be bound as props to component. <br/>`(propName, schema, uiSchema) => ({ ... })`|
 ## Custom Wrapper Component

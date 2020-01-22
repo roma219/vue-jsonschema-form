@@ -201,5 +201,13 @@ export default {
         enum: ['option 1', 'option 2', 'option 3']
       }
     }
+  },
+  customComponents: {
+    type: 'object',
+    properties: {
+      a: { title: 'Name', type: 'string' },
+      b: { type: 'boolean' },
+      c: { title: 'Planet', type: 'string', enum: ['Earth', 'Mars', 'Jupiter'] }
+    }
   }
 }

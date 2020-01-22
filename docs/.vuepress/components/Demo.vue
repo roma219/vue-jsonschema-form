@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <v-app class="demo">
     <div class="tabs">
       <div
         v-for="(tab, index) in tabs"
@@ -17,13 +17,15 @@
           class="json-schema-demo"
           :schema="schema"
           :ui-schema="uiSchema"
+          :components="customComponents"
+          :use-default-styles="!useCustomComponents"
           v-model="value"
           @init-default="handleDefaultValue"
         />
       </ClientOnly>
     </div>
 
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -43,6 +45,10 @@ export default {
     useDefaults: {
       type: Boolean,
       default: false
+    },
+    useCustomComponents: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -59,6 +65,7 @@ export default {
     tabs() {
       const tabs =  ['JSON Schema', 'Data Model']
       if (this.useUiSchema) tabs.push('UI Schema')
+      if (this.useCustomComponents) tabs.push('Custom Components Config')
       return tabs
     },
     codeContent() {
@@ -71,7 +78,26 @@ export default {
           break
         case 'UI Schema':
           return JSON.stringify(this.uiSchema, null, 2)
+        case 'Custom Components Config':
+          return JSON.stringify(this.customComponents, null, 2)
       }
+    },
+    customComponents() {
+      return this.useCustomComponents ? [{
+        componentName: 'VSelect',
+        contains: 'enum',
+        props: (propName, schema) => ({ items: schema.enum }),
+        eventName: 'change'
+      }, {
+        componentName: 'VSwitch',
+        matcher: { type: 'boolean' },
+        eventName: 'change',
+        props: (propName, schema) => ({ label: schema.title || propName })
+      },{
+        componentName: 'VTextField',
+        matcher: { type: 'string' },
+        props: (propName, schema) => ({ label: schema.title || propName })
+      }] : []
     }
   },
   methods: {
