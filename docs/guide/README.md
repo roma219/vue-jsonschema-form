@@ -157,6 +157,8 @@ Should be an array of components configs.
 | componentName      | string      | yes | `TextInput` | Name of the Vue component |
 | eventName      | string   | no | `input`  | Name of event that is gonna be emitted on each value change |
 | props | function      | no | - | Function that should return an object, that will be bound as props to component. <br/>`(propName, schema, uiSchema) => ({ ... })`|
+
+See example [here](/examples/#custom-components).
 ## Custom Wrapper Component
 Custom Wrapper Guide
 ## Custom Error Messages
