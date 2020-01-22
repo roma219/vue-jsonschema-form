@@ -97,7 +97,7 @@ export default {
       },{
         componentName: 'VTextField',
         matcher: { type: 'string' },
-        props: (propName, schema) => ({ label: schema.title || propName, outlined: true })
+        props: (propName, schema) => ({ label: schema.title || propName, outlined: true, clearable: true })
       }] : []
     },
     wrapper() {
