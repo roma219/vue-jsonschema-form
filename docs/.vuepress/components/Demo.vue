@@ -128,7 +128,6 @@ export default {
   border-bottom: 1px dashed black;
   color: black;
   opacity: 0.7;
-  height: 22px;
 }
 
 .tabs > div.active {
@@ -149,7 +148,6 @@ export default {
 .json-schema-demo {
   margin-top: 15px;
 }
-
 
 @media (min-width: 800px) {
 

@@ -47,3 +47,9 @@ Setting `order` property in UI schema will set the order of the corresponding co
 ## Custom Components
 Example showcases usage with some [Vuetify](https://vuetifyjs.com/) components.
 <Demo schema-name="customComponents" :use-custom-components="true"/>
+
+## Custom Wrapper Component
+TBA
+
+## Custom Error Messages
+TBA

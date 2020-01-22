@@ -160,6 +160,28 @@ Should be an array of components configs.
 
 See example [here](/examples/#custom-components).
 ## Custom Wrapper Component
-Custom Wrapper Guide
+Each rendered component is rendered in a wrapper component. By default it displays title and possible validation errors validation. You can provide your own. It must include a slot where actual input component is gonna be rendered. `props` function should return an object which will be passed downs as props to each wrapper component. This is default config:
+``` js
+{
+    componentName: 'InputWrapper',
+    props: (propName, schema, uiSchema) => ({
+        title: schema.title || schema.title === '' ? schema.title : propName,
+        disabled: uiSchema && uiSchema.disabled,
+        vertical: schema.type === 'object' || schema.type === 'array'
+    })
+}
+```
+See example [here](/examples/#custom-wrapper-component).
 ## Custom Error Messages
-Custom Error Messages
+You can provide your own messages for supported validations (`minLength`, `maxLength`, `minValue`, `maxValue`, `required`) and `default` error message. Default messages:
+``` js
+{
+    minLength: value => `Minimal length: ${value}`,
+    maxLength: value => `Maximum length: ${value}`,
+    minValue: value => `Minimal value: ${value}`,
+    maxValue: value => `Maximum value: ${value}`,
+    required: 'Field is required',
+    default: 'Invalid Value'
+}
+```
+See example [here](/examples/#custom-error-messages).

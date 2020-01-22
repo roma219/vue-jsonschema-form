@@ -4,5 +4,9 @@
 }
 
 .hljs {
-  color: #c0c5ce!important;
+  color: hsl(219, 13%, 78%)!important;
+}
+
+.v-application--wrap {
+  min-height: auto!important;
 }
