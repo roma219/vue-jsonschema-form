@@ -15,7 +15,8 @@ export default {
       mySelect: {
         type: 'string',
         title: 'Account Type',
-        enum: ['User', 'Editor', 'Admin']
+        enum: ['User', 'Editor', 'Admin'],
+        default: 'User'
       }
     }
   },

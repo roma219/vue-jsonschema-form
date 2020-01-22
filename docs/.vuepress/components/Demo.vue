@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     handleDefaultValue(value) {
-      if (this.useDefaults) this.value = value
+      this.value = value
     }
   }
 }
