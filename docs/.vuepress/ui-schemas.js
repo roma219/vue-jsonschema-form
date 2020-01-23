@@ -19,5 +19,12 @@ export default {
         titles: ['custom title', 'second', 'third one']
       }
     }
+  },
+  customComponents: {
+    properties: {
+      date: {
+        uiType: 'datepicker'
+      }
+    }
   }
 }

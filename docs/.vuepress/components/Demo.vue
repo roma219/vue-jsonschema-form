@@ -80,7 +80,10 @@ export default {
         case 'UI Schema':
           return JSON.stringify(this.uiSchema, null, 2)
         case 'Custom Components Config':
-          return JSON.stringify(this.customComponents, null, 2)
+          return JSON.stringify(this.customComponents.map(component => ({
+            ...component,
+            props: (component.props + '')
+          })), null, 2)
       }
     },
     customComponents() {
@@ -97,7 +100,12 @@ export default {
       },{
         componentName: 'VTextField',
         matcher: { type: 'string' },
-        props: (propName, schema) => ({ label: schema.title || propName, outlined: true, clearable: true })
+        props: (propName, schema) => ({ label: schema.title || propName, outlined: true, clearable: true, hint: schema.description, 'persistent-hint': true })
+      }, {
+        componentName: 'VDatePicker',
+        uiSchemaMatcher: { uiType: 'datepicker' },
+        eventName: 'change',
+        props: (propName, schema) => ({ light: true, 'full-width': true })
       }] : []
     },
     wrapper() {

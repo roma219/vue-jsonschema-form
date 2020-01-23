@@ -13,13 +13,14 @@ function areEqual (obj1: IAnyObject, obj2: IAnyObject) : boolean {
 
 const canReplaceComponents = (componentA: IConfigComponent, componentB: IConfigComponent) => {
   return (componentA.matcher && areEqual(componentA.matcher, componentB.matcher || {})) ||
+    (componentA.uiSchemaMatcher && areEqual(componentA.uiSchemaMatcher, componentB.uiSchemaMatcher || {})) ||
     (componentA.contains && componentA.contains === componentB.contains)
 }
 
 export const mergeComponents = (customComponents: ComponentsConfig) => {
   const components = [ ...defaultComponents ]
   const filteredCustomComponents = customComponents.filter(component => {
-    if (component.matcher || component.contains) {
+    if (component.matcher || component.uiSchemaMatcher || component.contains) {
       const index = defaultComponents.findIndex(defaultComponent => canReplaceComponents(defaultComponent, component))
       if (index > -1) {
         components[index] = component

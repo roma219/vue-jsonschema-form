@@ -9,14 +9,14 @@ import InputWrapper from './../../src/components/InputWrapper.vue'
 import VueHighlightJS from 'vue-highlightjs'
 import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
-import Vuetify, { VTextField, VSwitch, VSelect, VApp } from 'vuetify/lib'
+import Vuetify, { VTextField, VSwitch, VSelect, VApp, VDatePicker } from 'vuetify/lib'
 import '@mdi/font/css/materialdesignicons.css'
 import 'highlight.js/styles/ocean.css';
 import './styles.css'
 
 export default ({ Vue, options, router, siteData }) => {
   Vue.use(Vuetify, {
-    components: { VTextField, VSwitch, VSelect, VApp }
+    components: { VTextField, VSwitch, VSelect, VDatePicker, VApp }
   })
   Vue.use(VueHighlightJS, {
     languages: {
