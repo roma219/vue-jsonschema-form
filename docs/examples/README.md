@@ -45,8 +45,8 @@ Setting `order` property in UI schema will set the order of the corresponding co
 <Demo schema-name="order" :use-ui-schema="true" :use-defaults="true"/>
 
 ## Custom Components
-Example showcases usage with some [Vuetify](https://vuetifyjs.com/) components.
-<Demo schema-name="customComponents" :use-custom-components="true"/>
+Example showcases usage with some [Vuetify](https://vuetifyjs.com/) components. Using `uiSchema` is a convinient way to use specific components for some use-cases (e.g. Datepicker).
+<Demo schema-name="customComponents" :use-ui-schema="true" :use-custom-components="true"/>
 
 ## Custom Wrapper Component
 TBA

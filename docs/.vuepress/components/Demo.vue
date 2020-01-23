@@ -66,7 +66,7 @@ export default {
     tabs() {
       const tabs =  ['JSON Schema', 'Data Model']
       if (this.useUiSchema) tabs.push('UI Schema')
-      if (this.useCustomComponents) tabs.push('Custom Components Config')
+      if (this.useCustomComponents) tabs.push('Components Config')
       return tabs
     },
     codeContent() {
@@ -79,7 +79,7 @@ export default {
           break
         case 'UI Schema':
           return JSON.stringify(this.uiSchema, null, 2)
-        case 'Custom Components Config':
+        case 'Components Config':
           return JSON.stringify(this.customComponents.map(component => ({
             ...component,
             props: (component.props + '')
@@ -105,7 +105,7 @@ export default {
         componentName: 'VDatePicker',
         uiSchemaMatcher: { uiType: 'datepicker' },
         eventName: 'change',
-        props: (propName, schema) => ({ light: true, 'full-width': true })
+        props: (propName, schema) => ({ 'full-width': true })
       }] : []
     },
     wrapper() {
