@@ -54,7 +54,4 @@ Config:
 
 ## Custom Wrapper Component
 <Demo schema-name="basic" :use-custom-wrapper="true"/>
-<<< @/src/components/customWrapper.vue
-
-## Custom Error Messages
-TBA
+<!-- <<< @/src/components/customWrapper.vue -->
