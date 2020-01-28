@@ -83,7 +83,7 @@ export default class JsonSchema extends Vue {
 </script>
 
 <style scoped>
-@import url("../../node_modules/purecss/build/pure-min.css");
+@import url("../../node_modules/purecss/build/forms-min.css");
 
 .pure-control-group {
   overflow: hidden;

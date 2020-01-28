@@ -70,8 +70,6 @@ export default {
     tabs() {
       const tabs =  ['JSON Schema', 'Data Model']
       if (this.useUiSchema) tabs.push('UI Schema')
-      if (this.useCustomComponents) tabs.push('Components Config')
-      if (this.useCustomWrapper) tabs.push('Wrapper Config')
       return tabs
     },
     codeContent() {
@@ -84,16 +82,6 @@ export default {
           break
         case 'UI Schema':
           return JSON.stringify(this.uiSchema, null, 2)
-        case 'Wrapper Config':
-          return JSON.stringify({
-            ...this.customWrapper,
-            props: (this.customWrapper.props + '')
-          }, null, 2)
-        case 'Components Config':
-          return JSON.stringify(this.customComponents.map(component => ({
-            ...component,
-            props: (component.props + '')
-          })), null, 2)
       }
     },
     customComponents() {
