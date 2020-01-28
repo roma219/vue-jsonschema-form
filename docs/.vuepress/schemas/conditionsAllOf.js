@@ -1,8 +1,30 @@
 export default {
   type: 'object',
   properties: {
-    a: { type: 'string', title: 'Name', minLength: 1 },
-    b: { type: 'number', title: 'Age', maximum: 99 },
-    c: { type: 'boolean', title: 'Agree' }
+    a: { type: 'string', title: 'Your favourite front-end framework?' },
+    b: { type: 'number', title: 'Amount of likes' },
+    c: { type: 'boolean', title: 'Are you sure?' }
+  },
+  if: {
+    allOf: [{
+      properties: {
+        a: {
+          const: 'Vue'
+        }
+      }
+    }, {
+      properties: {
+        c: {
+          const: true
+        }
+      }
+    }]
+  },
+  then: {
+    properties: {
+      x: {
+        type: 'string', title: 'Field'
+      }
+    }
   }
 }

@@ -50,6 +50,10 @@ export default {
     useCustomComponents: {
       type: Boolean,
       default: false
+    },
+    useCustomWrapper: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -67,6 +71,7 @@ export default {
       const tabs =  ['JSON Schema', 'Data Model']
       if (this.useUiSchema) tabs.push('UI Schema')
       if (this.useCustomComponents) tabs.push('Components Config')
+      if (this.useCustomWrapper) tabs.push('Wrapper Config')
       return tabs
     },
     codeContent() {
@@ -79,6 +84,11 @@ export default {
           break
         case 'UI Schema':
           return JSON.stringify(this.uiSchema, null, 2)
+        case 'Wrapper Config':
+          return JSON.stringify({
+            ...this.customWrapper,
+            props: (this.customWrapper.props + '')
+          }, null, 2)
         case 'Components Config':
           return JSON.stringify(this.customComponents.map(component => ({
             ...component,
@@ -108,7 +118,16 @@ export default {
         props: (propName, schema) => ({ 'full-width': true })
       }] : []
     },
+    customWrapper() {
+      return {
+        componentName: 'CustomWrapper',
+        props: (propName, schema, uiSchema) => ({
+          title: schema.title || propName
+        })
+      }
+    },
     wrapper() {
+      if (this.useCustomWrapper) return this.customWrapper
       return this.useCustomComponents ? { componentName: 'InputWrapper' } : undefined
     },
     wrapperComponentName() {

@@ -6,6 +6,7 @@ import Checkbox from './../../src/components/Checkbox.vue'
 import Radio from './../../src/components/Radio.vue'
 import Select from './../../src/components/Select.vue'
 import InputWrapper from './../../src/components/InputWrapper.vue'
+import CustomWrapper from './../../src/components/CustomWrapper.vue'
 import VueHighlightJS from 'vue-highlightjs'
 import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
@@ -33,4 +34,5 @@ export default ({ Vue, options, router, siteData }) => {
   Vue.component('Radio', Radio)
   Vue.component('Select', Select)
   Vue.component('InputWrapper', InputWrapper)
+  Vue.component('CustomWrapper', CustomWrapper)
 }
