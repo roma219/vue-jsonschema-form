@@ -43,9 +43,10 @@ export default {
   transition: transform 0.2s;
   margin-left: 10px;
   font-size: 15px;
+  transform: rotate(180deg);
 }
 
 .expand-btn--expanded {
-  transform: rotate(180deg);
+  transform: none;
 }
 </style>
