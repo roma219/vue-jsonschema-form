@@ -22,6 +22,10 @@ export default class Select extends Vue {
   @Prop({ default: '' }) readonly value!: any
   @Prop({ default: () => ([]) }) readonly options!: Array<any>
 
+  created () {
+    if (!this.options.includes(this.value)) this.$emit('input', this.options[0])
+  }
+
   handleInput ({ target } : { target: HTMLInputElement }) {
     const { value } = target
     this.$emit('input', value)

@@ -53,6 +53,7 @@ Example showcases usage with some [Vuetify](https://vuetifyjs.com/) components. 
 </SourceCode>
 
 ## Custom Wrapper Component
+In this case we use `CustomWrapper.vue` as componet to align labels and inputs horizontally.
 <Demo schema-name="basic" :use-custom-wrapper="true"/>
 
 <SourceCode title="CustomWrapper.vue">
