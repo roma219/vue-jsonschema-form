@@ -1,6 +1,6 @@
 <template>
     <component :is="wrapperComponentName" class="demo">
-    <div class="tabs">
+    <div class="tabs" v-if="showSource">
       <div
         v-for="(tab, index) in tabs"
         :key="index"
@@ -11,8 +11,7 @@
       </div>
     </div>
     <div class="content">
-      <pre v-highlightjs="codeContent"><code class="json"></code></pre>
-      <ClientOnly>
+      <pre v-highlightjs="codeContent" v-if="showSource"><code class="json"></code></pre>
         <JsonSchema
           class="json-schema-demo"
           :schema="schema"
@@ -23,7 +22,6 @@
           v-model="value"
           @init-default="handleDefaultValue"
         />
-      </ClientOnly>
     </div>
 
   </component>
@@ -54,6 +52,10 @@ export default {
     useCustomWrapper: {
       type: Boolean,
       default: false
+    },
+    showSource: {
+      type: Boolean,
+      default: true
     }
   },
   data: () => ({

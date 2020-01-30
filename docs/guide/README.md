@@ -104,9 +104,7 @@ This is the list of built-in components and corresponding JSON Schema blocks. If
     }
 }
 ```
-<div class="json-schema-form pure-form">
-    <JsonSchema :schema="{ type: 'object' , properties: { arr: { type: 'array', title: '', items: { type: 'object', properties: { a: { type: 'string' }, b: { type: 'number' } } } } } }" :value="{}"/>
-</div>
+<Demo schema-name="arrayOfObjects" :show-source="false"/>
 
 
 ## UI Schema

@@ -19,8 +19,6 @@ footer: Vue JSON Schema Form 2020
 <JsonSchema :schema="schema" v-model="dataModel"/>
 ```
 
-<ClientOnly>
 <Demo schema-name="home"/>
-</ClientOnly>
 
 ---
