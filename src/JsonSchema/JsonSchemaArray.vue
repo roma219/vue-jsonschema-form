@@ -17,7 +17,7 @@
         @input="handleInput(index, $event)"
       />
     </component>
-    <label class="add-new-arr-item" @click="addNewItem"><button>+</button></label>
+    <div class="add-new-arr-item" @click="addNewItem"><button>+</button></div>
   </div>
 </template>
 
@@ -79,5 +79,13 @@ export default class JsonSchemaArray extends Vue {
 <style>
 .json-schema-array {
   width: 100%;
+}
+
+.json-schema-array label {
+  display: inline!important;
+}
+
+.json-schema-array .add-new-arr-item {
+  font-size: 25px;
 }
 </style>
