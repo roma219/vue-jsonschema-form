@@ -1,5 +1,5 @@
 <template>
-  <select @input="handleInput">
+  <select class="json-schema-form-select" @input="handleInput">
     <option style="display:none;" :selected="!value ? 'true' : 'false'"></option>
     <option
       v-for="(option, index) in options"
@@ -28,3 +28,9 @@ export default class Select extends Vue {
   }
 }
 </script>
+
+<style>
+.json-schema-form-select {
+  -webkit-appearance: button;
+}
+</style>
