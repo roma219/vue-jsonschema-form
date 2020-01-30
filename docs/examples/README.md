@@ -1,6 +1,6 @@
 # Examples
 ## Basic Inputs
-Full list of supported built-it components can be found [here](/guide/#built-in-components).
+Full list of built-it components can be found [here](/guide/#built-in-components).
 <Demo schema-name="basic"/>
 
 ## Nested Object
@@ -8,15 +8,15 @@ Nesting objects is supported. If you want to omit nested object's property name 
 <Demo schema-name="nested"/>
 
 ## Array of Objects
-To specify schema for each array element, provide `items` parameter in array's schema.
+To specify schema for each array element, provide `items` parameter inside array parameter schema.
 <Demo schema-name="arrayOfObjects"/>
 
 ## Validations
-Supported validations: `minLength` and `maxLength` for strings, `minimum` and `maximum` for numbers.
+Supported rules: `minLength` and `maxLength` for strings, `minimum` and `maximum` for numbers.
 <Demo schema-name="home"/>
 
 ## Conditions
-If condition is met, schema is merged with schema inside `then`. Minimum length (`minLength`) and equality (`const`) conditions are supported. Also `oneOf` (condition is met if only one `if` is met) and `allOf` (condition is met if all `if`s are met) combinations can be used.
+If condition is met, schema is merged with schema inside `then`. Minimum length (`minLength`) and equality (`const`) conditions are supported. Also `oneOf` (condition is met if only one `if` is met) and `allOf` (condition is met if all `if`s are met) combinations can be used. This is usefull when you want to display different parts of schema based on some parameter's value or when you want to validate some parts of the schema conditionally.
 
 Try typing in `Vue`.
 <Demo schema-name="conditions"/>
@@ -41,7 +41,7 @@ Sometimes, usually when initializing a new data instance, you would want to use 
 ### Using specific UI component
 <Demo schema-name="radio" :use-ui-schema="true" :use-defaults="true"/>
 ### Setting display order
-Setting `order` property in UI schema will set the order of the corresponding components rendering. The bigger `order` - the higher component will be displayed.
+Setting `order` property in UI schema will set the order for displaying corresponding components. The bigger `order` - the higher the component will be displayed.
 <Demo schema-name="order" :use-ui-schema="true" :use-defaults="true"/>
 
 ## Custom Components

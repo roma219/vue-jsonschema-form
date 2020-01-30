@@ -1,5 +1,5 @@
 ## Introduction
-Vue JSON Schema Form library uses object presented in a [JSON Schema Standard](https://json-schema.org/) to generate an input form and update provided data model.
+Vue JSON Schema Form library uses JSON presented in a [JSON Schema Standard](https://json-schema.org/) to generate an input form and update provided data model.
 
 ## Installation
 ```
@@ -20,21 +20,20 @@ Supported JSON Schema features: TBA
 | Prop Name       | Value Type          | Description  |
 | ------------- |:-------------:| -----:|
 | schema      | object | JSON Schema |
-| ui-schema      | object      |   UI Schema |
+| ui-schema      | object      |   [UI Schema](/guide/#custom-components) |
 | value | object      | Data model object |
 | components | array | [Custom Components](/guide/#custom-components) |
 | wrapper | object | [Custom Wrapper Component](/guide/#custom-wrapper-component) |
-| errors | array | [Custom Error Messages](/guide/#custom-error-messages) |
 
 ## Events
 | Event Name        | Emitted Value Type | Description  |
 | ------------- |:-------------:| -----:|
-| input      | object | Emits on every data change. Full updated object from `:value` |
-| init-default     | object      | Initial data model object generated with `default` values provided in schema. Usefull when you have an empty data model. |
-| validated | boolean      | Is data model valid or not. Emits on each validation status change |
+| input      | object | Emitted on every data change. Updated object from `:value`. |
+| init-default     | object      | Initial data model object generated with `default` values provided in schema. Usefull when you have an empty data model on start. See [example](/examples/#default-values).  |
+| validated | boolean      | Emitted on every validation status change. `true` - data model is valid, `false`  - data model is not valid. Usefull when you need to have some indicator of form validity, for example to disable `Save` button.|
 
 ## Built-in Components
-This is the list of built-in components and corresponding JSON Schema blocks.
+This is the list of built-in components and corresponding JSON Schema blocks. If you want to use different components, see [Custom Components](/guide/#custom-components).
 
 ### String Input
 ```js
@@ -42,7 +41,7 @@ This is the list of built-in components and corresponding JSON Schema blocks.
     type: 'string'
 }
 ```
-<div class="json-schema-form pure-form pure-form-aligned">
+<div class="json-schema-form pure-form">
     <TextInput value="yes"/>
 </div>
 
@@ -52,7 +51,7 @@ This is the list of built-in components and corresponding JSON Schema blocks.
     type: 'number'
 }
 ```
-<div class="json-schema-form pure-form pure-form-aligned">
+<div class="json-schema-form pure-form">
     <TextInput type="number"/>
 </div>
 
@@ -62,7 +61,7 @@ This is the list of built-in components and corresponding JSON Schema blocks.
     type: 'boolean'
 }
 ```
-<div class="json-schema-form pure-form pure-form-aligned">
+<div class="json-schema-form pure-form">
     <Checkbox/>
 </div>
 
@@ -88,7 +87,7 @@ This is the list of built-in components and corresponding JSON Schema blocks.
     }
 }
 ```
-<div class="json-schema-form pure-form pure-form-aligned">
+<div class="json-schema-form pure-form">
     <JsonSchema :schema="{ type: 'object', properties: { a: { type: 'string' }, b: { type: 'number' } } }"/>
 </div>
 
@@ -105,8 +104,8 @@ This is the list of built-in components and corresponding JSON Schema blocks.
     }
 }
 ```
-<div class="json-schema-form pure-form pure-form-aligned">
-    <JsonSchema :schema="{ type: 'object' , properties: { arr: { type: 'array', title: '', items: { type: 'object', properties: { a: { type: 'string' }, b: { type: 'number' } } } } } }"/>
+<div class="json-schema-form pure-form">
+    <JsonSchema :schema="{ type: 'object' , properties: { arr: { type: 'array', title: '', items: { type: 'object', properties: { a: { type: 'string' }, b: { type: 'number' } } } } } }" :value="{}"/>
 </div>
 
 
@@ -141,27 +140,33 @@ UI Schema is an optional schema which can provide additional UI features that ca
 ## Custom Components
 You can use custom input components with Vue JSON Schema Form. Component is selected for rendering a piece of schema by checking the `matcher` parameter.
 ### Requirements
-- These components should be globally registered in Vue
-- They should have a `prop` to "receive" value
-- They should emit an event on every value change
+- Each component should be globally registered in `Vue`
+- Each component should have a `prop` `value` to receive corresponding value
+- Each component should emit an event on every value change
 
-### `components` prop
-Should be an array of components configs.
+### Usage
+``` vue
+<JsonSchema :schema="schema" v-model="dataModel" :components="componentsConfig"/>
+```
+Custom Components config is provided via `components` prop to `JsonSchema` component. `components` should be an array containing each component's config.
 
 ### Component Config Structure
+Component is mapped to JSON Schema piece by using either of the following parameters: `matcher`, `uiSchemaMatcher`, `contains`.
+
 | Parameter       | Value Type          | Required | Default |Description  |
 | ------------- |:-------------:| :-------------:| :-------------:| -----:|
-| matcher      |object | no | - | Object that should be contained in property's Schema to be rendered |
-| uiSchemaMatcher      |object | no | - | Object that should be contained in property's UI Schema to be rendered. Used if `matcher` is not provided. |
-| contains      |string | no | - | Name of the parameter that should be presend in a schema to select the component. Used if `matcher` and `uiSchemaMatcher` are not provided.|
+| matcher      |object | no | - | Object that should be contained in parameter's schema piece |
+| uiSchemaMatcher      |object | no | - | Object that should be contained in property's UI Schema piece. Used if `matcher` is not provided. See matchers for [built-in components](/guide/#built-in-components).|
+| contains      |string | no | - | Name of the parameter that should be present in a parameter's schema piece. Used if `matcher` and `uiSchemaMatcher` are not provided.|
 | componentName      | string      | yes | `TextInput` | Name of the Vue component |
-| eventName      | string   | no | `input`  | Name of event that is gonna be emitted on each value change |
-| props | function      | no | - | Function that should return an object, that will be bound as props to component. <br/>`(propName, schema, uiSchema) => ({ ... })`|
+| eventName      | string   | no | `input`  | Name of the event that is gonna be emitted on each value change |
+| props | function      | no | - | Function that should return an object, that will be bound as props to component. Usefull when you want to provide additional data to component from schema. <br/>`(propName, schema, uiSchema) => ({ ... })`|
 
 See example [here](/examples/#custom-components).
 
 ## Custom Wrapper Component
-Each rendered component is rendered in a wrapper component. By default it displays title and possible validation errors validation. You can provide your own. It must include a slot where actual input component is gonna be rendered. `props` function should return an object which will be passed downs as props to each wrapper component. This is default config:
+Each schema component is rendered inside a wrapper component. By default it displays property title and possible validation errors. You can provide your own wrapper. The only requirment is that it should contain a `<slot>` where actual input component will be displayed. `props` function is optional and should return an object which will be passed downs as props to each wrapper component.
+This is default wrapper component config:
 ``` js
 {
     componentName: 'InputWrapper',
