@@ -3,7 +3,7 @@ const webpack = require('webpack')
 
 module.exports = {
   title: 'Vue JSON Schema Form',
-  description: 'JSON Schema-based form generator - simple and customizable',
+  description: 'Form Generator based on JSON Schema',
   base: '/vue-jsonschema-form/',
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }]
@@ -16,6 +16,7 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
+      { text: 'Examples', link: '/examples/' }
     ],
     sidebar: [
       {
