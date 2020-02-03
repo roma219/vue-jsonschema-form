@@ -38,10 +38,6 @@ module.exports = {
         tsLoaderOptions: {
           // All options of ts-loader
         },
-      },
-      'register-components',
-      {
-        componentsDir: 'JsonSchema/'
       }
     ]
   ],
