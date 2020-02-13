@@ -26,7 +26,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.6.3",
     "nanoclone": "^0.2.1",
-    "purecss": "^1.0.1",
+    "purecss": "^1.0.1"
   },
   "peerDependencies": {
     "purecss": "^1.0.1",
