@@ -18,20 +18,11 @@ type SimpleCondition = {
 
 type ICondition = SimpleCondition | AllOfCondition | OneOfCondition
 
-//  requirment types
-
 type ConstRequirment = { const: any }
 
 type MinLengthRequirment = { minLength: number }
 
 type IRequirment = ConstRequirment | MinLengthRequirment
-
-// type IRequirmentTree = {
-//   properties: {
-//     [key: string]: IRequirmentTree | ConstRequirment | MinLengthRequirment
-//   },
-//   not: undefined
-// }
 
 type IRequirmentTree = any
 
