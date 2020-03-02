@@ -21,4 +21,6 @@ footer: Vue JSON Schema Form 2020
 
 <Demo schema-name="home"/>
 
+Feel free to play with it on [Codesandbox](https://codesandbox.io/s/vue-jsonschema-form-basic-example-zid04?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.vue&theme=dark)
+
 ---
