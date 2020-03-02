@@ -1,7 +1,7 @@
 {
   "name": "@roma219/vue-jsonschema-form",
   "description": "Input Form generator based on JSON Schema",
-  "version": "0.0.971",
+  "version": "0.0.972",
   "private": false,
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "main": "./dist/JsonSchema.js",
+  "main": "./dist/main.js",
   "files": [
     "dist/*",
     "src/*"
