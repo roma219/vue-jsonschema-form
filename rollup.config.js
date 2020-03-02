@@ -9,7 +9,7 @@ import progress from 'rollup-plugin-progress'
 import replace from 'rollup-plugin-replace'
 
 export default {
-  input: 'src/main.ts',
+  input: 'src/entry.ts',
   output: {
     format: 'esm',
     dir: 'dist',
