@@ -10,6 +10,9 @@ JSON Schema based form generator built with Vue.js. Currently Work in Progress.
 ### Full Guide and Examples
 https://roma219.github.io/vue-jsonschema-form/guide/
 
+Also checkout usage demo on [Codesandbox](https://codesandbox.io/s/vue-jsonschema-form-basic-example-zid04?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.vue&theme=dark)
+
+
 ### Installation
 ```
 npm install @roma219/vue-jsonschema-form
@@ -43,13 +46,5 @@ schema = {
     }
 }
 ```
-
-<iframe
-  src="https://codesandbox.io/embed/vue-jsonschema-form-basic-example-zid04?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.vue&theme=dark"
-  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-  title="vue-jsonschema-form basic example"
-  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
 
 
