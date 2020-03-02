@@ -10,8 +10,7 @@ JSON Schema based form generator built with Vue.js. Currently Work in Progress.
 ### Full Guide and Examples
 https://roma219.github.io/vue-jsonschema-form/guide/
 
-Also checkout usage demo on [Codesandbox](https://codesandbox.io/s/vue-jsonschema-form-basic-example-zid04?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.vue&theme=dark)
-
+Also checkout usage demo on <a href="https://codesandbox.io/s/vue-jsonschema-form-basic-example-zid04?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.vue&theme=dark" target="_blank">Codesandbox</a>
 
 ### Installation
 ```
