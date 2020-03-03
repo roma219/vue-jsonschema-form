@@ -133,9 +133,6 @@ export default {
 </script>
 
 <style scoped>
-.demo {
-  margin: 10px 0;
-}
 .tabs {
   display: flex;
 }
