@@ -23,6 +23,7 @@ import { ISchema, IUiSchema, IAnyObject, ComponentsConfig,
 import JsonSchemaForm from './JsonSchemaForm.vue'
 import { validationMixin } from 'vuelidate'
 import clone from 'nanoclone'
+// import 'purecss/build/forms-min.css'
 
 @Component({
   mixins: [validationMixin],
@@ -82,8 +83,8 @@ export default class JsonSchema extends Vue {
 }
 </script>
 
-<style>
-@import url("../../node_modules/purecss/build/forms-min.css");
+<style lang="scss">
+@import "node_modules/purecss/build/forms-min";
 
 .pure-control-group {
   overflow: hidden;
