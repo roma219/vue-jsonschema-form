@@ -82,7 +82,7 @@ export default class JsonSchema extends Vue {
 }
 </script>
 
-<style scoped>
+<style>
 @import url("../../node_modules/purecss/build/forms-min.css");
 
 .pure-control-group {

@@ -14,17 +14,17 @@ export default {
     format: 'esm',
     dir: 'dist',
     name: 'index',
-    sourcemap: true
-    // globals: {
-    //   vue: 'Vue',
-    //   vuelidate: 'vuelidate'
-    // }
+    sourcemap: true,
+    globals: {
+      vue: 'Vue',
+      vuelidate: 'vuelidate'
+    }
   },
-  // external: [
-  //   'vue',
-  //   'vuelidate',
-  //   'vuelidate/*'
-  // ],
+  external: [
+    'vue',
+    'vuelidate',
+    'vuelidate/*'
+  ],
   plugins: [
     progress(),
     typescript(),
