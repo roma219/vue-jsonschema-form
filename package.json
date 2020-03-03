@@ -1,7 +1,7 @@
 {
   "name": "@roma219/vue-jsonschema-form",
   "description": "Input Form generator based on JSON Schema",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "repository": {
     "type": "git",
@@ -29,7 +29,6 @@
     "purecss": "^1.0.1"
   },
   "peerDependencies": {
-    "purecss": "^1.0.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {
