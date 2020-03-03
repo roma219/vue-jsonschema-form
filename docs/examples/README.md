@@ -1,6 +1,7 @@
 # Examples
 ## Basic Inputs
 Full list of built-it components can be found [here](/guide/#built-in-components).
+
 [![Edit on Codesandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-jsonschema-form-basic-example-ulwwy?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.vue&theme=dark)
 <Demo schema-name="basic"/>
 
