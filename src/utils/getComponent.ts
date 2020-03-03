@@ -14,7 +14,7 @@ function areEqual (obj1: IAnyObject, obj2: IAnyObject) : boolean {
 const canReplaceComponents = (componentA: IConfigComponent, componentB: IConfigComponent) => {
   return (componentA.matcher && areEqual(componentA.matcher, componentB.matcher || {})) ||
     (componentA.uiSchemaMatcher && areEqual(componentA.uiSchemaMatcher, componentB.uiSchemaMatcher || {})) ||
-    (componentA.contains && componentA.contains === componentB.contains)
+    (componentA?.contains === componentB.contains)
 }
 
 export const mergeComponents = (customComponents: ComponentsConfig) => {

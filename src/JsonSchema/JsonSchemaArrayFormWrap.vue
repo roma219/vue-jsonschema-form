@@ -33,6 +33,5 @@ export default class JsonSchemaArrayFormWrap extends Vue {
 
 .json-schema-array-item-controls button {
   margin-right: 5px;
-  /* cursor: pointer; */
 }
 </style>

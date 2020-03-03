@@ -59,8 +59,8 @@ export default class JsonSchemaForm extends Vue {
 
   get sortedSchemaProperties () {
     return Object.entries(this.schema.properties).sort((a, b) => {
-      const orderA : number = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[a[0]] && this.uiSchema.properties[a[0]].order) || 0
-      const orderB : number = (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[b[0]] && this.uiSchema.properties[b[0]].order) || 0
+      const orderA : number = this.uiSchema?.properties?.[a[0]]?.order || 0
+      const orderB : number = this.uiSchema?.properties?.[b[0]]?.order || 0
       return orderA > orderB ? -1 : 1
     })
   }
@@ -73,19 +73,19 @@ export default class JsonSchemaForm extends Vue {
     Object.keys(this.schema.properties).forEach(paramName => {
       const validation = this.validations[paramName]
 
-      if (validation && validation.$invalid) errors[paramName] = getErrorText(validation, this.schema.properties[paramName])
+      if (validation?.$invalid) errors[paramName] = getErrorText(validation, this.schema.properties[paramName])
     })
 
     return errors
   }
 
   getUiSchemaByPropName (propName: string) : IUiSchema | undefined {
-    return (this.uiSchema && this.uiSchema.properties && this.uiSchema.properties[propName]) || undefined
+    return this.uiSchema?.properties?.[propName]
   }
 
   getProps (propName: string, propSchema: ISchema) {
     const component = this.propComponents[propName]
-    const customProps = component.props ? component.props(propName, propSchema, {}) : {}
+    const customProps = component?.props?.(propName, propSchema, {}) || {}
     const uiSchema = this.getUiSchemaByPropName(propName)
 
     const isNested = propSchema.type === 'object' || propSchema.type === 'array'
@@ -99,7 +99,7 @@ export default class JsonSchemaForm extends Vue {
       props = {
         ...props,
         schema: this.schema.properties[propName],
-        validations: (this.validations && this.validations[propName]) || {},
+        validations: this.validations?.[propName] || {},
         uiSchema
       }
     }
@@ -109,7 +109,7 @@ export default class JsonSchemaForm extends Vue {
 
   getWrapperProps (propName: string, propSchema: ISchema) {
     const propUiScehma = this.getUiSchemaByPropName(propName)
-    const customProps = (this.wrapperComponentParams && this.wrapperComponentParams.props && this.wrapperComponentParams.props(propName, propSchema, propUiScehma)) || {}
+    const customProps = this?.wrapperComponentParams?.props?.(propName, propSchema, propUiScehma) || {}
     const isPropNested = propSchema.type === 'object' || propSchema.type === 'array'
 
     return {
@@ -119,8 +119,8 @@ export default class JsonSchemaForm extends Vue {
   }
 
   handleInput (propName: string, newValue: any) {
-    const isPropNested = this.schema.properties[propName].type === 'object' ||
-      this.schema.properties[propName].type === 'array'
+    const propSchemaType = this.schema.properties[propName].type
+    const isPropNested = propSchemaType === 'object' || propSchemaType === 'array'
     const path = isPropNested ? [propName, ...newValue.path] : [propName]
     const value = isPropNested ? newValue.value : newValue
 

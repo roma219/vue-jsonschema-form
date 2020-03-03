@@ -1,10 +1,4 @@
 <template>
-  <!-- <div class="input-wrapper" :class="{ 'input-wrapper--vertical': vertical }">
-    <div class="input-wrapper-title" :class="{ 'input-wrapper-title--empty': !title}">{{ title }}</div>
-    <slot/>
-    <div class="input-wrapper-error">{{ error }}</div>
-  </div> -->
-
   <div class="pure-control-group" :class="{ 'pure-control-group--disabled' : disabled }">
       <label v-if="title">{{ title }}</label>
       <slot/>
