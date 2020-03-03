@@ -73,7 +73,7 @@ export default class JsonSchemaForm extends Vue {
     Object.keys(this.schema.properties).forEach(paramName => {
       const validation = this.validations[paramName]
 
-      if (validation && validation.$invalid) errors[paramName] = getErrorText(validation)
+      if (validation && validation.$invalid) errors[paramName] = getErrorText(validation, this.schema.properties[paramName])
     })
 
     return errors

@@ -1,16 +1,16 @@
 import { errorMessages } from './errorMessages'
-import { ErrorMessagesConfig } from '@/types'
+import { ErrorMessagesConfig, ISchema } from '@/types'
 
-export const getErrorText = (error: any, customErrorMessages: ErrorMessagesConfig = {}) : string => {
+export const getErrorText = (error: any, schema: ISchema) : string => {
   if (error.required === false) return errorMessages.required
 
-  if (error.minLength === false) return errorMessages.minLength((error.$params.minLength || {}).min)
+  if (error.minLength === false) return errorMessages.minLength(schema.minLength)
 
-  if (error.maxLength === false) return errorMessages.maxLength((error.$params.maxLength || {}).max)
+  if (error.maxLength === false) return errorMessages.maxLength(schema.maxLength)
 
-  if (error.minValue === false) return errorMessages.minValue((error.$params.minValue || {}).min)
+  if (error.minValue === false) return errorMessages.minValue(schema.minimum)
 
-  if (error.maxValue === false) return errorMessages.maxValue((error.$params.maxValue || {}).max)
+  if (error.maxValue === false) return errorMessages.maxValue(schema.maximum)
 
   if (error.url === false) return errorMessages.url
 
