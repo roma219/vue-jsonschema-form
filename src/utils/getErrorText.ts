@@ -1,5 +1,5 @@
 import { errorMessages } from './errorMessages'
-import { ErrorMessagesConfig, ISchema } from '@/types'
+import { ISchema } from '@/types'
 
 export const getErrorText = (error: any, schema: ISchema) : string => {
   if (error.required === false) return errorMessages.required
