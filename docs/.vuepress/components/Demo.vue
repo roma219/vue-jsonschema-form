@@ -133,9 +133,14 @@ export default {
 </script>
 
 <style scoped>
+.demo {
+  margin-top: 10px;
+}
+
 .tabs {
   display: flex;
 }
+
 .tabs > div {
   margin-right: 10px;
   cursor: pointer;
