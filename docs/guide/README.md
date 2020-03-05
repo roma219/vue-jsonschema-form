@@ -12,9 +12,7 @@ npm install --save @roma219/vue-jsonschema-form
 ```
 
 ## JSON Schema
-Schema should follow [JSON Schema Standard](https://json-schema.org/). Root shema should always be of type `object`.
-
-Supported JSON Schema features: TBA
+Schema should follow [JSON Schema Standard](https://json-schema.org/). Root shema type should be `object`.
 
 ## Props
 | Prop Name       | Value Type          | Description  |
@@ -28,12 +26,12 @@ Supported JSON Schema features: TBA
 ## Events
 | Event Name        | Emitted Value Type | Description  |
 | ------------- |:-------------:| -----:|
-| input      | object | Emitted on every data change. Updated object from `:value`. |
-| init-default     | object      | Initial data model object generated with `default` values provided in schema. Usefull when you have an empty data model on start. See [example](/examples/#default-values).  |
+| input      | object | Emitted on every data change. The argument is updated data model object (`:value` prop). |
+| init-default     | object      | Initial data model object generated with `default` values provided in schema. Usefull when you have an empty data model at the start. See [example](/examples/#default-values).  |
 | validated | boolean      | Emitted on every validation status change. `true` - data model is valid, `false`  - data model is not valid. Usefull when you need to have some indicator of form validity, for example to disable `Save` button.|
 
 ## Built-in Components
-This is the list of built-in components and corresponding JSON Schema blocks. If you want to use different components, see [Custom Components](/guide/#custom-components).
+This is the list of built-in components and corresponding JSON Schema blocks. If you want to use different (your own or some UI kit) components, see [Custom Components](/guide/#custom-components).
 
 ### String Input
 ```js
@@ -139,7 +137,7 @@ UI Schema is an optional schema which can provide additional UI features that ca
 You can use custom input components with Vue JSON Schema Form. Component is selected for rendering a piece of schema by checking the `matcher` parameter.
 ### Requirements
 - Each component should be globally registered in `Vue`
-- Each component should have a `prop` `value` to receive corresponding value
+- Each component should have a prop `value` to receive corresponding value
 - Each component should emit an event on every value change
 
 ### Usage
