@@ -33,7 +33,7 @@
     "purecss": "^1.0.1"
   },
   "devDependencies": {
-    "@mdi/font": "^4.8.95",
+    "@mdi/font": "^5.0.45",
     "@types/jest": "^25.1.0",
     "@types/json-schema": "^7.0.3",
     "@vue/babel-preset-app": "^4.0.4",
