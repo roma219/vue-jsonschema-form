@@ -164,7 +164,6 @@ See example [here](/examples/#custom-components).
 ``` vue
 <JsonSchema :schema="schema" v-model="dataModel" :wrapper="wrapperComponentConfig"/>
 ```
-
 Each schema component is rendered inside a wrapper component. By default it displays property title and possible validation errors. You can provide your own wrapper. The only requirment is that it should contain a `<slot>` where actual input component will be displayed. `props` function is optional and should return an object which will be passed downs as props to each wrapper component.
 This is default wrapper component config:
 ``` js
