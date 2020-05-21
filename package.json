@@ -78,7 +78,7 @@
     "vue-template-compiler": "^2.6.10",
     "vuelidate": "^0.7.4",
     "vuepress": "^1.2.0",
-    "vuepress-plugin-typescript": "^0.2.0",
+    "vuepress-plugin-typescript": "^0.3.0",
     "vuetify": "^2.2.5"
   }
 }
