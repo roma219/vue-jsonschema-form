@@ -67,7 +67,7 @@
     "rollup-plugin-visualizer": "^4.0.4",
     "rollup-plugin-vue": "^5.0.1",
     "sass": "^1.25.0",
-    "sass-loader": "^7.3.1",
+    "sass-loader": "^9.0.2",
     "ts-jest": "^25.0.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4",
