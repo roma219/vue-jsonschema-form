@@ -1,11 +1,11 @@
 {
-  "name": "@roma219/vue-jsonschema-form",
+  "name": "@andremicheletti/vue-jsonschema-form",
   "description": "Input Form generator based on JSON Schema",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/roma219/vue-jsonschema-form.git"
+    "url": "git+https://github.com/AndreMicheletti/vue-jsonschema-form.git"
   },
   "author": "Roman Sabirov roma219@yandex.ru",
   "license": "MIT",
