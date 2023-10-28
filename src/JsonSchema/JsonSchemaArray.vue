@@ -30,7 +30,8 @@ import JsonSchemaArrayFormWrap from './JsonSchemaArrayFormWrap.vue'
 @Component({
   name: 'JsonSchemaArray',
   components: {
-    JsonSchemaForm: () => import('./JsonSchemaForm.vue'),
+    JsonSchemaForm: () =>
+      import('./JsonSchemaForm/.vue').then((d) => d.default),
     JsonSchemaArrayFormWrap
   }
 })
